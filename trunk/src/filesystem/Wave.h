@@ -10,8 +10,8 @@
 
 #include "File.h"
 #include <stdint.h>
-#include "SDL/SDL.h"
-#include "SDL/SDL_mixer.h"
+#include "../../SDL/include/SDL.h"
+#include "../../SDL/include/SDL_mixer.h"
 //Ajout de string pour remplacer le CHARX
 #include <string>
 using namespace std;
@@ -50,7 +50,7 @@ public:
 	uint8_t isLoaded() { return loaded; }
 	Mix_Chunk* getWave() { return sound; }
 
-	uint8_t load();
+	uint8_t load(string *filename);
 
 private:
 	const string *path;
