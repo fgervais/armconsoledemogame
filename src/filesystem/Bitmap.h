@@ -9,8 +9,12 @@
 #define BITMAP_H_
 
 #include "File.h"
-#include "ff.h"
 #include <stdint.h>
+#include "../sdl/include/SDL.h"
+
+//Ajout de string pour remplacer le CHARX
+#include <string>
+using namespace std;
 
 /**
  * Class used to handle Bitmap files.
@@ -74,7 +78,7 @@ public:
 		uint32_t importantColours;	/* Important colours         */
 	};
 
-	Bitmap(const XCHAR *path);
+	Bitmap(const string *path);
 	virtual ~Bitmap();
 
 	Magic* getMagic() { return magic; }
@@ -82,17 +86,19 @@ public:
 	InfoHeader* getInfoHeader() { return infoHeader; }
 	uint32_t* getData() { return data; }
 	uint8_t isLoaded() { return loaded; }
+	SDL_Surface* getImage() { return image; }
 
-	uint8_t load();
+	uint8_t load(string *filename);
 
 private:
 	Magic* magic;
 	Header* header;
 	InfoHeader* infoHeader;
 	uint32_t* data;
+	SDL_Surface* image;
 
-	FIL handle;
-	const XCHAR *path;
+	//Ancien CHARX et enlever le handle
+	const string *path;
 	uint8_t loaded;
 };
 
