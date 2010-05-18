@@ -1,1 +1,1 @@
-Rendre le code portable sur PC (Bitmap,Wave,Render) 1j (en cours)
+Rendre le code portable sur PC (Bitmap,Wave,Render) 1j (en cours) 18 mai 2010
