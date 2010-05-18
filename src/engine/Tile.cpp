@@ -7,7 +7,7 @@
 
 #include "Tile.h"
 #include "Environment.h"
-#include "VideoMemory.h"
+//#include "VideoMemory.h"
 #include "VisibleArea.h"
 #include "Bitmap.h"
 #include "Debug.h"
