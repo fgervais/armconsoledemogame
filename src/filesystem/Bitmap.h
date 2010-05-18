@@ -10,7 +10,7 @@
 
 #include "File.h"
 #include <stdint.h>
-#include "../sdl/include/SDL.h"
+#include "../../sdl/include/SDL.h"
 
 //Ajout de string pour remplacer le CHARX
 #include <string>
