@@ -9,8 +9,12 @@
 #define WAVE_H_
 
 #include "File.h"
-#include "ff.h"
 #include <stdint.h>
+#include "SDL/SDL.h"
+#include "SDL/SDL_mixer.h"
+//Ajout de string pour remplacer le CHARX
+#include <string>
+using namespace std;
 
 class Wave: public File {
 public:
@@ -36,7 +40,7 @@ public:
 		uint32_t size;				/* Number of bytes of data is included in the data section. */
 	};
 
-	Wave(const XCHAR *path);
+	Wave(const string *path);
 	virtual ~Wave();
 
 	RIFFHeader* getRIFFHeader() { return riffHeader; }
@@ -44,18 +48,19 @@ public:
 	DataHeader* getDataHeader() { return dataHeader; }
 	int16_t* getData() { return data; }
 	uint8_t isLoaded() { return loaded; }
+	Mix_Chunk* getWave() { return sound; }
 
 	uint8_t load();
 
 private:
-	FIL handle;
-	const XCHAR *path;
+	const string *path;
 	uint8_t loaded;
 
 	RIFFHeader* riffHeader;
 	WAVEHeader* waveHeader;
 	DataHeader* dataHeader;
 	int16_t* data;
+	Mix_Chunk* sound;
 };
 
 #endif /* WAVE_H_ */
