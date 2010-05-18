@@ -25,6 +25,7 @@ Bitmap::~Bitmap() {
 	delete header;
 	delete infoHeader;
 	delete[] data;
+	delete image;
 }
 
 /**
