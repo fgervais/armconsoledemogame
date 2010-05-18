@@ -30,11 +30,11 @@ Wave::~Wave() {
  *
  * @return 0 if successful. 1 otherwise.
  */
-uint8_t Wave::load() {
-	sound = Mix_LoadWAV( "path" );
+uint8_t Wave::load(string*filename) {
+	sound = Mix_LoadWAV( filename );
 	
 	//If there was a problem loading the sound effects
-    if( sound == NULL )
+    if( sound == 0 )
     	return 1;
     return 0; 
 }
