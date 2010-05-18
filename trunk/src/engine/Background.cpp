@@ -7,13 +7,13 @@
 
 #include "Background.h"
 #include "Environment.h"
-#include "VideoMemory.h"
+//#include "VideoMemory.h"
 #include "VisibleArea.h"
 #include "Bitmap.h"
-#include "LPC2478.h"
-#include "DMAChannel.h"
-#include "DMAConfiguration.h"
-#include "Debug.h"
+//#include "LPC2478.h"
+//#include "DMAChannel.h"
+//#include "DMAConfiguration.h"
+//#include "Debug.h"
 
 Background::Background(Bitmap* bitmap, uint32_t width, uint32_t height, Environment* environment) {
 	this->bitmap = bitmap;

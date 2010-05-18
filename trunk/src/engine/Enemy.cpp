@@ -8,7 +8,7 @@
 #include "Enemy.h"
 #include "Environment.h"
 #include "EnemyState.h"
-#include "VideoMemory.h"
+//#include "VideoMemory.h"
 
 Enemy::Enemy(EnemyState* initialState, Environment* environment) : Sprite(environment) {
 	this->state = initialState;

@@ -6,8 +6,8 @@
  */
 
 #include "EnemyState.h"
-#include "Bitmap.h"
-#include "VideoMemory.h"
+#include "/Bitmap.h"
+//#include "VideoMemory.h"
 #include "Enemy.h"
 #include "Environment.h"
 #include "VisibleArea.h"

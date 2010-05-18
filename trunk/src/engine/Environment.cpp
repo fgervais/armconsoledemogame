@@ -12,8 +12,8 @@
 #include "Background.h"
 #include "Physics.h"
 #include "VisibleArea.h"
-#include "Debug.h"
-#include "VideoMemory.h"
+//#include "Debug.h"
+//#include "VideoMemory.h"
 
 // Posted by TastyWheat on LinuxQuestions.org
 // This will work for positive number only
