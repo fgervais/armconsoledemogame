@@ -9,7 +9,7 @@
 #define WAVE_H_
 
 #include "File.h"
-#include "ff.h"
+//#include "ff.h"
 #include <stdint.h>
 
 class Wave: public File {
@@ -36,7 +36,7 @@ public:
 		uint32_t size;				/* Number of bytes of data is included in the data section. */
 	};
 
-	Wave(const XCHAR *path);
+	Wave(const char* *path);
 	virtual ~Wave();
 
 	RIFFHeader* getRIFFHeader() { return riffHeader; }
@@ -48,8 +48,7 @@ public:
 	uint8_t load();
 
 private:
-	FIL handle;
-	const XCHAR *path;
+	const char* *path;
 	uint8_t loaded;
 
 	RIFFHeader* riffHeader;

@@ -14,9 +14,9 @@
 #include "Physics.h"
 #include "Environment.h"
 #include "Wave.h"
-#include "AudioHelper.h"
+/*#include "AudioHelper.h"
 #include "Audio.h"
-#include "LPC2478.h"
+#include "LPC2478.h"*/
 
 MegamanState* MegamanJumpingLeft::instance = 0;
 
