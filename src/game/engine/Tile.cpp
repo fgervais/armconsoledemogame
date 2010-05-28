@@ -56,8 +56,8 @@ void Tile::render(SDL_Surface* sdl_Surface) {
 	//Make a temporary rectangle to hold the offsets
 	SDL_Rect offset;
 	//Give the offsets to the rectangle
-	offset.x = visibleArea->x;
-	offset.y = visibleArea->y;
+	offset.x = positionX - visibleArea->x;
+	offset.y = positionY - visibleArea->y;
 	SDL_BlitSurface( frames[currentFrame]->getData(), NULL, sdl_Surface, &offset );
 
 	// Get x,y coordinates inside the visible area
