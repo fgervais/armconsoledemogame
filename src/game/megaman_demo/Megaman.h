@@ -16,7 +16,7 @@ class Environment;
 class MegamanState;
 class VideoMemory;
 class Collider;
-//class Wave;
+class Wave;
 
 class Megaman : public Sprite {
 public:
@@ -32,8 +32,8 @@ public:
 	virtual void collideWith(Metool*);
 
 	// Accessors
-	//Wave* getJumpSoundFX() { return jumpSoundFX; }
-	//Wave* getLandSoundFX() { return landSoundFX; }
+	Wave* getJumpSoundFX() { return jumpSoundFX; }
+	Wave* getLandSoundFX() { return landSoundFX; }
 
 	// Action functions
 	void jump();
@@ -49,8 +49,8 @@ private:
 
 
 	// SoundFX
-	//static Wave* jumpSoundFX;
-	//static Wave* landSoundFX;
+	static Wave* jumpSoundFX;
+	static Wave* landSoundFX;
 };
 
 #endif /* MEGAMAN_H_ */

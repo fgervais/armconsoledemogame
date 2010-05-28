@@ -36,19 +36,19 @@ Level1::~Level1() {
 }
 
 void Level1::build() {
-	//Debug::writeLine("Entering Level1 build function");
+	std::cout << "Entering Level1 build function" << endl;
 
-	//Bitmap** black_square = new Bitmap*[2];
-	//black_square[0] = new Bitmap("0:black.bmp");
-	//black_square[1] = new Bitmap("0:gray.bmp");
+	Bitmap** black_square = new Bitmap*[2];
+	black_square[0] = new Bitmap("E:/EclipseProjects/demo/src/display/black.bmp");
+	black_square[1] = new Bitmap("E:/EclipseProjects/demo/src/display/gray.bmp");
 
 	Bitmap** snow = new Bitmap*[1];
-	snow[0] = new Bitmap("snow1.bmp");
+	snow[0] = new Bitmap("E:/EclipseProjects/demo/src/display/snow1.bmp");
 
 	Tile* tile1 = new Tile(56, 32, snow, 1, this);
 
 	Bitmap** brick = new Bitmap*[1];
-	brick[0] = new Bitmap("brick.bmp");
+	brick[0] = new Bitmap("E:/EclipseProjects/demo/src/display/brick.bmp");
 
 	Tile* tile2 = new Tile(56, 32, brick, 1, this);
 
@@ -87,22 +87,22 @@ void Level1::build() {
 	set(physics);
 
 	// Hero section
-	//Debug::writeLine("Loading hero");
+	std::cout << "Loading hero" << endl;
 	MegamanStandingLeft::getInstance();
-	/*MegamanStandingRight::getInstance();
+	MegamanStandingRight::getInstance();
 	MegamanRunningLeft::getInstance();
 	MegamanRunningRight::getInstance();
 	MegamanJumpingLeft::getInstance();
-	MegamanJumpingRight::getInstance();*/
+	MegamanJumpingRight::getInstance();
 
-	Megaman* hero = new Megaman(MegamanStandingLeft::getInstance(), this);
+	Megaman* hero = new Megaman(MegamanStandingRight::getInstance(), this);
 	hero->enableCollisionCheck();
 	//set(hero, 240, 189);
 	//set(hero, 240, 50);
 	set(hero, 720, 50);
 	cout << "Done Loading hero" << endl;
-	/*
-	//Debug::writeLine("Loading sprites");
+
+	cout << "Loading sprites" << endl;
 	Metool** enemy = new Metool*[32];
 	for(uint8_t i=0; i<32; i++) {
 		if(i<22) {
@@ -113,5 +113,5 @@ void Level1::build() {
 			enemy[i] = new Metool(MetoolWalkingLeft::createInstance(), this);
 		}
 		add(enemy[i], (i*25), 100);
-	}*/
+	}
 }

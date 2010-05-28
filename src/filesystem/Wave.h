@@ -10,6 +10,7 @@
 
 #include "File.h"
 //#include "ff.h"
+#include "SDL_mixer.h"
 #include <stdint.h>
 
 class Wave: public File {
@@ -42,7 +43,7 @@ public:
 	RIFFHeader* getRIFFHeader() { return riffHeader; }
 	WAVEHeader* getWAVEHeader() { return waveHeader; }
 	DataHeader* getDataHeader() { return dataHeader; }
-	int16_t* getData() { return data; }
+	Mix_Chunk* getData() { return data; }
 	uint8_t isLoaded() { return loaded; }
 
 	uint8_t load();
@@ -54,7 +55,7 @@ private:
 	RIFFHeader* riffHeader;
 	WAVEHeader* waveHeader;
 	DataHeader* dataHeader;
-	int16_t* data;
+	Mix_Chunk* data;
 };
 
 #endif /* WAVE_H_ */

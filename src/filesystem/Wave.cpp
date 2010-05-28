@@ -6,7 +6,8 @@
  */
 
 #include "Wave.h"
-//#include <iostream>
+#include <iostream>
+using namespace std;
 
 Wave::Wave(const char *path) {
 	this->path = path;
@@ -32,7 +33,23 @@ Wave::~Wave() {
  * @return 1 if successful. 0 otherwise.
  */
 uint8_t Wave::load() {
-	FRESULT f_err_code;
+
+	data = Mix_LoadWAV( path );
+
+	if(data == 0)
+	{
+		cout << "Error while loading file " << path << endl;
+		return 0;
+	}
+	else
+	{
+		cout << "Loaded file " << path << endl;
+		loaded = 1;
+	}
+
+	return 1;
+
+	/*FRESULT f_err_code;
 	UINT byteRead;
 
 	f_err_code = f_open(&handle, path, FA_OPEN_EXISTING | FA_READ);
@@ -65,5 +82,5 @@ uint8_t Wave::load() {
 
 	f_close(&handle);
 	loaded = 1;
-	return 1;
+	return 1;*/
 }

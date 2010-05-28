@@ -74,13 +74,13 @@ void Sprite::setState(State* state)  {
 	state->initialize(this);
 }
 
-/*void Sprite::update() {
+void Sprite::update() {
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
 	// Update the currently displayed frame
 	// And possibly some state specific things
 	state->update(this);
-}*/
+}
 
 void Sprite::render(SDL_Surface* sdl_Surface) {
 	state->render(this, sdl_Surface);

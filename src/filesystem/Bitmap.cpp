@@ -43,7 +43,7 @@ void Bitmap::load() {
 	if( data != 0 )
 	{
 
-		cout << " L'image a loader" << endl;
+		cout << "Loaded file " << path << endl;
 		/*
 		//Create an optimized image
 		data = SDL_DisplayFormat( loadedImage );
@@ -54,5 +54,5 @@ void Bitmap::load() {
 		loaded = 1;
 	}
 	else
-		cout << " L'image a pas loader" << endl ;
+		cout << "Error while loading file " << path << endl ;
 }

@@ -28,10 +28,10 @@ MegamanStandingRight::~MegamanStandingRight() {
 MegamanState* MegamanStandingRight::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[1];
-		animationFrames[0] = new Bitmap("0:state/MegamanStandingRight/1.bmp");
+		animationFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanStandingRight/1.bmp");
 
 		Bitmap** animationMasks = new Bitmap*[1];
-		animationMasks[0] = new Bitmap("0:state/MegamanStandingRight/mask1.bmp");
+		animationMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanStandingRight/mask1.bmp");
 		instance = new MegamanStandingRight(35, 35, animationFrames, 1, animationMasks);
 	}
 	instance->reset();

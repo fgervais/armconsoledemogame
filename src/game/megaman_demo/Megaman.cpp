@@ -12,19 +12,19 @@
 //#include "LPC2478.h"
 //#include "Wave.h"
 
-//Wave* Megaman::jumpSoundFX = 0;
-//Wave* Megaman::landSoundFX = 0;
+Wave* Megaman::jumpSoundFX = 0;
+Wave* Megaman::landSoundFX = 0;
 
 Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(initialState, environment) {
 	this->state = initialState;
 
 	// Initialize and load sound effects
 	/*if(jumpSoundFX == 0) {
-		jumpSoundFX = new Wave("0:sound/jump.wav");
+		jumpSoundFX = new Wave("E:/EclipseProjects/demo/src/display/sound/jump.wav");
 		jumpSoundFX->load();
 	}
 	if(landSoundFX == 0) {
-		landSoundFX = new Wave("0:sound/land.wav");
+		landSoundFX = new Wave("E:/EclipseProjects/demo/src/display/sound/land.wav");
 		landSoundFX->load();
 	}*/
 

@@ -76,7 +76,7 @@ Environment::Environment(uint32_t width, uint32_t height, uint32_t tileWidth, ui
 	background = 0;
 	physics = 0;
 	visibleArea = 0;
-	//Debug::writeLine("Environment constructor done");
+	cout << "Environment constructor done" << endl;
 }
 
 Environment::~Environment() {
@@ -88,13 +88,13 @@ void Environment::render(SDL_Surface* sdl_Surface) {
 	renderBackground(sdl_Surface);
 
 	// Render tiles
-	//renderTiles(sdl_Surface);
+	renderTiles(sdl_Surface);
 
 	// Render Hero
 	renderHero(sdl_Surface);
 
 	// Render sprites
-	//renderSprites(sdl_Surface);
+	renderSprites(sdl_Surface);
 
 }
 
