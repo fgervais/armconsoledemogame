@@ -7,10 +7,10 @@
 
 #include "Tile.h"
 #include "Environment.h"
-#include "VideoMemory.h"
+#include "SDL.h"
 #include "VisibleArea.h"
 #include "Bitmap.h"
-#include "Debug.h"
+#include <iostream>
 
 Tile::Tile(uint32_t width, uint32_t height, Bitmap** frames, uint32_t numberOfFrame, Environment* environment) {
 	this->width = width;
@@ -50,7 +50,7 @@ void Tile::update() {
  *
  * @param videoMemory The video memory
  */
-void Tile::render(VideoMemory* videoMemory) {
+void Tile::render(SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = environment->getVisibleArea();
 
 	// Get x,y coordinates inside the visible area
@@ -87,17 +87,17 @@ void Tile::render(VideoMemory* videoMemory) {
 	}
 
 	// Draw the image on the screen
-	uint32_t videoMemoryWidth = videoMemory->getWidth();
-	uint32_t* videoMemoryPointer = videoMemory->getPointer();
+	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
+	/*uint32_t* sdl_SurfacePointer = sdl_Surface->getPointer();
 
 	// Render the part of the tile inside the render mask
 	for (uint32_t i=renderMaskY1; i<renderMaskY2; i++) {
 		for (uint32_t j=renderMaskX1; j<renderMaskX2; j++) {
 			// This is complicated to understand but I don't think we can simplify it
-			videoMemoryPointer[((i-renderMaskY1)+renderPositionY)*videoMemoryWidth + ((j-renderMaskX1)+renderPositionX)]
+			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)]
 							   = frames[currentFrame]->getData()[i*width + j];
 		}
-	}
+	}*/
 
 }
 

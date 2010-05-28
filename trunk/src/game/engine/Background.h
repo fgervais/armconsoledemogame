@@ -13,9 +13,9 @@
 
 class Bitmap;
 class Environment;
-class VideoMemory;
+class SDL_Surface;
 
-struct DMACCxLLI;
+//struct DMACCxLLI;
 
 class Background : public Renderable {
 public:
@@ -27,7 +27,7 @@ public:
 	uint32_t getWidth() { return width; }
 
 	// Renderable interface implementation
-	virtual void render(VideoMemory* videoMemory);
+	virtual void render(SDL_Surface* sdlSurface);
 
 
 	void set(Environment* environment);
@@ -39,7 +39,7 @@ private:
 
 	Environment* environment;
 
-	DMACCxLLI** lli;
+	//DMACCxLLI** lli;
 };
 
 #endif /* BACKGROUND_H_ */

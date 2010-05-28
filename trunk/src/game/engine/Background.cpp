@@ -10,10 +10,11 @@
 #include "VideoMemory.h"
 #include "VisibleArea.h"
 #include "Bitmap.h"
-#include "LPC2478.h"
-#include "DMAChannel.h"
-#include "DMAConfiguration.h"
-#include "Debug.h"
+//#include "LPC2478.h"
+//#include "DMAChannel.h"
+//#include "DMAConfiguration.h"
+#include <iostream>
+using namespace std;
 
 Background::Background(Bitmap* bitmap, uint32_t width, uint32_t height, Environment* environment) {
 	this->bitmap = bitmap;
@@ -26,20 +27,20 @@ Background::Background(Bitmap* bitmap, uint32_t width, uint32_t height, Environm
 		bitmap->load();
 	}
 
-	uint32_t dmaControl = 480;		// Transfer size
-	dmaControl |= (4<<12);	// Source burst size = 32
-	dmaControl |= (4<<15);	// Destination burst size = 32
-	dmaControl |= (2<<18);	// Source width = 32 bits
-	dmaControl |= (2<<21);	// Destination width = 32 bits
-	dmaControl |= (1<<26);	// Source increment
-	dmaControl |= (1<<27);	// Destination increment
+	//uint32_t dmaControl = 480;		// Transfer size
+	//dmaControl |= (4<<12);	// Source burst size = 32
+	//dmaControl |= (4<<15);	// Destination burst size = 32
+	//dmaControl |= (2<<18);	// Source width = 32 bits
+	//dmaControl |= (2<<21);	// Destination width = 32 bits
+	//dmaControl |= (1<<26);	// Source increment
+	//dmaControl |= (1<<27);	// Destination increment
 
 	// Create LLI for DMA transfer
-	lli = new DMACCxLLI*[height];
-	for(uint32_t i=0; i<height; i++) {
-		lli[i] = new DMACCxLLI();
-		lli[i]->DMACCxControl = dmaControl;
-	}
+	//lli = new DMACCxLLI*[height];
+	//for(uint32_t i=0; i<height; i++) {
+	//	lli[i] = new DMACCxLLI();
+	//	lli[i]->DMACCxControl = dmaControl;
+	//}
 
 }
 
@@ -61,8 +62,15 @@ Background::~Background() {
  *
  * @param videoMemory
  */
-void Background::render(VideoMemory* videoMemory) {
+void Background::render(SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = environment->getVisibleArea();
+
+	//Make a temporary rectangle to hold the offsets
+	SDL_Rect offset;
+	//Give the offsets to the rectangle
+	offset.x = visibleArea->x;
+	offset.y = visibleArea->y;
+	SDL_BlitSurface( bitmap->getData(), NULL, sdl_Surface, &offset );
 
 	/*
 	 * Calculate the visible area of the background according to the speed multiplier.
@@ -70,7 +78,7 @@ void Background::render(VideoMemory* videoMemory) {
 	 * We do this because the background normally scroll slower than the layer
 	 * where the hero is.
 	 */
-	uint32_t renderX1 = visibleArea->x >> 1;
+	//uint32_t renderX1 = visibleArea->x >> 1;
 	//uint32_t renderY1 = visibleArea->y1 >> 1;
 
 	//uint32_t renderWidth = visibleArea->x2 - visibleArea->x1;
@@ -79,16 +87,16 @@ void Background::render(VideoMemory* videoMemory) {
 	// These are safe initial guess
 	//uint32_t renderMaskX1 = renderX1 % width;
 	//uint32_t renderMaskY1 = renderY1 % height;
-	uint32_t renderMaskX1 = renderX1 & 255;
+	//uint32_t renderMaskX1 = renderX1 & 255;
 
 	// Draw the image on the screen
-	uint32_t videoMemoryWidth = videoMemory->getWidth();
-	uint32_t* videoMemoryPointer = videoMemory->getPointer();
+	//uint32_t sdl_SurfaceWidth = sdl_Surface->w;
+	//uint32_t* sdl_SurfacePointer = sdl_Surface->getPointer();
 
 	/* Generic version */
 	/*for (uint32_t i=0; i<renderHeight; i++) {
 		for (uint32_t j=0; j<renderWidth; j++) {
-			videoMemoryPointer[i*videoMemoryWidth + j]
+			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
 			                   = bitmap->getData()[((i+renderMaskY1) % height)*width + ((j+renderMaskX1) % width)];
 		}
 	}*/
@@ -97,7 +105,7 @@ void Background::render(VideoMemory* videoMemory) {
 	/*uint32_t* image = bitmap->getData();
 	for (uint32_t i=0; i<renderHeight; i++) {
 		for (uint32_t j=0; j<renderWidth; j++) {
-			videoMemoryPointer[i*videoMemoryWidth + j]
+			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
 							   = image[i*width + ((j+renderMaskX1) & (width-1))];
 		}
 	}*/
@@ -107,7 +115,7 @@ void Background::render(VideoMemory* videoMemory) {
 	uint32_t widthm1 = width-1;
 	for (uint32_t i=0; i<height; i++) {
 		for (uint32_t j=0; j<renderWidth; j++) {
-			videoMemoryPointer[i*videoMemoryWidth + j]
+			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
 							   = image[i*width + ((j+renderMaskX1) & widthm1)];
 		}
 	}*/
@@ -120,30 +128,31 @@ void Background::render(VideoMemory* videoMemory) {
 	uint32_t* image = bitmap->getData();
 
 	lli[0]->DMACCxSrcAddr = (uint32_t)&(image[renderMaskX1]);
-	lli[0]->DMACCxDestAddr = (uint32_t)&(videoMemoryPointer[0]);
+	lli[0]->DMACCxDestAddr = (uint32_t)&(sdl_SurfacePointer[0]);
 
 	for(uint32_t i=1; i<height; i++) {
 		lli[i]->DMACCxSrcAddr = (uint32_t)&(image[i*width + renderMaskX1]);
-		lli[i]->DMACCxDestAddr = (uint32_t)&(videoMemoryPointer[i*videoMemoryWidth]);
+		lli[i]->DMACCxDestAddr = (uint32_t)&(sdl_SurfacePointer[i*sdl_SurfaceWidth]);
 		lli[i-1]->DMACCxLLI = (uint32_t)lli[i];
 	}
 	lli[height-1]->DMACCxLLI = 0;*/
 
 	/* DMA version 2 */
 
-	DMAChannel* dma = LPC2478::getDMA1();
-	DMAConfiguration dmaConfig;
+	//DMAChannel* dma = LPC2478::getDMA1();
+	//DMAConfiguration dmaConfig;
 
-	uint32_t casted_image = (uint32_t)bitmap->getData();
-	uint32_t casted_videoMemoryPointer = (uint32_t)videoMemoryPointer;
-	uint32_t* struct_pointer;
-	uint32_t* previous_lli;
+	//uint32_t casted_image = (uint32_t)bitmap->getData();
+	//uint32_t casted_sdl_SurfacePointer = (uint32_t)sdl_SurfacePointer;
+	//uint32_t* struct_pointer;
+	//uint32_t* previous_lli;
 
+	/*
 	casted_image += renderMaskX1<<2;
 
 	struct_pointer = (uint32_t*)lli[0];
 	*struct_pointer = casted_image;
-	*(struct_pointer+1) = casted_videoMemoryPointer;
+	*(struct_pointer+1) = casted_sdl_SurfacePointer;
 
 	for(uint32_t i=1; i<height; i++) {
 		previous_lli = struct_pointer+2;
@@ -154,8 +163,8 @@ void Background::render(VideoMemory* videoMemory) {
 		casted_image += width<<2;
 		*struct_pointer = casted_image;
 
-		casted_videoMemoryPointer += videoMemoryWidth<<2;
-		*(struct_pointer+1) = casted_videoMemoryPointer;
+		casted_sdl_SurfacePointer += sdl_SurfaceWidth<<2;
+		*(struct_pointer+1) = casted_sdl_SurfacePointer;
 	}
 	*(struct_pointer+2) = 0;
 
@@ -165,6 +174,7 @@ void Background::render(VideoMemory* videoMemory) {
 	dma->enable();
 
 	while(dma->isEnabled());
+	*/
 }
 
 void Background::set(Environment* environment) {

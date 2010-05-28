@@ -56,8 +56,16 @@ void State::reset() {
 	currentFrame = 0;
 }
 
-void State::render(Sprite* sprite, VideoMemory* videoMemory) {
+void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = sprite->getEnvironment()->getVisibleArea();
+
+	//Make a temporary rectangle to hold the offsets
+	SDL_Rect offset;
+	//Give the offsets to the rectangle
+	offset.x = visibleArea->x;
+	offset.y = visibleArea->y;
+	SDL_BlitSurface( animationFrames[currentFrame]->getData(), NULL, sdl_Surface, &offset );
+
 	uint32_t positionX = sprite->getPositionX();
 	uint32_t positionY = sprite->getPositionY();
 
@@ -73,6 +81,7 @@ void State::render(Sprite* sprite, VideoMemory* videoMemory) {
 	uint32_t renderMaskY1 = 0;
 	uint32_t renderMaskX2 = animationWidth;
 	uint32_t renderMaskY2 = animationHeight;
+
 
 	/*
 	 * These 4 following tests check if part of the image is outside
@@ -94,24 +103,20 @@ void State::render(Sprite* sprite, VideoMemory* videoMemory) {
 		renderMaskY2 = (visibleArea->y+visibleArea->height) - positionY;
 	}
 
+	/*
 	// Draw the image on the screen
-	uint32_t videoMemoryWidth = videoMemory->getWidth();
-	uint32_t* videoMemoryPointer = videoMemory->getPointer();
+	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
+	uint32_t* sdl_SurfacePointer = sdl_Surface->getPointer();
 
 	// Render the part of the tile inside the render mask
 	for (uint32_t i=renderMaskY1; i<renderMaskY2; i++) {
 		for (uint32_t j=renderMaskX1; j<renderMaskX2; j++) {
 			// This is complicated to understand but I don't think we can simplify it
-			if(animationMasks == 0) {
-				videoMemoryPointer[((i-renderMaskY1)+renderPositionY)*videoMemoryWidth + ((j-renderMaskX1)+renderPositionX)]
-				                   = animationFrames[currentFrame]->getData()[i*animationWidth + j];
-			}
-			else {
-				videoMemoryPointer[((i-renderMaskY1)+renderPositionY)*videoMemoryWidth + ((j-renderMaskX1)+renderPositionX)]
-				                   &= animationMasks[currentFrame]->getData()[i*animationWidth + j];
-				videoMemoryPointer[((i-renderMaskY1)+renderPositionY)*videoMemoryWidth + ((j-renderMaskX1)+renderPositionX)]
-				                   |= animationFrames[currentFrame]->getData()[i*animationWidth + j];
-			}
+			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)]
+							   &= animationMasks[currentFrame]->getData()[i*animationWidth + j];
+			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)]
+							   |= animationFrames[currentFrame]->getData()[i*animationWidth + j];
 		}
 	}
+	*/
 }

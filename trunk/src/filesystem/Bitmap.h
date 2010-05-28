@@ -8,11 +8,11 @@
 #ifndef BITMAP_H_
 #define BITMAP_H_
 
-//#include "File.h"
+#include "File.h"
+#include "SDL.h"
 //#include "ff.h"
 #include <stdint.h>
-#include "SDL.h"
-using namespace std;
+
 
 /**
  * Class used to handle Bitmap files.
@@ -80,12 +80,13 @@ public:
 	virtual ~Bitmap();
 
 	Magic* getMagic() { return magic; }
-	Header* getHeader() { return header; };
+	Header* getHeader() { return header; }
 	InfoHeader* getInfoHeader() { return infoHeader; }
 	SDL_Surface* getData() { return data; }
 	uint8_t isLoaded() { return loaded; }
 
-	uint8_t load();
+	void load();
+
 
 private:
 	Magic* magic;

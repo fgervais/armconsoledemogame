@@ -5,7 +5,7 @@
  *      Author: fgervais
  */
 
-#include "Debug.h"
+#include <iostream>
 #include "LPC2478.h"
 #include "Console.h"
 #include "LCDControllerDriver.h"

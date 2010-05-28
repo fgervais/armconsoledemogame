@@ -82,8 +82,8 @@ void Sprite::setState(State* state)  {
 	state->update(this);
 }*/
 
-void Sprite::render(VideoMemory* videoMemory) {
-	state->render(this, videoMemory);
+void Sprite::render(SDL_Surface* sdl_Surface) {
+	state->render(this, sdl_Surface);
 }
 
 uint8_t Sprite::isOnGround() {

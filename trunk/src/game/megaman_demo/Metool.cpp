@@ -10,8 +10,8 @@
 #include "Environment.h"
 #include "MetoolWalkingLeft.h"
 #include "MetoolWalkingRight.h"
-#include "Debug.h"
-#include "LPC2478.h"
+#include <iostream>
+//#include "LPC2478.h"
 
 Metool::Metool(MetoolState* initialState, Environment* environment) : Sprite(initialState, environment) {
 	this->state = initialState;
@@ -50,11 +50,11 @@ void Metool::collideWith(Collider* collider) {
 }
 
 void Metool::collideWith(Megaman*) {
-	Debug::writeLine("Metool collided with Megaman");
-	LPC2478::delay(1000000);
+	//cout << "Metool collided with Megaman";
+	//LPC2478::delay(1000000);
 }
 
 void Metool::collideWith(Metool*) {
-	Debug::writeLine("Metool collided with Metool");
-	LPC2478::delay(1000000);
+	//cout << "Metool collided with Metool";
+	//LPC2478::delay(1000000);
 }

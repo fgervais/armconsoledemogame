@@ -6,7 +6,8 @@
  */
 
 #include "Bitmap.h"
-#include "Debug.h"
+#include <iostream>
+using namespace std;
 
 Bitmap::Bitmap(const char *path) {
 	this->path = path;
@@ -31,25 +32,27 @@ Bitmap::~Bitmap() {
  *
  * @return 1 if successful. 0 otherwise.
  */
-uint8_t Bitmap::load() {
+void Bitmap::load() {
 	//Temporary storage for the image that's loaded
 	SDL_Surface* loadedImage = 0;
 
 	//Load the image
-	loadedImage = SDL_LoadBMP( path );
+	data = SDL_LoadBMP( path );
 
 	//If nothing went wrong in loading the image
-	if( loadedImage != 0 )
+	if( data != 0 )
 	{
-			//Create an optimized image
-			data = SDL_DisplayFormat( loadedImage );
 
-			//Free the old image
-			SDL_FreeSurface( loadedImage );
-			loaded = 1;
+		cout << " L'image a loader" << endl;
+		/*
+		//Create an optimized image
+		data = SDL_DisplayFormat( loadedImage );
 
-			return 0;
+		//Free the old image
+		SDL_FreeSurface( loadedImage );
+		*/
+		loaded = 1;
 	}
-
-	return 1;
+	else
+		cout << " L'image a pas loader" << endl ;
 }

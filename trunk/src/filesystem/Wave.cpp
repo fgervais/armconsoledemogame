@@ -6,9 +6,9 @@
  */
 
 #include "Wave.h"
-#include "Debug.h"
+//#include <iostream>
 
-Wave::Wave(const XCHAR *path) {
+Wave::Wave(const char *path) {
 	this->path = path;
 
 	riffHeader = 0;
