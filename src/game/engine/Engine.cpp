@@ -34,16 +34,19 @@ void Engine::start() {
 	Environment* environment = new Level1();
 	environment->build();
 	cout << " Environment a builder" << endl;
-	SDL_Surface* videoPage;
+	SDL_Surface** videoPage[] = new SDL_Surface();
 
-	videoPage = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
+	videoPage[0] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
+	videoPage[1] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
+
+	uint8_t currentPage = 0;
 
 	// Infinite game loop
 	cout << "Starting the update and render loop" << endl;
 	uint32_t counter = 200;
 	while(1) {
 		// Switch to the other video page
-		//currentPage ^= 1;
+		currentPage ^= 1;
 
 		if(counter > 0) {
 			counter--;
@@ -70,8 +73,8 @@ void Engine::start() {
 		cout << counter << endl;
 
 		environment->update();
-		environment->render(videoPage);
-		SDL_Flip( videoPage );
+		environment->render(videoPage[currentPage]);
+		SDL_Flip( videoPage[currentPage] );
 
 		SDL_Delay(100);
 	}

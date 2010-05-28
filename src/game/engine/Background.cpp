@@ -65,12 +65,20 @@ Background::~Background() {
 void Background::render(SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = environment->getVisibleArea();
 
-	//Make a temporary rectangle to hold the offsets
-	SDL_Rect offset;
+	//Make a temporary rectangle that tells what is gonna be showed
+	SDL_Rect position;
 	//Give the offsets to the rectangle
-	offset.x = visibleArea->x;
-	offset.y = visibleArea->y;
-	SDL_BlitSurface( bitmap->getData(), NULL, sdl_Surface, &offset );
+	position.x = visibleArea->width - visibleArea->x;
+	position.y = visibleArea->height - visibleArea->y;
+/*
+	//Make a temporary rectangle that position the background
+	SDL_Rect pos;
+	//Give the offsets to the rectangle
+	pos.x = visibleArea->x >> 1;
+	pos.y = visibleArea->y >> 1;
+	*/
+
+	SDL_BlitSurface( bitmap->getData(), NULL, sdl_Surface, &position );
 
 	/*
 	 * Calculate the visible area of the background according to the speed multiplier.
