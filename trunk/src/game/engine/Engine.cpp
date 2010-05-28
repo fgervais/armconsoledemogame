@@ -34,7 +34,7 @@ void Engine::start() {
 	Environment* environment = new Level1();
 	environment->build();
 	cout << " Environment a builder" << endl;
-	SDL_Surface** videoPage[] = new SDL_Surface();
+	SDL_Surface** videoPage = new SDL_Surface*[2];
 
 	videoPage[0] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
 	videoPage[1] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
