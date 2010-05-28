@@ -38,16 +38,42 @@ void Engine::start() {
 
 	videoPage = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
 
-	while(1)
-	{
+	// Infinite game loop
+	cout << "Starting the update and render loop" << endl;
+	uint32_t counter = 200;
+	while(1) {
+		// Switch to the other video page
+		//currentPage ^= 1;
 
-		//environment->update();
-		cout << " dans le while" << endl;
+		if(counter > 0) {
+			counter--;
+		}
+
+		if(counter == 195) {
+			((Megaman*)environment->getHero())->runLeft();
+		}
+		else if(counter == 135) {
+			((Megaman*)environment->getHero())->jump();
+			//environment->getHero()->runRight();
+		}
+		else if(counter == 100) {
+			((Megaman*)environment->getHero())->runRight();
+		}
+		else if(counter == 15) {
+			((Megaman*)environment->getHero())->jump();
+		}
+		else if(counter == 0) {
+			((Megaman*)environment->getHero())->stopRunning();
+			counter = 200;
+		}
+
+		cout << counter << endl;
+
+		environment->update();
 		environment->render(videoPage);
-		cout << " retour dans le while" << endl;
 		SDL_Flip( videoPage );
 
-		SDL_Delay(1000);
+		SDL_Delay(100);
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);
