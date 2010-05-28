@@ -8,7 +8,7 @@
 #include "Graphic.h"
 #include "Environment.h"
 #include "VisibleArea.h"
-#include "VideoMemory.h"
+#include "SDL.h"
 
 Graphic::Graphic(uint32_t height, uint32_t width, uint32_t** handles, uint32_t numberOfFrame) {
 	this->height = height;
@@ -40,7 +40,7 @@ void Graphic::update() {
  *
  * @param videoMemory The video memory
  */
-void Graphic::render(VideoMemory* videoMemory) {
+void Graphic::render(SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = environment->getVisibleArea();
 
 	uint32_t renderPositionX = positionX - visibleArea->x;
@@ -76,16 +76,16 @@ void Graphic::render(VideoMemory* videoMemory) {
 	}
 
 	// Draw the image on the screen
-	uint32_t videoMemoryWidth = videoMemory->getWidth();
-	uint32_t* videoMemoryPointer = videoMemory->getPointer();
+	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
+	//uint32_t* sdl_SurfacePointer = sdl_Surface->getPointer();
 	uint32_t renderWidth = renderMaskX2 - renderMaskX1;
-
+/*
 	for (uint32_t i=renderMaskY1; i<renderMaskY2; i++) {
 		for (uint32_t j=renderMaskX1; j<renderMaskX2; j++) {
-			videoMemoryPointer[(i+renderPositionY)*videoMemoryWidth + (j+renderPositionX)] = handles[currentFrame][i*renderWidth + j];
+			sdl_SurfacePointer[(i+renderPositionY)*sdl_SurfaceWidth + (j+renderPositionX)] = handles[currentFrame][i*renderWidth + j];
 		}
 	}
-
+*/
 }
 
 /**

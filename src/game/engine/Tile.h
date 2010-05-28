@@ -22,7 +22,7 @@ public:
 	virtual ~Tile();
 
 	// Renderable interface implementation
-	virtual void render(VideoMemory* videoMemory);
+	virtual void render(SDL_Surface* sdl_Surface);
 	// Synchronized interface implementation
 	virtual void update();
 

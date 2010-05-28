@@ -15,7 +15,7 @@
 #include "LCDConfiguration.h"
 #include "math.h"
 #include "DisplayHelper.h"
-#include "Debug.h"
+#include <iostream>
 #include "ff.h"
 #include "Bitmap.h"
 #include "Wave.h"

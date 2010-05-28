@@ -15,10 +15,10 @@
 #include "Physics.h"
 #include "Environment.h"
 #include "Wave.h"
-#include "AudioHelper.h"
-#include "LPC2478.h"
-#include "Debug.h"
-#include "Audio.h"
+//#include "AudioHelper.h"
+//#include "LPC2478.h"
+#include <iostream>
+//#include "Audio.h"
 
 MegamanState* MegamanJumpingRight::instance = 0;
 
@@ -81,7 +81,7 @@ void MegamanJumpingRight::initialize(Megaman* sprite) {
 		currentFrame = 3;
 	}
 	else {
-		Audio::playAsync(sprite->getJumpSoundFX());
+		//Audio::playAsync(sprite->getJumpSoundFX());
 	}
 }
 
@@ -100,7 +100,7 @@ void MegamanJumpingRight::update(Megaman* sprite) {
 				sprite->setState(MegamanStandingRight::getInstance());
 
 			}
-			Audio::playAsync(sprite->getLandSoundFX());
+			//Audio::playAsync(sprite->getLandSoundFX());
 		}
 		//sprite->setVelocity(sprite->getVelocityX(), 0);
 	}

@@ -12,7 +12,7 @@
 
 class Bitmap;
 class Sprite;
-class VideoMemory;
+class SDL_Surface;
 
 class State {
 public:
@@ -28,7 +28,7 @@ public:
 	virtual void reset();
 
 	virtual void update(Sprite*) {}
-	virtual void render(Sprite*, VideoMemory*);
+	virtual void render(Sprite*, SDL_Surface*);
 	virtual void initialize(Sprite*) {}
 
 protected:

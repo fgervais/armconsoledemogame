@@ -14,7 +14,7 @@
 
 class Sprite;
 class Tile;
-class VideoMemory;
+class SDL_Surface;
 class Background;
 class Physics;
 class VisibleArea;
@@ -36,7 +36,7 @@ public:
 	virtual void build() = 0;
 
 	// Renderable interface implementation
-	virtual void render(VideoMemory* videoMemory);
+	virtual void render(SDL_Surface* sdl_Surface);
 	// Synchronized interface implementation
 	virtual void update();
 
@@ -77,10 +77,10 @@ private:
 	Physics* physics;
 	VisibleArea* visibleArea;
 
-	void renderBackground(VideoMemory* videoMemory);
-	void renderTiles(VideoMemory* videoMemory);
-	void renderHero(VideoMemory* videoMemory);
-	void renderSprites(VideoMemory* videoMemory);
+	void renderBackground(SDL_Surface* sdl_Surface);
+	void renderTiles(SDL_Surface* sdl_Surface);
+	void renderHero(SDL_Surface* sdl_Surface);
+	void renderSprites(SDL_Surface* sdl_Surface);
 
 	void updateBackground();
 	void updateTiles();

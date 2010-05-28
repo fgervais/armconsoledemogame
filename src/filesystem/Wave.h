@@ -36,7 +36,7 @@ public:
 		uint32_t size;				/* Number of bytes of data is included in the data section. */
 	};
 
-	Wave(const char* *path);
+	Wave(const char *path);
 	virtual ~Wave();
 
 	RIFFHeader* getRIFFHeader() { return riffHeader; }
@@ -48,7 +48,7 @@ public:
 	uint8_t load();
 
 private:
-	const char* *path;
+	const char *path;
 	uint8_t loaded;
 
 	RIFFHeader* riffHeader;

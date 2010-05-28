@@ -9,7 +9,7 @@
 #include "Tile.h"
 #include "Bitmap.h"
 #include "VisibleArea.h"
-#include "Debug.h"
+#include <iostream>
 #include "Background.h"
 #include "Physics.h"
 #include "Sprite.h"
@@ -24,6 +24,7 @@
 #include "MegamanJumpingRight.h"
 #include "MetoolWalkingLeft.h"
 #include "MetoolWalkingRight.h"
+using namespace std;
 
 Level1::Level1()
 	: Environment(960, 272, 56, 32) {
@@ -35,19 +36,19 @@ Level1::~Level1() {
 }
 
 void Level1::build() {
-	Debug::writeLine("Entering Level1 build function");
+	//Debug::writeLine("Entering Level1 build function");
 
 	//Bitmap** black_square = new Bitmap*[2];
 	//black_square[0] = new Bitmap("0:black.bmp");
 	//black_square[1] = new Bitmap("0:gray.bmp");
 
 	Bitmap** snow = new Bitmap*[1];
-	snow[0] = new Bitmap("0:snow1.bmp");
+	snow[0] = new Bitmap("snow1.bmp");
 
 	Tile* tile1 = new Tile(56, 32, snow, 1, this);
 
 	Bitmap** brick = new Bitmap*[1];
-	brick[0] = new Bitmap("0:brick.bmp");
+	brick[0] = new Bitmap("brick.bmp");
 
 	Tile* tile2 = new Tile(56, 32, brick, 1, this);
 
@@ -75,7 +76,7 @@ void Level1::build() {
 	// Send it to the environment (Base class)
 	set(visibleArea);
 
-	Bitmap* background_bitmap = new Bitmap("0:back4.bmp");
+	Bitmap* background_bitmap = new Bitmap("E:/EclipseProjects/demo/src/display/back4.bmp");
 	Background* background = new Background(background_bitmap, 768, 272, this);
 
 	set(background);
@@ -86,22 +87,22 @@ void Level1::build() {
 	set(physics);
 
 	// Hero section
-	Debug::writeLine("Loading hero");
+	//Debug::writeLine("Loading hero");
 	MegamanStandingLeft::getInstance();
-	MegamanStandingRight::getInstance();
+	/*MegamanStandingRight::getInstance();
 	MegamanRunningLeft::getInstance();
 	MegamanRunningRight::getInstance();
 	MegamanJumpingLeft::getInstance();
-	MegamanJumpingRight::getInstance();
+	MegamanJumpingRight::getInstance();*/
 
 	Megaman* hero = new Megaman(MegamanStandingLeft::getInstance(), this);
 	hero->enableCollisionCheck();
 	//set(hero, 240, 189);
 	//set(hero, 240, 50);
 	set(hero, 720, 50);
-	Debug::writeLine("Done Loading hero");
-
-	Debug::writeLine("Loading sprites");
+	cout << "Done Loading hero" << endl;
+	/*
+	//Debug::writeLine("Loading sprites");
 	Metool** enemy = new Metool*[32];
 	for(uint8_t i=0; i<32; i++) {
 		if(i<22) {
@@ -112,5 +113,5 @@ void Level1::build() {
 			enemy[i] = new Metool(MetoolWalkingLeft::createInstance(), this);
 		}
 		add(enemy[i], (i*25), 100);
-	}
+	}*/
 }

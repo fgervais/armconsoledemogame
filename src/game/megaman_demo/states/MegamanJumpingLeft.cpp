@@ -79,7 +79,7 @@ void MegamanJumpingLeft::initialize(Megaman* sprite) {
 		currentFrame = 3;
 	}
 	else {
-		Audio::playAsync(sprite->getJumpSoundFX());
+		//Audio::playAsync(sprite->getJumpSoundFX());
 	}
 }
 
@@ -98,7 +98,7 @@ void MegamanJumpingLeft::update(Megaman* sprite) {
 				sprite->setState(MegamanStandingLeft::getInstance());
 
 			}
-			Audio::playAsync(sprite->getLandSoundFX());
+			//Audio::playAsync(sprite->getLandSoundFX());
 		}
 		//sprite->setVelocity(sprite->getVelocityX(), 0);
 	}

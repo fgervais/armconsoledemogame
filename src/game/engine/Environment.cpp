@@ -12,8 +12,9 @@
 #include "Background.h"
 #include "Physics.h"
 #include "VisibleArea.h"
-#include "Debug.h"
-#include "VideoMemory.h"
+#include <iostream>
+#include "SDL.h"
+using namespace std;
 
 // Posted by TastyWheat on LinuxQuestions.org
 // This will work for positive number only
@@ -82,18 +83,18 @@ Environment::~Environment() {
 
 }
 
-void Environment::render(VideoMemory* videoMemory) {
+void Environment::render(SDL_Surface* sdl_Surface) {
 	// Render background
-	renderBackground(videoMemory);
+	renderBackground(sdl_Surface);
 
 	// Render tiles
-	renderTiles(videoMemory);
+	//renderTiles(sdl_Surface);
 
 	// Render Hero
-	renderHero(videoMemory);
+	renderHero(sdl_Surface);
 
 	// Render sprites
-	renderSprites(videoMemory);
+	//renderSprites(sdl_Surface);
 
 }
 
@@ -353,21 +354,21 @@ void Environment::set(VisibleArea* visibleArea) {
  * PRIVATE FUNCTIONS
  */
 
-void Environment::renderBackground(VideoMemory* videoMemory) {
+void Environment::renderBackground(SDL_Surface* sdl_Surface) {
 	// Set white background for now
-	/*uint32_t* lcd_ptr = videoMemory->getPointer();
-	uint32_t bufferLength = videoMemory->getWidth()*videoMemory->getHeight();
+	/*uint32_t* lcd_ptr = sdl_Surface->getPointer();
+	uint32_t bufferLength = sdl_Surface->getWidth()*sdl_Surface->getHeight();
 
 	for (uint32_t i=0; i<bufferLength; i++) {
 		*(lcd_ptr++) = 0x00F7E3BD;
 	}*/
 
 	if(background != 0) {
-		background->render(videoMemory);
+		background->render(sdl_Surface);
 	}
 }
 
-void Environment::renderTiles(VideoMemory* videoMemory) {
+void Environment::renderTiles(SDL_Surface* sdl_Surface) {
 	uint32_t iRenderStart = visibleArea->y/tileHeight;
 	//float iRenderStop_t = (float)(visibleArea->y+visibleArea->height)/tileHeight;
 	//uint32_t iRenderStop = CEILING(iRenderStop_t);
@@ -392,23 +393,23 @@ void Environment::renderTiles(VideoMemory* videoMemory) {
 			// Set the tile position - This is subject to change
 			if(tileMap[i][j] != 0) {
 				tileMap[i][j]->setPosition(j*tileWidth, i*tileHeight);
-				tileMap[i][j]->render(videoMemory);
+				tileMap[i][j]->render(sdl_Surface);
 			}
 		}
 	}
 }
 
-void Environment::renderHero(VideoMemory* videoMemory) {
-	hero->render(videoMemory);
+void Environment::renderHero(SDL_Surface* sdl_Surface) {
+	hero->render(sdl_Surface);
 }
 
-void Environment::renderSprites(VideoMemory* videoMemory) {
+void Environment::renderSprites(SDL_Surface* sdl_Surface) {
 	for(uint32_t i=0; i<spriteLimit; i++) {
 		if(activeSprite[i] != 0) {
 			if((activeSprite[i]->sprite->getPositionX()+activeSprite[i]->sprite->getWidth()) > visibleArea->x && activeSprite[i]->sprite->getPositionX() < (visibleArea->x + visibleArea->width)) {
 				if((activeSprite[i]->sprite->getPositionY()+activeSprite[i]->sprite->getHeight()) > visibleArea->y && activeSprite[i]->sprite->getPositionY() < (visibleArea->y + visibleArea->height)) {
 
-					activeSprite[i]->sprite->render(videoMemory);
+					activeSprite[i]->sprite->render(sdl_Surface);
 				}
 			}
 		}

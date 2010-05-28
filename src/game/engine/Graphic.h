@@ -22,7 +22,7 @@ public:
 
 	// Interface implementation
 	virtual void update();
-	virtual void render(VideoMemory*);
+	virtual void render(SDL_Surface*);
 
 	void setPosition(uint32_t x, uint32_t y);
 	void set(Environment* environment);

@@ -13,7 +13,7 @@
 #include <stdint.h>
 
 class Environment;
-class VideoMemory;
+class SDL_Surface;
 class State;
 
 class Sprite : public Collider {
@@ -41,7 +41,7 @@ public:
 	void setState(State* state);
 
 	virtual void update() =0;
-	virtual void render(VideoMemory*);
+	virtual void render(SDL_Surface*);
 
 	uint8_t isOnGround();
 
