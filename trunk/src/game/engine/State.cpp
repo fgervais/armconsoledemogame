@@ -59,15 +59,17 @@ void State::reset() {
 void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = sprite->getEnvironment()->getVisibleArea();
 
+	uint32_t positionX = sprite->getPositionX();
+	uint32_t positionY = sprite->getPositionY();
+
 	//Make a temporary rectangle to hold the offsets
 	SDL_Rect offset;
 	//Give the offsets to the rectangle
 	offset.x = positionX - visibleArea->x;
 	offset.y = positionY - visibleArea->y;
+
 	SDL_BlitSurface( animationFrames[currentFrame]->getData(), NULL, sdl_Surface, &offset );
 
-	uint32_t positionX = sprite->getPositionX();
-	uint32_t positionY = sprite->getPositionY();
 
 	// Get x,y coordinates inside the visible area
 	uint32_t renderPositionX = positionX - visibleArea->x;
