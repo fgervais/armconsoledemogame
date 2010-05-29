@@ -1,0 +1,5 @@
+#summary This page will contains all the documentation needed to successfully develop a game on Francois Gervais's SNES like console (AKA the GreenBox).
+
+= Introduction =
+
+First off, you're gonna need SDL, Cygwin and a development tool (So far we did it with VS 2010 and Eclipse Galileo). We're just starting of so don't worry, we'll complete this documentation as we advance in our game.
