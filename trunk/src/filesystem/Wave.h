@@ -10,6 +10,7 @@
 
 #include "File.h"
 //#include "ff.h"
+#include "SDL.h"
 #include "SDL_mixer.h"
 #include <stdint.h>
 

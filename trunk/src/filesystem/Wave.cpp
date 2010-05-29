@@ -34,7 +34,7 @@ Wave::~Wave() {
  */
 uint8_t Wave::load() {
 
-	data = Mix_LoadWAV( path );
+	data = Mix_LoadWAV(path);
 
 	if(data == 0)
 	{
