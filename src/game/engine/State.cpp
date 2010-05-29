@@ -20,7 +20,7 @@ State::State(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animati
 	this->animationHeight = animationHeight;
 	this->animationFrames = animationFrames;
 	this->numberOfFrame = numberOfFrame;
-	this->currentFrame = 0;
+	//this->currentFrame = 0;
 	this->animationMasks = animationMasks;
 
 	// Ensure every bitmap are loaded into memory
@@ -54,9 +54,9 @@ uint32_t State::getAnimationHeight() {
  *
  * Currently only reset the frame counter to 0.
  */
-void State::reset() {
-	currentFrame = 0;
-}
+//void State::reset() {
+//	currentFrame = 0;
+//}
 
 void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 	VisibleArea* visibleArea = sprite->getEnvironment()->getVisibleArea();
@@ -111,9 +111,7 @@ void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
 	uint32_t* sdl_SurfacePointer = (uint32_t *)sdl_Surface->pixels;
 
-	int bpp = SDL_BYTEORDER;
-	int counterj = 0;
-	int counteri = 0;
+	uint32_t currentFrame = sprite->getCurrentFrame();
 
 	// Render the part of the tile inside the render mask
 

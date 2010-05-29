@@ -88,6 +88,8 @@ void Level1::build() {
 
 	// Hero section
 	std::cout << "Loading hero" << endl;
+
+	// Preload every states. Maybe something better could be used here.
 	MegamanStandingLeft::getInstance();
 	MegamanStandingRight::getInstance();
 	MegamanRunningLeft::getInstance();
@@ -106,11 +108,11 @@ void Level1::build() {
 	Metool** enemy = new Metool*[32];
 	for(uint8_t i=0; i<32; i++) {
 		if(i<22) {
-			enemy[i] = new Metool(MetoolWalkingRight::createInstance(), this);
+			enemy[i] = new Metool(MetoolWalkingRight::getInstance(), this);
 			//add(enemy, 500, 204);
 		}
 		else {
-			enemy[i] = new Metool(MetoolWalkingLeft::createInstance(), this);
+			enemy[i] = new Metool(MetoolWalkingLeft::getInstance(), this);
 		}
 		add(enemy[i], (i*25), 100);
 	}
