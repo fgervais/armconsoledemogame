@@ -8,6 +8,8 @@
 #include "Sprite.h"
 #include "Environment.h"
 #include "State.h"
+#include <iostream>
+using namespace std;
 
 Sprite::Sprite(State* initialState, Environment* environment) {
 	this->environment = environment;

@@ -223,7 +223,6 @@ uint8_t Environment::move(Sprite* sprite, uint32_t desiredPositionX, uint32_t de
 					break;
 				}
 			}
-
 		}
 	}
 	sprite->setPosition(possiblePositionX, possiblePositionY);
@@ -240,8 +239,7 @@ void Environment::checkCollision(Sprite* sprite) {
 		if(activeSprite[activeSpriteIterator] != 0) {
 			// Do not check a sprite with itself
 			if(sprite != activeSprite[activeSpriteIterator]->sprite) {
-
-				// This algorithme is comming from gamedev.net
+				// This algorithme is coming from gamedev.net
 				left1 = sprite->getPositionX();
 				left2 = activeSprite[activeSpriteIterator]->sprite->getPositionX();
 				right1 = left1 + sprite->getWidth();
@@ -268,6 +266,7 @@ void Environment::checkCollision(Sprite* sprite) {
 			}
 		}
 	}
+
 }
 
 /*

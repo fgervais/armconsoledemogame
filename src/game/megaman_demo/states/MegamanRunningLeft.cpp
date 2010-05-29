@@ -13,6 +13,8 @@
 #include "Megaman.h"
 #include "Physics.h"
 #include "Environment.h"
+#include <iostream>
+using namespace std;
 
 MegamanState* MegamanRunningLeft::instance = 0;
 

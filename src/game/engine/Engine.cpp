@@ -8,6 +8,7 @@
 #include "Engine.h"
 #include "Environment.h"
 #include "SDL.h"
+#include "SDL_mixer.h"
 #include "Level1.h"
 #include <iostream>
 //#include "LPC2478.h"
@@ -28,7 +29,19 @@ Engine::~Engine() {
 void Engine::start() {
 	cout << "Entering Engine start function" << endl;
 
-	SDL_Init( SDL_INIT_EVERYTHING );
+	if(SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
+	{
+		cout << "Error while loading the SDL" << endl;
+	}
+
+	if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+	{
+		cout << "Error while loading the Mixer" << endl;
+	}
+
+	Mix_Music *music = 0;
+	music = Mix_LoadMUS( "E:/EclipseProjects/demo/src/game/megaman_demo/sound/frostman.mid" );
+	Mix_PlayMusic( music, -1 );
 
 	// Create the instance of a level
 	Environment* environment = new Level1();
@@ -68,15 +81,14 @@ void Engine::start() {
 		else if(counter == 0) {
 			((Megaman*)environment->getHero())->stopRunning();
 			counter = 200;
+			cout << "Restarting counter" << endl;
 		}
-
-		cout << counter << endl;
 
 		environment->update();
 		environment->render(videoPage[currentPage]);
 		SDL_Flip( videoPage[currentPage] );
 
-		SDL_Delay(100);
+		SDL_Delay(50);
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);

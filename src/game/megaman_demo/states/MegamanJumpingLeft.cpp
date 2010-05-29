@@ -14,6 +14,8 @@
 #include "Physics.h"
 #include "Environment.h"
 #include "Wave.h"
+#include <iostream>
+using namespace std;
 /*#include "AudioHelper.h"
 #include "Audio.h"
 #include "LPC2478.h"*/
@@ -86,6 +88,7 @@ void MegamanJumpingLeft::initialize(Megaman* sprite) {
 
 void MegamanJumpingLeft::update(Megaman* sprite) {
 	if(sprite->isOnGround()) {
+
 		// We need to display the landing frames before switching state
 		// but only if we are not running
 		if(currentFrame < 6 && sprite->getVelocityX() == 0) {
@@ -97,9 +100,10 @@ void MegamanJumpingLeft::update(Megaman* sprite) {
 			}
 			else {
 				sprite->setState(MegamanStandingLeft::getInstance());
-
 			}
-			Mix_PlayChannel( -1, sprite->getLandSoundFX()->getData(), 0 );
+
+			if(Mix_PlayChannel( -1, sprite->getLandSoundFX()->getData(), 0 ) == -1)
+				cout << "Error playing sound" << endl;
 			//Audio::playAsync(sprite->getLandSoundFX());
 		}
 		//sprite->setVelocity(sprite->getVelocityX(), 0);

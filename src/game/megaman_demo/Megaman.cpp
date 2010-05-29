@@ -8,9 +8,10 @@
 #include "Megaman.h"
 #include "Environment.h"
 #include "MegamanState.h"
-//#include <iostream>
+#include <iostream>
+using namespace std;
 //#include "LPC2478.h"
-//#include "Wave.h"
+#include "Wave.h"
 
 Wave* Megaman::jumpSoundFX = 0;
 Wave* Megaman::landSoundFX = 0;
@@ -19,14 +20,14 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 	this->state = initialState;
 
 	// Initialize and load sound effects
-	/*if(jumpSoundFX == 0) {
-		jumpSoundFX = new Wave("E:/EclipseProjects/demo/src/display/sound/jump.wav");
+	if(jumpSoundFX == 0) {
+		jumpSoundFX = new Wave("E:/EclipseProjects/demo/src/game/megaman_demo/sound/jump.wav");
 		jumpSoundFX->load();
 	}
 	if(landSoundFX == 0) {
-		landSoundFX = new Wave("E:/EclipseProjects/demo/src/display/sound/land.wav");
+		landSoundFX = new Wave("E:/EclipseProjects/demo/src/game/megaman_demo/sound/land.wav");
 		landSoundFX->load();
-	}*/
+	}
 
 	// Unsafe?
 	this->state->initialize(this);
