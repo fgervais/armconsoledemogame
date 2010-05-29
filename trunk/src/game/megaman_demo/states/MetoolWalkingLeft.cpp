@@ -25,24 +25,26 @@ MetoolWalkingLeft::~MetoolWalkingLeft() {
 }
 
 MetoolState* MetoolWalkingLeft::createInstance() {
-	//if(instance == 0) {
-	if(sharedFrames == 0) {
-		//Bitmap** frames = new Bitmap*[4];
-		sharedFrames = new Bitmap*[4];
-		sharedFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/1.bmp");
-		sharedFrames[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/2.bmp");
-		sharedFrames[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/3.bmp");
-		sharedFrames[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/4.bmp");
+	if(instance == 0) {
+	//if(sharedFrames == 0) {
+		Bitmap** animationFrames = new Bitmap*[4];
+		//sharedFreames = new Bitmap*[4];
+		animationFrames = new Bitmap*[4];
+		animationFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/1.bmp");
+		animationFrames[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/2.bmp");
+		animationFrames[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/3.bmp");
+		animationFrames[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/4.bmp");
 		//instance = new MetoolWalkingLeft(22, 21, frames, 4);
+	//}
+	//if(sharedMasks == 0) {
+		Bitmap** animationMasks = new Bitmap*[4];
+		//sharedMasks = new Bitmap*[4];
+		animationMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask1.bmp");
+		animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask2.bmp");
+		animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask3.bmp");
+		animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask4.bmp");
 	}
-	if(sharedMasks == 0) {
-		sharedMasks = new Bitmap*[4];
-		sharedMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask1.bmp");
-		sharedMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask2.bmp");
-		sharedMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask3.bmp");
-		sharedMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask4.bmp");
-	}
-	MetoolWalkingLeft* instance = new MetoolWalkingLeft(22, 21, sharedFrames, 4, sharedMasks);
+	instance = new MetoolWalkingLeft(22, 21, animationFrames, 4, animationMasks);
 	//instance->reset();
 	return instance;
 }
@@ -56,11 +58,11 @@ void MetoolWalkingLeft::initialize(Metool* sprite) {
 
 void MetoolWalkingLeft::update(Metool* sprite) {
 	// Update the current frame
-	if(currentFrame < (numberOfFrame-1)) {
-		currentFrame++;
+	if(sprite->getCurrentFrame() < (numberOfFrame-1)) {
+		sprite->incCurrentFrame();
 	}
 	else {
-		currentFrame = 0;
+		sprite->setCurrentFrame(0);
 	}
 
 	// If we loose contact with the ground, then we are falling

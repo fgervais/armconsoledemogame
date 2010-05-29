@@ -17,7 +17,9 @@ Wave* Megaman::jumpSoundFX = 0;
 Wave* Megaman::landSoundFX = 0;
 
 Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(initialState, environment) {
-	this->state = initialState;
+	// Keep a pointer to the initial state in case we need to re-spawn the sprite
+	//this->initialState = initialState;
+	this->currentState = initialState;
 
 	// Initialize and load sound effects
 	if(jumpSoundFX == 0) {
@@ -29,8 +31,17 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 		landSoundFX->load();
 	}
 
+	//Initialize every possible Megaman states
+	/*megamanJumpingLeft;
+	megamanJumpingRight;
+	megamanRunningRight;
+	megamanRunningLeft;
+	megamanStandingRight;
+	megamanStandingLeft;*/
+
+
 	// Unsafe?
-	this->state->initialize(this);
+	this->currentState->initialize(this);
 }
 
 Megaman::~Megaman() {
@@ -38,7 +49,7 @@ Megaman::~Megaman() {
 }
 
 void Megaman::setState(MegamanState* state)  {
-	this->state = state;
+	this->currentState = state;
 
 	// Do state entry initialization on the sprite
 	state->initialize(this);
@@ -77,28 +88,28 @@ void Megaman::collideWith(Metool*) {
  * This function delegates the action to the current state.
  */
 void Megaman::jump() {
-	state->jump(this);
+	currentState->jump(this);
 }
 
 /**
  * This function delegates the action to the current state.
  */
 void Megaman::runLeft() {
-	state->runLeft(this);
+	currentState->runLeft(this);
 }
 
 /**
  * This function delegates the action to the current state.
  */
 void Megaman::runRight() {
-	state->runRight(this);
+	currentState->runRight(this);
 }
 
 /**
  * This function delegates the action to the current state.
  */
 void Megaman::stopRunning() {
-	state->stopRunning(this);
+	currentState->stopRunning(this);
 }
 
 /**
