@@ -109,7 +109,7 @@ void Background::render(SDL_Surface* sdl_Surface) {
 		}
 	}*/
 
-	/* Optimized version */
+	// Optimized version
 	/*uint32_t* image = bitmap->getData();
 	for (uint32_t i=0; i<renderHeight; i++) {
 		for (uint32_t j=0; j<renderWidth; j++) {

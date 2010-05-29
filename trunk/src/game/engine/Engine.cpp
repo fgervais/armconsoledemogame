@@ -49,8 +49,8 @@ void Engine::start() {
 	cout << " Environment a builder" << endl;
 	SDL_Surface** videoPage = new SDL_Surface*[2];
 
-	videoPage[0] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
-	videoPage[1] = SDL_SetVideoMode( 480, 272, 8, SDL_SWSURFACE );
+	videoPage[0] = SDL_SetVideoMode( 480, 272, 32, SDL_SWSURFACE );
+	videoPage[1] = SDL_SetVideoMode( 480, 272, 32, SDL_SWSURFACE );
 
 	uint8_t currentPage = 0;
 
@@ -88,7 +88,7 @@ void Engine::start() {
 		environment->render(videoPage[currentPage]);
 		SDL_Flip( videoPage[currentPage] );
 
-		SDL_Delay(50);
+		SDL_Delay(80);
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);
