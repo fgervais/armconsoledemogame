@@ -105,10 +105,20 @@ void Sprite::update() {
 	// Update the currently displayed frame
 	// And possibly some state specific things
 	state->update(this);
+
+	/*for(uint32_t i=0; i<childLimit; i++) {
+		if(children[i] != 0)
+			children[i]->getState()->update(children[i]);
+	}*/
 }
 
 void Sprite::render(SDL_Surface* sdl_Surface) {
 	state->render(this, sdl_Surface);
+
+	/*for(uint32_t i=0; i<childLimit; i++) {
+		if(children[i] != 0)
+			children[i]->getState()->render(children[i], sdl_Surface);
+	}*/
 }
 
 uint8_t Sprite::isOnGround() {

@@ -20,7 +20,7 @@ class Wave;
 
 class Buster : public Sprite {
 public:
-	Buster(BusterState* initialState, Environment* environment);
+	Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY);
 	virtual ~Buster();
 
 	void setState(BusterState* state);

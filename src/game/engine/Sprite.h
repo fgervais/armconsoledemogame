@@ -43,6 +43,7 @@ public:
 	uint32_t getHeight();
 
 	void setState(State* state);
+	State* getState() { return state; };
 
 	void addChild(Sprite* sprite);
 

@@ -13,10 +13,12 @@
 #include <iostream>
 //#include "LPC2478.h"
 
-Buster::Buster(BusterState* initialState, Environment* environment) : Sprite(initialState, environment) {
+Buster::Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Sprite(initialState, environment) {
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
+	this->setPositionX(positionX);
+	this->setPositionY(positionY);
 
 	// Unsafe?
 	this->currentState->initialize(this);
