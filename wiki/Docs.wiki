@@ -3,3 +3,9 @@
 = Introduction =
 
 First off, you're gonna need SDL, Cygwin and a development tool (So far we did it with VS 2010 and Eclipse Galileo). We're just starting of so don't worry, we'll complete this documentation as we advance in our game.
+
+*IMPORTANT*
+
+* Use uint32_t, not int
+* Use char*, not string
+* No boolean! use uint32_t (0,1)
