@@ -23,11 +23,11 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 
 	// Initialize and load sound effects
 	if(jumpSoundFX == 0) {
-		jumpSoundFX = new Wave("E:/EclipseProjects/demo/src/game/megaman_demo/sound/jump.wav");
+		jumpSoundFX = new Wave("src/game/megaman_demo/sound/jump.wav");
 		jumpSoundFX->load();
 	}
 	if(landSoundFX == 0) {
-		landSoundFX = new Wave("E:/EclipseProjects/demo/src/game/megaman_demo/sound/land.wav");
+		landSoundFX = new Wave("src/game/megaman_demo/sound/land.wav");
 		landSoundFX->load();
 	}
 

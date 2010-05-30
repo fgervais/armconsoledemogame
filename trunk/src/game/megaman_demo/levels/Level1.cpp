@@ -39,16 +39,16 @@ void Level1::build() {
 	std::cout << "Entering Level1 build function" << endl;
 
 	Bitmap** black_square = new Bitmap*[2];
-	black_square[0] = new Bitmap("E:/EclipseProjects/demo/src/display/black.bmp");
-	black_square[1] = new Bitmap("E:/EclipseProjects/demo/src/display/gray.bmp");
+	black_square[0] = new Bitmap("src/display/black.bmp");
+	black_square[1] = new Bitmap("src/display/gray.bmp");
 
 	Bitmap** snow = new Bitmap*[1];
-	snow[0] = new Bitmap("E:/EclipseProjects/demo/src/display/snow1.bmp");
+	snow[0] = new Bitmap("src/display/snow1.bmp");
 
 	Tile* tile1 = new Tile(56, 32, snow, 1, this);
 
 	Bitmap** brick = new Bitmap*[1];
-	brick[0] = new Bitmap("E:/EclipseProjects/demo/src/display/brick.bmp");
+	brick[0] = new Bitmap("src/display/brick.bmp");
 
 	Tile* tile2 = new Tile(56, 32, brick, 1, this);
 
@@ -76,7 +76,7 @@ void Level1::build() {
 	// Send it to the environment (Base class)
 	set(visibleArea);
 
-	Bitmap* background_bitmap = new Bitmap("E:/EclipseProjects/demo/src/display/back4.bmp");
+	Bitmap* background_bitmap = new Bitmap("src/display/back4.bmp");
 	Background* background = new Background(background_bitmap, 768, 272, this);
 
 	set(background);
