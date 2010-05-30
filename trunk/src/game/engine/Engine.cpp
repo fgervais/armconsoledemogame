@@ -40,7 +40,7 @@ void Engine::start() {
 	}
 
 	Mix_Music *music = 0;
-	music = Mix_LoadMUS( "E:/EclipseProjects/demo/src/game/megaman_demo/sound/frostman.mid" );
+	music = Mix_LoadMUS( "src/game/megaman_demo/sound/frostman.mid" );
 	Mix_PlayMusic( music, -1 );
 
 	// Create the instance of a level
