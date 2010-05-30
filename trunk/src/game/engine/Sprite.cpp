@@ -111,6 +111,7 @@ void Sprite::update() {
 	// And possibly some state specific things
 	state->update(this);
 
+	//Update all the children
 	if(this->children != 0) {
 		for(uint32_t i=0; i<childLimit; i++) {
 			if(children[i] != 0)
@@ -124,6 +125,7 @@ void Sprite::update() {
 void Sprite::render(SDL_Surface* sdl_Surface) {
 	state->render(this, sdl_Surface);
 
+	//Render all the children
 	if(this->children != 0) {
 		for(uint32_t i=0; i<childLimit; i++) {
 			if(children[i] != 0)
