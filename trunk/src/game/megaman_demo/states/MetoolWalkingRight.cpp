@@ -30,19 +30,19 @@ MetoolState* MetoolWalkingRight::getInstance() {
 			Bitmap** animationFrames = new Bitmap*[4];
 			//sharedFreames = new Bitmap*[4];
 			animationFrames = new Bitmap*[4];
-			animationFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/1.bmp");
-			animationFrames[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/2.bmp");
-			animationFrames[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/3.bmp");
-			animationFrames[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/4.bmp");
+			animationFrames[0] = new Bitmap("src/display/state/MetoolWalkingRight/1.bmp");
+			animationFrames[1] = new Bitmap("src/display/state/MetoolWalkingRight/2.bmp");
+			animationFrames[2] = new Bitmap("src/display/state/MetoolWalkingRight/3.bmp");
+			animationFrames[3] = new Bitmap("src/display/state/MetoolWalkingRight/4.bmp");
 			//instance = new MetoolWalkingRight(22, 21, frames, 4);
 		//}
 		//if(sharedMasks == 0) {
 			Bitmap** animationMasks = new Bitmap*[4];
 			//sharedMasks = new Bitmap*[4];
-			animationMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask1.bmp");
-			animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask2.bmp");
-			animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask3.bmp");
-			animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask4.bmp");
+			animationMasks[0] = new Bitmap("src/display/state/MetoolWalkingRight/mask1.bmp");
+			animationMasks[1] = new Bitmap("src/display/state/MetoolWalkingRight/mask2.bmp");
+			animationMasks[2] = new Bitmap("src/display/state/MetoolWalkingRight/mask3.bmp");
+			animationMasks[3] = new Bitmap("src/display/state/MetoolWalkingRight/mask4.bmp");
 
 			instance = new MetoolWalkingRight(22, 21, animationFrames, 4, animationMasks);
 		}
