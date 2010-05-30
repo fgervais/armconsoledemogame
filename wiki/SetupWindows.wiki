@@ -1,8 +1,8 @@
-#summary setup windows
+#summary Setup tutorial for windows user using eclipse, cygwin and SDL
 #labels Featured,Phase-Deploy,Phase-Support
 =Please Read Before Starting=
 
-This is a copy of the Setup Windows file that can be download from the source trunk. It may refer to picture that are not include here.
+This is a copy of the Setup Windows file that can be <a href="http://code.google.com/p/armconsoledemogame/source/browse/trunk/Setup%20Windows.pdf">download</a> from the source trunk. It may refer to picture that are not include here.
 
 If you want to configure your computer by reading this, i strongly recommend you to download the .docx or the .pdf
 
@@ -29,9 +29,10 @@ So it goes like this:
   # Go get a coffee or a beer, this may take a while...
   # After installation paste the line above (or the equivalent folder that you choose for installation) in the Environment Variables named Path (System > Advanced > Environment Variables, you should see path in the list below):
 *;c:\cygwin\bin;c:\cygwin\usr\local\bin*
-===IMPORTANT===
+<p>
+*IMPORTANT*<br />
 *To know if the version of gcc/g++ you have is up to date for the project, open the Cygwin Bash Window and type: gcc –v, you should see the gcc version at the bottom of the text. It must be version 4.x.x and newer.*
-
+</p>
 _`Know that you can’t run the programs provided by Cygwin in the Command prompt window; you'll be able to run those only in the Cygwin console window.`_
 I guess it’s all for Cygwin.
 ==Step 2 – Java SDK/JRE==
@@ -50,19 +51,19 @@ I have also the following package in the CDT Optional Features category installe
 So now, the installation of eclipse is almost over. At that point, you should be able to make a simple HelloWorld project in C++ and compile it using the Cygwin toolchain.
 ==Optional – Subclipse==
 Subclipse allow you to do checkouts and commit stuff directly in Eclipse.
-  * In Eclipse, go to Help > Install New Software... then in the “work with” text box, paste this: 
-http://subclipse.tigris.org/update_1.6.x
-  * Check Subclipse and follow installation steps.
+  # In Eclipse, go to Help > Install New Software... then in the “work with” text box, paste this: <br />http://subclipse.tigris.org/update_1.6.x
+  # Check Subclipse and follow installation steps.
 So now, you’ll have the “Team” option with the SVN options when you right-click. There’s also a perspective named “SVN Repository Exploring” that comes with the plug-in.
 =Setup – Arm Console / Megaman Demo=
 ==Step 1 – SVN Checkout==
 SVN Checkout consists of copying all the project files from the SVN server to your computer, so you can work on it locally without any risk of destroying it.
   * In your Eclipse Workspace Folder, create a new Folder for the project.
-  * Right-click on it and click SVN Checkout… then enter the following URL:
-https://armconsoledemogame.googlecode.com/svn/trunk
+  * Right-click on it and click SVN Checkout… then enter the following URL: <br />https://armconsoledemogame.googlecode.com/svn/trunk
 Now all the latest project files are in that folder.
-===IMPORTANT===
+<p>
+*IMPORTANT*<br />
 Do a SVN Update on the project folder (possible to do in Eclipse with Subclipse) BEFORE you begin to work on it and do it often while you work on it.
+</p>
 ==Step 2 – Eclipse project==
 To be fully ready to work on the project, you need to follow these 2 last steps:
   * Creating the project
@@ -101,10 +102,13 @@ You should see that panel.
   * Click OK.
   * Then add the followings to the Libraries (-l) list:
 *SDL_mixer*
-If needed (not for the project)
-*SDL_image*
-*SDL_ttf*
+<p>
+If needed (not for the project)<br />
+*SDL_image*<br />
+*SDL_ttf*<br />
+</p>
 That’s it for the complementary modules of SDL; you should be able now to call functions from these modules.
+
 ===Configuring the Include paths===
 If you try to build the project now, you’ll get lots of errors. It’s because the compiler don’t find all the .h files that are included everywhere in the project. We need to point particular directories for the compiler to be able to build.
 Go to Project > Properties > C/C++ Build > Settings, choose the Directories submenu in Cygwin C++ Compiler (not C compiler) and add    the following paths:
@@ -117,37 +121,36 @@ From the workspace IN ORDER (you can reorder it after):
   * /src/game/engine
   * /src/game/megaman_demo/states
   * /src/display
-It should look like this.
  
-At that point, the project should compile, an executable file should be created and you should be able to run the file so (at the moment this is written) you should see something like the image at the beginning of this document.
+At that point, the project should compile, an executable file should be created and you should be able to run the file.
  
 =Troubleshooting=
 If you get an error like that when you are trying to build the project:
-make all 
-src/testMain.d:1: *** multiple target patterns.  Stop. 
-Download a new make.exe and place it in Cygwin/bin.
+<p>_make all <br />
+src/testMain.d:1: `***` multiple target patterns.  Stop._</p>
+Download a new make.exe and place it in Cygwin/bin. <br />
 If you get warning like: unresolved inclusion, find the include file in the project and add its path to the include paths in the project properties (Cygwin C++ Compiler > Include paths)
  
 =Links=
 SVN for the projects
 
-The project is two projects; the main part is the game engine: 
+The project is two projects; the main part is the game engine: <br />
 http://code.google.com/p/armconsole/
 
-The second part is the demo game that is developed on pc:
+The second part is the demo game that is developed on pc:<br />
 https://code.google.com/p/armconsoledemogame/
 ==Tutorials==
-Tutorial that you should read absolutely if you don’t know much about SDL
+Tutorial that you should read absolutely if you don’t know much about SDL <br />
 http://lazyfoo.net/SDL_tutorials/index.php
 ==References==
-Useful to make SDL compile in Eclipse
+Useful to make SDL compile in Eclipse <br />
 http://www.lazyfoo.net/SDL_tutorials/lesson01/windows/eclipse/index.php
 
-Useful for installing Cygwin
+Useful for installing Cygwin <br />
 http://phiva.blogspot.com/2006/03/windows-c-avec-eclipse-cygwin-et-sdl.html
 
-Informations on Cygwin
+Informations on Cygwin <br />
 http://en.wikipedia.org/wiki/Cygwin
 
-Installation instructions for Subclipse
+Installation instructions for Subclipse <br />
 http://subclipse.tigris.org/servlets/ProjectProcess;jsessionid=0369E965569282D69BEBEAEDE3A9D60E?pageID=p4wYuA
