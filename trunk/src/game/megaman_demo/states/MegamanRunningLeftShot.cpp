@@ -87,10 +87,11 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 		// This is the hard coded running speed
 		// could be (should be?) somewhere defined else?
 		sprite->setVelocity(-6, 0);
-		Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
-
-		sprite->addChild(buster);
 	}
+
+	Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+	cout << "Buster created" << endl;
+	sprite->addChild(buster);
 }
 
 void MegamanRunningLeftShot::update(Megaman* sprite) {

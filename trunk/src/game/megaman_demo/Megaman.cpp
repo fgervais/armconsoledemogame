@@ -68,6 +68,15 @@ void Megaman::update() {
 	// Update the currently displayed frame
 	// And possibly some state specific things
 	currentState->update(this);
+
+	if(this->children != 0) {
+		for(uint32_t i=0; i<childLimit; i++) {
+			if(children[i] != 0)
+			{
+				children[i]->update();
+			}
+		}
+	}
 }
 
 void Megaman::collideWith(Collider* collider) {

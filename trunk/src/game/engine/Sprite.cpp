@@ -21,7 +21,7 @@ Sprite::Sprite(State* initialState, Environment* environment) {
 	this->velocityX = 0;
 	this->velocityY = 0;
 	this->currentFrame = 0;
-	this->childLimit = 5;
+	this->childLimit = 30;
 
 	// Unsafe?
 	this->state->initialize(this);
@@ -93,9 +93,14 @@ void Sprite::addChild(Sprite* sprite) {
 	}
 
 	for(uint32_t i=0; i<childLimit; i++) {
-		if(children[i] != 0)
+		if(children[i] == 0)
+		{
 			children[i] = sprite;
+			i = childLimit;
+		}
 	}
+
+	cout << "Child added " << children[0]->getPositionX() << children[0]->getPositionY() << endl;
 
 }
 
@@ -106,19 +111,25 @@ void Sprite::update() {
 	// And possibly some state specific things
 	state->update(this);
 
-	/*for(uint32_t i=0; i<childLimit; i++) {
-		if(children[i] != 0)
-			children[i]->getState()->update(children[i]);
-	}*/
+	if(this->children != 0) {
+		for(uint32_t i=0; i<childLimit; i++) {
+			if(children[i] != 0)
+			{
+				children[i]->update();
+			}
+		}
+	}
 }
 
 void Sprite::render(SDL_Surface* sdl_Surface) {
 	state->render(this, sdl_Surface);
 
-	/*for(uint32_t i=0; i<childLimit; i++) {
-		if(children[i] != 0)
-			children[i]->getState()->render(children[i], sdl_Surface);
-	}*/
+	if(this->children != 0) {
+		for(uint32_t i=0; i<childLimit; i++) {
+			if(children[i] != 0)
+				children[i]->getState()->render(children[i], sdl_Surface);
+		}
+	}
 }
 
 uint8_t Sprite::isOnGround() {

@@ -11,6 +11,7 @@
 #include "BusterShotLeft.h"
 //#include "BusterShotRight.h"
 #include <iostream>
+using namespace std;
 //#include "LPC2478.h"
 
 Buster::Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Sprite(initialState, environment) {
@@ -18,7 +19,7 @@ Buster::Buster(BusterState* initialState, Environment* environment, uint32_t pos
 	//this->initialState = initialState;
 	this->currentState = initialState;
 	this->setPositionX(positionX);
-	this->setPositionY(positionY);
+	this->setPositionY(positionY+15);
 
 	// Unsafe?
 	this->currentState->initialize(this);
@@ -44,6 +45,12 @@ void Buster::setState(BusterState* state)  {
 
 void Buster::update() {
 	environment->move(this, positionX+velocityX, positionY+velocityY);
+
+	collisionCheckEnabled = true;
+
+	if(collisionCheckEnabled) {
+		environment->checkCollision(this);
+	}
 
 	// Update the currently displayed frame
 	// And possibly some state specific things

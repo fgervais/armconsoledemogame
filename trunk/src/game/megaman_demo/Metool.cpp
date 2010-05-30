@@ -63,6 +63,6 @@ void Metool::collideWith(Metool*) {
 }
 
 void Metool::collideWith(Buster*) {
-	//cout << "Metool collided with Metool";
+	//cout << "Metool collided with Buster";
 	//LPC2478::delay(1000000);
 }

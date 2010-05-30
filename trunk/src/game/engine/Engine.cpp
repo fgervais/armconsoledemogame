@@ -72,8 +72,16 @@ void Engine::start() {
 			((Megaman*)environment->getHero())->shot();
 			//environment->getHero()->runRight();
 		}
+		else if(counter == 140) {
+			((Megaman*)environment->getHero())->shot();
+			//environment->getHero()->runRight();
+		}
 		else if(counter == 135) {
 			((Megaman*)environment->getHero())->jump();
+			//environment->getHero()->runRight();
+		}
+		else if(counter == 110) {
+			((Megaman*)environment->getHero())->shot();
 			//environment->getHero()->runRight();
 		}
 		else if(counter == 100) {
@@ -92,7 +100,7 @@ void Engine::start() {
 		environment->render(videoPage[currentPage]);
 		SDL_Flip( videoPage[currentPage] );
 
-		SDL_Delay(100);
+		SDL_Delay(60);
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);
