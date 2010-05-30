@@ -49,7 +49,7 @@ void BusterShotLeft::initialize(Buster* sprite) {
 	else {
 		// This is the hard coded Shot speed
 		// could be (should be?) somewhere defined else?
-		sprite->setVelocity(-10, 0);
+		sprite->setVelocity(-18, 0);
 	}
 }
 
@@ -61,7 +61,7 @@ void BusterShotLeft::update(Buster* sprite) {
 	else {
 		// The first frame is displayed only once when we transition from
 		// a standing position
-		sprite->setCurrentFrame(1);
+		sprite->setCurrentFrame(0);
 	}
 
 }
