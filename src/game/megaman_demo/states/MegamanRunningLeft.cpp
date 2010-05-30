@@ -31,30 +31,30 @@ MegamanRunningLeft::~MegamanRunningLeft() {
 MegamanState* MegamanRunningLeft::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[11];
-		animationFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/1.bmp");
-		animationFrames[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/2.bmp");
-		animationFrames[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/3.bmp");
-		animationFrames[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/4.bmp");
-		animationFrames[4] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/5.bmp");
-		animationFrames[5] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/6.bmp");
-		animationFrames[6] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/7.bmp");
-		animationFrames[7] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/8.bmp");
-		animationFrames[8] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/9.bmp");
-		animationFrames[9] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/10.bmp");
-		animationFrames[10] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/11.bmp");
+		animationFrames[0] = new Bitmap("src/display/state/MegamanRunningLeft/1.bmp");
+		animationFrames[1] = new Bitmap("src/display/state/MegamanRunningLeft/2.bmp");
+		animationFrames[2] = new Bitmap("src/display/state/MegamanRunningLeft/3.bmp");
+		animationFrames[3] = new Bitmap("src/display/state/MegamanRunningLeft/4.bmp");
+		animationFrames[4] = new Bitmap("src/display/state/MegamanRunningLeft/5.bmp");
+		animationFrames[5] = new Bitmap("src/display/state/MegamanRunningLeft/6.bmp");
+		animationFrames[6] = new Bitmap("src/display/state/MegamanRunningLeft/7.bmp");
+		animationFrames[7] = new Bitmap("src/display/state/MegamanRunningLeft/8.bmp");
+		animationFrames[8] = new Bitmap("src/display/state/MegamanRunningLeft/9.bmp");
+		animationFrames[9] = new Bitmap("src/display/state/MegamanRunningLeft/10.bmp");
+		animationFrames[10] = new Bitmap("src/display/state/MegamanRunningLeft/11.bmp");
 
 		Bitmap** animationMasks = new Bitmap*[11];
-		animationMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask1.bmp");
-		animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask2.bmp");
-		animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask3.bmp");
-		animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask4.bmp");
-		animationMasks[4] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask5.bmp");
-		animationMasks[5] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask6.bmp");
-		animationMasks[6] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask7.bmp");
-		animationMasks[7] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask8.bmp");
-		animationMasks[8] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask9.bmp");
-		animationMasks[9] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask10.bmp");
-		animationMasks[10] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanRunningLeft/mask11.bmp");
+		animationMasks[0] = new Bitmap("src/display/state/MegamanRunningLeft/mask1.bmp");
+		animationMasks[1] = new Bitmap("src/display/state/MegamanRunningLeft/mask2.bmp");
+		animationMasks[2] = new Bitmap("src/display/state/MegamanRunningLeft/mask3.bmp");
+		animationMasks[3] = new Bitmap("src/display/state/MegamanRunningLeft/mask4.bmp");
+		animationMasks[4] = new Bitmap("src/display/state/MegamanRunningLeft/mask5.bmp");
+		animationMasks[5] = new Bitmap("src/display/state/MegamanRunningLeft/mask6.bmp");
+		animationMasks[6] = new Bitmap("src/display/state/MegamanRunningLeft/mask7.bmp");
+		animationMasks[7] = new Bitmap("src/display/state/MegamanRunningLeft/mask8.bmp");
+		animationMasks[8] = new Bitmap("src/display/state/MegamanRunningLeft/mask9.bmp");
+		animationMasks[9] = new Bitmap("src/display/state/MegamanRunningLeft/mask10.bmp");
+		animationMasks[10] = new Bitmap("src/display/state/MegamanRunningLeft/mask11.bmp");
 		instance = new MegamanRunningLeft(35, 35, animationFrames, 11, animationMasks);
 	}
 	//instance->reset();
