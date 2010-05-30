@@ -1,3 +1,4 @@
+#summary setup windows
 #labels Featured,Phase-Deploy,Phase-Support
 =Please Read Before Starting=
 
@@ -129,8 +130,10 @@ If you get warning like: unresolved inclusion, find the include file in the proj
  
 =Links=
 SVN for the projects
+
 The project is two projects; the main part is the game engine: 
 http://code.google.com/p/armconsole/
+
 The second part is the demo game that is developed on pc:
 https://code.google.com/p/armconsoledemogame/
 ==Tutorials==
@@ -139,9 +142,12 @@ http://lazyfoo.net/SDL_tutorials/index.php
 ==References==
 Useful to make SDL compile in Eclipse
 http://www.lazyfoo.net/SDL_tutorials/lesson01/windows/eclipse/index.php
+
 Useful for installing Cygwin
 http://phiva.blogspot.com/2006/03/windows-c-avec-eclipse-cygwin-et-sdl.html
+
 Informations on Cygwin
 http://en.wikipedia.org/wiki/Cygwin
+
 Installation instructions for Subclipse
 http://subclipse.tigris.org/servlets/ProjectProcess;jsessionid=0369E965569282D69BEBEAEDE3A9D60E?pageID=p4wYuA
