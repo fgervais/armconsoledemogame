@@ -89,6 +89,7 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 		sprite->setVelocity(-6, 0);
 	}
 
+	//Create a new buster, gives him his spawning position and add it to the parent sprite
 	Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 	cout << "Buster created" << endl;
 	sprite->addChild(buster);
