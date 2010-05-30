@@ -34,22 +34,22 @@ MegamanJumpingRight::~MegamanJumpingRight() {
 MegamanState* MegamanJumpingRight::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[7];
-		animationFrames[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/1.bmp");
-		animationFrames[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/2.bmp");
-		animationFrames[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/3.bmp");
-		animationFrames[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/4.bmp");
-		animationFrames[4] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/5.bmp");
-		animationFrames[5] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/6.bmp");
-		animationFrames[6] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/7.bmp");
+		animationFrames[0] = new Bitmap("src/display/state/MegamanJumpingRight/1.bmp");
+		animationFrames[1] = new Bitmap("src/display/state/MegamanJumpingRight/2.bmp");
+		animationFrames[2] = new Bitmap("src/display/state/MegamanJumpingRight/3.bmp");
+		animationFrames[3] = new Bitmap("src/display/state/MegamanJumpingRight/4.bmp");
+		animationFrames[4] = new Bitmap("src/display/state/MegamanJumpingRight/5.bmp");
+		animationFrames[5] = new Bitmap("src/display/state/MegamanJumpingRight/6.bmp");
+		animationFrames[6] = new Bitmap("src/display/state/MegamanJumpingRight/7.bmp");
 
 		Bitmap** animationMasks = new Bitmap*[7];
-		animationMasks[0] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask1.bmp");
-		animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask2.bmp");
-		animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask3.bmp");
-		animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask4.bmp");
-		animationMasks[4] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask5.bmp");
-		animationMasks[5] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask6.bmp");
-		animationMasks[6] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MegamanJumpingRight/mask7.bmp");
+		animationMasks[0] = new Bitmap("src/display/state/MegamanJumpingRight/mask1.bmp");
+		animationMasks[1] = new Bitmap("src/display/state/MegamanJumpingRight/mask2.bmp");
+		animationMasks[2] = new Bitmap("src/display/state/MegamanJumpingRight/mask3.bmp");
+		animationMasks[3] = new Bitmap("src/display/state/MegamanJumpingRight/mask4.bmp");
+		animationMasks[4] = new Bitmap("src/display/state/MegamanJumpingRight/mask5.bmp");
+		animationMasks[5] = new Bitmap("src/display/state/MegamanJumpingRight/mask6.bmp");
+		animationMasks[6] = new Bitmap("src/display/state/MegamanJumpingRight/mask7.bmp");
 
 
 		instance = new MegamanJumpingRight(30, 46, animationFrames, 7, animationMasks);
