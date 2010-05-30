@@ -6,4 +6,4 @@ First off, you're gonna need SDL, Cygwin and a development tool (So far we did i
 
 *IMPORTANT*
 
-Use uint32_t, not int, Use char*, not string, No boolean! use uint32_t (0,1)
+Use uint32`_`t, not int, Use char`*`, not string, No boolean! use uint32_t (0,1)
