@@ -88,7 +88,7 @@ void Engine::start() {
 		environment->render(videoPage[currentPage]);
 		SDL_Flip( videoPage[currentPage] );
 
-		SDL_Delay(80);
+		SDL_Delay(100);
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);

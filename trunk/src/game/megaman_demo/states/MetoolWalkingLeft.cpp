@@ -11,9 +11,9 @@
 #include "Environment.h"
 #include "Physics.h"
 
-//MetoolState* MetoolWalkingLeft::instance = 0;
-Bitmap** MetoolWalkingLeft::sharedFrames = 0;
-Bitmap** MetoolWalkingLeft::sharedMasks = 0;
+MetoolState* MetoolWalkingLeft::instance = 0;
+//Bitmap** MetoolWalkingLeft::sharedFrames = 0;
+//Bitmap** MetoolWalkingLeft::sharedMasks = 0;
 
 MetoolWalkingLeft::MetoolWalkingLeft(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
 : MetoolState(animationWidth, animationHeight, animationFrames, numberOfFrame, animationMasks) {
@@ -24,7 +24,7 @@ MetoolWalkingLeft::~MetoolWalkingLeft() {
 
 }
 
-MetoolState* MetoolWalkingLeft::createInstance() {
+MetoolState* MetoolWalkingLeft::getInstance() {
 	if(instance == 0) {
 	//if(sharedFrames == 0) {
 		Bitmap** animationFrames = new Bitmap*[4];
@@ -43,8 +43,9 @@ MetoolState* MetoolWalkingLeft::createInstance() {
 		animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask2.bmp");
 		animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask3.bmp");
 		animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingLeft/mask4.bmp");
+
+		instance = new MetoolWalkingLeft(22, 21, animationFrames, 4, animationMasks);
 	}
-	instance = new MetoolWalkingLeft(22, 21, animationFrames, 4, animationMasks);
 	//instance->reset();
 	return instance;
 }

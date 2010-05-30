@@ -11,9 +11,9 @@
 #include "Environment.h"
 #include "Physics.h"
 
-//MetoolState* MetoolWalkingRight::instance = 0;
-Bitmap** MetoolWalkingRight::sharedFrames = 0;
-Bitmap** MetoolWalkingRight::sharedMasks = 0;
+MetoolState* MetoolWalkingRight::instance = 0;
+//Bitmap** MetoolWalkingRight::sharedFrames = 0;
+//Bitmap** MetoolWalkingRight::sharedMasks = 0;
 
 MetoolWalkingRight::MetoolWalkingRight(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
 : MetoolState(animationWidth, animationHeight, animationFrames, numberOfFrame, animationMasks) {
@@ -24,7 +24,7 @@ MetoolWalkingRight::~MetoolWalkingRight() {
 
 }
 
-MetoolState* MetoolWalkingRight::createInstance() {
+MetoolState* MetoolWalkingRight::getInstance() {
 	if(instance == 0) {
 		//if(sharedFrames == 0) {
 			Bitmap** animationFrames = new Bitmap*[4];
@@ -43,8 +43,10 @@ MetoolState* MetoolWalkingRight::createInstance() {
 			animationMasks[1] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask2.bmp");
 			animationMasks[2] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask3.bmp");
 			animationMasks[3] = new Bitmap("E:/EclipseProjects/demo/src/display/state/MetoolWalkingRight/mask4.bmp");
+
+			instance = new MetoolWalkingRight(22, 21, animationFrames, 4, animationMasks);
 		}
-		instance = new MetoolWalkingRight(22, 21, animationFrames, 4, animationMasks);
+
 		//instance->reset();
 		return instance;
 }
@@ -58,11 +60,11 @@ void MetoolWalkingRight::initialize(Metool* sprite) {
 
 void MetoolWalkingRight::update(Metool* sprite) {
 	// Update the current frame
-	if(currentFrame < (numberOfFrame-1)) {
+	if(sprite->getCurrentFrame() < (numberOfFrame-1)) {
 		sprite->incCurrentFrame();
 	}
 	else {
-		currentFrame = 0;
+		sprite->setCurrentFrame(0);
 	}
 
 	// If we loose contact with the ground, then we are falling

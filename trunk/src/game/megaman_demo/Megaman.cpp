@@ -8,6 +8,7 @@
 #include "Megaman.h"
 #include "Environment.h"
 #include "MegamanState.h"
+#include "Buster.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
@@ -67,7 +68,7 @@ void Megaman::update() {
 
 	// Update the currently displayed frame
 	// And possibly some state specific things
-	state->update(this);
+	currentState->update(this);
 }
 
 void Megaman::collideWith(Collider* collider) {
@@ -116,5 +117,9 @@ void Megaman::stopRunning() {
  * This function delegates the action to the current state.
  */
 void Megaman::stopJumping() {
-	state->stopJumping(this);
+	currentState->stopJumping(this);
+}
+
+void Megaman::shot() {
+	//addChild(new Buster())
 }

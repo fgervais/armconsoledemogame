@@ -34,6 +34,7 @@ public:
 	virtual void collideWith(Collider*);
 	virtual void collideWith(Megaman*);
 	virtual void collideWith(Metool*);
+	virtual void collideWith(Buster*);
 private:
 	// Current state
 	//MetoolState* initialState;

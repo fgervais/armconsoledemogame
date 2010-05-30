@@ -44,6 +44,8 @@ public:
 
 	void setState(State* state);
 
+	void addChild(Sprite* sprite);
+
 	virtual void update() =0;
 	virtual void render(SDL_Surface*);
 
@@ -60,7 +62,11 @@ protected:
 	uint32_t positionX;
 	uint32_t positionY;
 
+	uint32_t childLimit;
+
 	Environment* environment;
+
+	Sprite** children;
 
 	// Flags
 	uint8_t collisionCheckEnabled;
