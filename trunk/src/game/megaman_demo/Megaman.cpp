@@ -8,7 +8,6 @@
 #include "Megaman.h"
 #include "Environment.h"
 #include "MegamanState.h"
-#include "Buster.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
@@ -121,5 +120,5 @@ void Megaman::stopJumping() {
 }
 
 void Megaman::shot() {
-	//addChild(new Buster())
+	currentState->shot(this);
 }

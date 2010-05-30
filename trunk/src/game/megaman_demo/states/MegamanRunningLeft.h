@@ -18,6 +18,7 @@ public:
 	virtual void jump(Megaman*);
 	virtual void runRight(Megaman*);
 	virtual void stopRunning(Megaman*);
+	virtual void shot(Megaman*);
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);
 

@@ -5,6 +5,7 @@
  *      Author: fgervais
  */
 
+#include "MegamanRunningLeftShot.h"
 #include "MegamanRunningLeft.h"
 #include "MegamanJumpingLeft.h"
 #include "MegamanRunningRight.h"
@@ -73,6 +74,10 @@ void MegamanRunningLeft::runRight(Megaman* sprite) {
 
 void MegamanRunningLeft::stopRunning(Megaman* sprite) {
 	sprite->setState(MegamanStandingLeft::getInstance());
+}
+
+void MegamanRunningLeft::shot(Megaman* sprite) {
+	sprite->setState(MegamanRunningLeftShot::getInstance());
 }
 
 void MegamanRunningLeft::initialize(Megaman* sprite) {
