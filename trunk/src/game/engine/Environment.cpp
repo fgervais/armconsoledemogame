@@ -160,80 +160,91 @@ uint8_t Environment::isOnGround(Sprite* sprite) {
  */
 uint8_t Environment::move(Sprite* sprite, uint32_t desiredPositionX, uint32_t desiredPositionY) {
 	uint8_t returnValue = 1;
+
+	// Check if the desiredPosition is out of the level (uintx_t doesn't support negative numbers)
+	if(desiredPositionX >= 400000000)
+	{
+		desiredPositionX = 0;
+	}
+	else if(desiredPositionX >= width - sprite->getWidth())
+	{
+		desiredPositionX = width - sprite->getWidth();
+	}
+	else if(desiredPositionY >= 400000000)
+	{
+		desiredPositionY = 0;
+	}
+	else if(desiredPositionY >= height - sprite->getHeight())
+	{
+		desiredPositionY = height - sprite->getHeight();
+	}
+
 	uint32_t possiblePositionX = desiredPositionX;
 	uint32_t possiblePositionY = desiredPositionY;
 
-	if(desiredPositionX <= 0 || (desiredPositionX >= (visibleArea->x + visibleArea->width - sprite->getWidth())) ||
-		   desiredPositionY <= 0 ||(desiredPositionY >= (visibleArea->y + visibleArea->height - sprite->getHeight())))
-	{
+	// Horizontal move
+	if(desiredPositionX != sprite->getPositionX()) {
+		uint32_t tileStartY = sprite->getPositionY() / tileHeight;
+		uint32_t tileEndY = (sprite->getPositionY() + sprite->getHeight() - 1) / tileHeight;
 
-	}
-	else
-	{
-		// Horizontal move
-		if(desiredPositionX != sprite->getPositionX()) {
-			uint32_t tileStartY = sprite->getPositionY() / tileHeight;
-			uint32_t tileEndY = (sprite->getPositionY() + sprite->getHeight() - 1) / tileHeight;
+		// Moving right
+		if(desiredPositionX > sprite->getPositionX()) {
+			uint32_t tileX = (desiredPositionX + sprite->getWidth()) / tileWidth;
 
-			// Moving right
-			if(desiredPositionX > sprite->getPositionX()) {
-				uint32_t tileX = (desiredPositionX + sprite->getWidth()) / tileWidth;
-
-				for(uint32_t y=tileStartY; y<=tileEndY; y++) {
-					if(tileMap[y][tileX] != 0) {
-						possiblePositionX -= (desiredPositionX + sprite->getWidth()) % tileWidth;
-						returnValue = 0;
-						break;
-					}
-				}
-			}
-			// Moving left
-			else {
-				uint32_t tileX = desiredPositionX / tileWidth;
-
-				for(uint32_t y=tileStartY; y<=tileEndY; y++) {
-					if(tileMap[y][tileX] != 0) {
-						// Moving left
-						possiblePositionX += tileWidth - (desiredPositionX % tileWidth);
-						returnValue = 0;
-						break;
-					}
-				}
-			}
-
-		}
-		// Vertical move
-		if(desiredPositionY != sprite->getPositionY()) {
-			uint32_t tileStartX = sprite->getPositionX() / tileWidth;
-			uint32_t tileEndX = (sprite->getPositionX() + sprite->getWidth() -1) / tileWidth;
-
-			// Moving up
-			if(desiredPositionY < sprite->getPositionY()) {
-				uint32_t tileY = desiredPositionY / tileHeight;
-
-				for(uint32_t x= tileStartX; x<=tileEndX; x++) {
-					if(tileMap[tileY][x] != 0) {
-						possiblePositionY += tileHeight - (desiredPositionY % tileHeight);
-						returnValue = 0;
-						break;
-					}
-				}
-			}
-			// Moving down
-			else {
-				uint32_t tileY = (desiredPositionY + sprite->getHeight()) / tileHeight;
-
-				for(uint32_t x= tileStartX; x<=tileEndX; x++) {
-					if(tileMap[tileY][x] != 0) {
-						possiblePositionY -= (desiredPositionY + sprite->getHeight()) % tileHeight;
-						returnValue = 0;
-						break;
-					}
+			for(uint32_t y=tileStartY; y<=tileEndY; y++) {
+				if(tileMap[y][tileX] != 0) {
+					possiblePositionX -= (desiredPositionX + sprite->getWidth()) % tileWidth;
+					returnValue = 0;
+					break;
 				}
 			}
 		}
-		sprite->setPosition(possiblePositionX, possiblePositionY);
+		// Moving left
+		else {
+			uint32_t tileX = desiredPositionX / tileWidth;
+
+			for(uint32_t y=tileStartY; y<=tileEndY; y++) {
+				if(tileMap[y][tileX] != 0) {
+					// Moving left
+					possiblePositionX += tileWidth - (desiredPositionX % tileWidth);
+					returnValue = 0;
+					break;
+				}
+			}
+		}
+
 	}
+	// Vertical move
+	if(desiredPositionY != sprite->getPositionY()) {
+		uint32_t tileStartX = sprite->getPositionX() / tileWidth;
+		uint32_t tileEndX = (sprite->getPositionX() + sprite->getWidth() -1) / tileWidth;
+
+		// Moving up
+		if(desiredPositionY < sprite->getPositionY()) {
+			uint32_t tileY = desiredPositionY / tileHeight;
+
+			for(uint32_t x= tileStartX; x<=tileEndX; x++) {
+				if(tileMap[tileY][x] != 0) {
+					possiblePositionY += tileHeight - (desiredPositionY % tileHeight);
+					returnValue = 0;
+					break;
+				}
+			}
+		}
+		// Moving down
+		else {
+			uint32_t tileY = (desiredPositionY + sprite->getHeight()) / tileHeight;
+
+			for(uint32_t x= tileStartX; x<=tileEndX; x++) {
+				if(tileMap[tileY][x] != 0) {
+					possiblePositionY -= (desiredPositionY + sprite->getHeight()) % tileHeight;
+					returnValue = 0;
+					break;
+				}
+			}
+		}
+	}
+	sprite->setPosition(possiblePositionX, possiblePositionY);
 
 	return returnValue;
 }
