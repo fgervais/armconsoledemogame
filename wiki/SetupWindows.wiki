@@ -1,4 +1,4 @@
-#summary Setup tutorial for windows user using eclipse, cygwin and SDL
+#summary Setup tutorial for windows users using eclipse, cygwin and SDL
 #labels Featured,Phase-Deploy,Phase-Support
 =Please Read Before Starting=
 
