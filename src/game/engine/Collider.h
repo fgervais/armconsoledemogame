@@ -10,6 +10,7 @@
 
 class Megaman;
 class Metool;
+class Buster;
 
 /**
  * Something that can collide with something else.

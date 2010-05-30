@@ -68,6 +68,10 @@ void Engine::start() {
 		if(counter == 195) {
 			((Megaman*)environment->getHero())->runLeft();
 		}
+		else if(counter == 145) {
+			((Megaman*)environment->getHero())->shot();
+			//environment->getHero()->runRight();
+		}
 		else if(counter == 135) {
 			((Megaman*)environment->getHero())->jump();
 			//environment->getHero()->runRight();
