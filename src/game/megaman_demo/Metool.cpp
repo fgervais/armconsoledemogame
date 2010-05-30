@@ -19,7 +19,7 @@ Metool::Metool(MetoolState* initialState, Environment* environment) : Sprite(ini
 	this->currentState = initialState;
 
 	// Unsafe?
-	this->state->initialize(this);
+	this->currentState->initialize(this);
 
 	//Initialize every possible Metool states
 	//metoolWalkingLeft = MetoolWalkingLeft::createInstance();
@@ -58,6 +58,11 @@ void Metool::collideWith(Megaman*) {
 }
 
 void Metool::collideWith(Metool*) {
+	//cout << "Metool collided with Metool";
+	//LPC2478::delay(1000000);
+}
+
+void Metool::collideWith(Buster*) {
 	//cout << "Metool collided with Metool";
 	//LPC2478::delay(1000000);
 }

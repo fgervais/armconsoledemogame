@@ -78,7 +78,7 @@ void MegamanRunningLeft::stopRunning(Megaman* sprite) {
 void MegamanRunningLeft::initialize(Megaman* sprite) {
 	if(sprite->getVelocityX() < 0) {
 		// If we are already moving left, skip the first frame
-		sprite->getCurrentFrame(1);
+		sprite->getCurrentFrame();
 	}
 	else {
 		// This is the hard coded running speed

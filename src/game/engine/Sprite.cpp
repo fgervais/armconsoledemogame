@@ -21,6 +21,8 @@ Sprite::Sprite(State* initialState, Environment* environment) {
 	this->velocityX = 0;
 	this->velocityY = 0;
 	this->currentFrame = 0;
+	this->childLimit = 5;
+
 	// Unsafe?
 	this->state->initialize(this);
 
@@ -79,6 +81,22 @@ void Sprite::setState(State* state)  {
 
 	// Do state entry initialization on the sprite
 	state->initialize(this);
+}
+
+void Sprite::addChild(Sprite* sprite) {
+	// If the array isn't initialized, we initialize it
+	if(this->children == 0) {
+		children = new Sprite*[childLimit];
+		for(uint32_t i=0; i<childLimit; i++) {
+			children[i] = 0;
+		}
+	}
+
+	for(uint32_t i=0; i<childLimit; i++) {
+		if(children[i] != 0)
+			children[i] = sprite;
+	}
+
 }
 
 void Sprite::update() {

@@ -78,7 +78,7 @@ void Background::render(SDL_Surface* sdl_Surface) {
 	camera.y = visibleArea->y - visibleArea->height;
 
 
-	SDL_BlitSurface( bitmap->getData(), 0, sdl_Surface, &position );
+	//SDL_BlitSurface( bitmap->getData(), 0, sdl_Surface, &position );
 
 	/*
 	 * Calculate the visible area of the background according to the speed multiplier.
@@ -86,20 +86,38 @@ void Background::render(SDL_Surface* sdl_Surface) {
 	 * We do this because the background normally scroll slower than the layer
 	 * where the hero is.
 	 */
-	//uint32_t renderX1 = visibleArea->x >> 1;
-	//uint32_t renderY1 = visibleArea->y1 >> 1;
+	uint32_t renderX1 = visibleArea->x >> 1;
+	//uint32_t renderY1 = visibleArea->y >> 1;
 
-	//uint32_t renderWidth = visibleArea->x2 - visibleArea->x1;
-	//uint32_t renderHeight = visibleArea->y2 - visibleArea->y1;
+	uint32_t renderWidth = visibleArea->width;
+	uint32_t renderHeight = visibleArea->height;
 
 	// These are safe initial guess
-	//uint32_t renderMaskX1 = renderX1 % width;
+	uint32_t renderMaskX1 = renderX1 % width;
 	//uint32_t renderMaskY1 = renderY1 % height;
 	//uint32_t renderMaskX1 = renderX1 & 255;
 
+
 	// Draw the image on the screen
-	//uint32_t sdl_SurfaceWidth = sdl_Surface->w;
-	//uint32_t* sdl_SurfacePointer = sdl_Surface->getPointer();
+	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
+	uint32_t* sdl_SurfacePointer = (uint32_t *)sdl_Surface->pixels;
+
+	uint8_t* backgroundPixels = (uint8_t*) bitmap->getData()->pixels;
+		for (uint32_t i=0; i<renderHeight; i++) {
+			for (uint32_t j=0; j<renderWidth; j++) {
+				//sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
+				//				   = image[i*width + ((j+renderMaskX1) & (width-1))];
+
+				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + j * 3);
+				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) & (width-1)) * 3);
+				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) % bitmap->getData()->pitch) * 3);
+				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) & (256-1)) * 3);
+				uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) % width) * 3);
+
+				sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
+				                   = backgroundPixel[0] | backgroundPixel[1] << 8 | backgroundPixel[2] << 16;
+			}
+		}
 
 	/* Generic version */
 	/*for (uint32_t i=0; i<renderHeight; i++) {
@@ -108,6 +126,8 @@ void Background::render(SDL_Surface* sdl_Surface) {
 			                   = bitmap->getData()[((i+renderMaskY1) % height)*width + ((j+renderMaskX1) % width)];
 		}
 	}*/
+
+
 
 	// Optimized version
 	/*uint32_t* image = bitmap->getData();

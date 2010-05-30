@@ -16,6 +16,7 @@ class Metool;
 
 class MetoolWalkingRight: public MetoolState {
 public:
+	virtual ~MetoolWalkingRight();
 
 	static MetoolState* getInstance();
 

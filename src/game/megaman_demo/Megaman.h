@@ -41,9 +41,10 @@ public:
 	void runRight();
 	void stopRunning();
 	void stopJumping();
+	void shot();
 private:
 	// Current state
-	MegamanState* initialState;
+	//MegamanState* initialState;
 	MegamanState* currentState;
 
 	// SoundFX

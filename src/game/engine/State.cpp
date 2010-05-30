@@ -64,15 +64,6 @@ void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 	uint32_t positionX = sprite->getPositionX();
 	uint32_t positionY = sprite->getPositionY();
 
-	//Make a temporary rectangle to hold the offsets
-	SDL_Rect offset;
-	//Give the offsets to the rectangle
-	offset.x = positionX - visibleArea->x;
-	offset.y = positionY - visibleArea->y;
-
-	//SDL_BlitSurface( animationFrames[currentFrame]->getData(), NULL, sdl_Surface, &offset );
-
-
 	// Get x,y coordinates inside the visible area
 	uint32_t renderPositionX = positionX - visibleArea->x;
 	uint32_t renderPositionY = positionY - visibleArea->y;
@@ -127,8 +118,19 @@ void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)]
 			                   |= animationFramesPixels[i*animationWidth + j];*/
 
-			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] &= animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 0] | (animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 1] << 8) | (animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 2] << 16);
-			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] |= animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 0] | (animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 1] << 8) | (animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 2] << 16);
+			uint8_t* maskPixel = animationMasksPixels + (i * animationMasks[currentFrame]->getData()->pitch + j * 3);
+			uint8_t* animationPixel = animationFramesPixels + (i * animationFrames[currentFrame]->getData()->pitch + j * 3);
+
+			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] &= maskPixel[0]
+
+			| (maskPixel[1] << 8) | (maskPixel[2] << 16);
+
+			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] |=
+
+			animationPixel[0] | (animationPixel[1] << 8) | (animationPixel[2] << 16);
+
+			//sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] &= animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 0] | (animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 1] << 8) | (animationMasksPixels[(i * animationMasks[currentFrame]->getData()->pitch + j * 3) + 2] << 16);
+			//sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] |= animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 0] | (animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 1] << 8) | (animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 2] << 16);
 
 			/*sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] = animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 0];
 			sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)] |= animationFramesPixels[(i * animationFrames[currentFrame]->getData()->pitch + j * 3) + 1] << 8;
@@ -138,9 +140,7 @@ void State::render(Sprite* sprite, SDL_Surface* sdl_Surface) {
 
 		/*sdl_SurfacePointer[((i-renderMaskY1)+renderPositionY)*sdl_SurfaceWidth + ((j-renderMaskX1)+renderPositionX)]
 									   = animationFramesPixels[i*animationWidth + j];*/
-		counterj = 0;
 	}
 
-	cout << "Debug ends" << endl;
 
 }
