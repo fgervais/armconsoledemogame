@@ -16,6 +16,7 @@ public:
 
 	// Base class function override
 	virtual void jump(Megaman*);
+	virtual void slide(Megaman*);
 	virtual void runLeft(Megaman*);
 	virtual void runRight(Megaman*);
 	virtual void update(Megaman*);

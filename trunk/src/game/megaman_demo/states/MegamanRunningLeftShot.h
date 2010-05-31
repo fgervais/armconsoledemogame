@@ -17,6 +17,8 @@ public:
 	// Base class function override
 	virtual void jump(Megaman*);
 	virtual void runRight(Megaman*);
+	virtual void runLeft(Megaman*);
+	virtual void shot(Megaman*);
 	virtual void stopRunning(Megaman*);
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);

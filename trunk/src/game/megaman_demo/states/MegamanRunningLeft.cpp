@@ -10,6 +10,7 @@
 #include "MegamanJumpingLeft.h"
 #include "MegamanRunningRight.h"
 #include "MegamanStandingLeft.h"
+#include "MegamanSlidingLeft.h"
 #include "Bitmap.h"
 #include "Megaman.h"
 #include "Physics.h"
@@ -80,10 +81,15 @@ void MegamanRunningLeft::shot(Megaman* sprite) {
 	sprite->setState(MegamanRunningLeftShot::getInstance());
 }
 
+void MegamanRunningLeft::slide(Megaman* sprite) {
+	sprite->setState(MegamanSlidingLeft::getInstance(0));
+}
+
 void MegamanRunningLeft::initialize(Megaman* sprite) {
 	if(sprite->getVelocityX() < 0) {
 		// If we are already moving left, skip the first frame
-		sprite->getCurrentFrame();
+		sprite->setCurrentFrame(1);
+		sprite->setVelocity(-6, 0);
 	}
 	else {
 		// This is the hard coded running speed

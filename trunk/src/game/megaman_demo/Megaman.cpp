@@ -134,3 +134,10 @@ void Megaman::stopJumping() {
 void Megaman::shot() {
 	currentState->shot(this);
 }
+
+/**
+ * This function delegates the action to the current state.
+ */
+void Megaman::slide() {
+	currentState->slide(this);
+}
