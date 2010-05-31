@@ -55,6 +55,7 @@ void Metool::collideWith(Collider* collider) {
 void Metool::collideWith(Megaman*) {
 	//cout << "Metool collided with Megaman";
 	//LPC2478::delay(1000000);
+	environment->deactivate(this);
 }
 
 void Metool::collideWith(Metool*) {
@@ -65,4 +66,5 @@ void Metool::collideWith(Metool*) {
 void Metool::collideWith(Buster*) {
 	//cout << "Metool collided with Buster";
 	//LPC2478::delay(1000000);
+	environment->deactivate(this);
 }

@@ -20,8 +20,11 @@
 #include "MegamanStandingLeft.h"
 #include "MegamanRunningLeft.h"
 #include "MegamanRunningRight.h"
+#include "MegamanRunningLeftShot.h"
 #include "MegamanJumpingLeft.h"
 #include "MegamanJumpingRight.h"
+#include "MegamanSlidingLeft.h"
+#include "MegamanSlidingRight.h"
 #include "MetoolWalkingLeft.h"
 #include "MetoolWalkingRight.h"
 using namespace std;
@@ -96,12 +99,16 @@ void Level1::build() {
 	MegamanRunningRight::getInstance();
 	MegamanJumpingLeft::getInstance();
 	MegamanJumpingRight::getInstance();
+	MegamanSlidingLeft::getInstance(0);
+	MegamanSlidingRight::getInstance(0);
+	MegamanRunningLeftShot::getInstance();
 
 	Megaman* hero = new Megaman(MegamanStandingRight::getInstance(), this);
 	hero->enableCollisionCheck();
+	hero->setPosition(720, 50);
 	//set(hero, 240, 189);
 	//set(hero, 240, 50);
-	set(hero, 720, 50);
+	set(hero);
 	cout << "Done Loading hero" << endl;
 
 	cout << "Loading sprites" << endl;
@@ -114,6 +121,11 @@ void Level1::build() {
 		else {
 			enemy[i] = new Metool(MetoolWalkingLeft::getInstance(), this);
 		}
-		add(enemy[i], (i*25), 100);
+		startSpawning(enemy[i], (i*25), 100);
 	}
+
+	// Try a sprite activated directly without being spawned by the environment
+	Metool* lonely_metool = new Metool(MetoolWalkingRight::getInstance(), this);
+	lonely_metool->setPosition(600, 50);
+	activate(lonely_metool);
 }
