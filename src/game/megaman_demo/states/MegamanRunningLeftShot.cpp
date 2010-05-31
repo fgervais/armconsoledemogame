@@ -70,8 +70,16 @@ void MegamanRunningLeftShot::jump(Megaman* sprite) {
 	sprite->setState(MegamanJumpingLeft::getInstance());
 }
 
+void MegamanRunningLeftShot::shot(Megaman* sprite) {
+	sprite->setState(MegamanRunningLeftShot::getInstance());
+}
+
 void MegamanRunningLeftShot::runRight(Megaman* sprite) {
 	sprite->setState(MegamanRunningRight::getInstance());
+}
+
+void MegamanRunningLeftShot::runLeft(Megaman* sprite) {
+	sprite->setState(MegamanRunningLeft::getInstance());
 }
 
 void MegamanRunningLeftShot::stopRunning(Megaman* sprite) {

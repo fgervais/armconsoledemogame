@@ -34,6 +34,7 @@ public:
 	// All these do nothing by default
 	virtual void jump(Megaman*) {}
 	virtual void shot(Megaman*) {}
+	virtual void slide(Megaman*) {}
 	virtual void runLeft(Megaman*) {}
 	virtual void runRight(Megaman*) {}
 	virtual void stopRunning(Megaman*) {}

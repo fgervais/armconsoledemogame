@@ -65,23 +65,13 @@ void Engine::start() {
 			counter--;
 		}
 
+		//Routine 1
+		/*
 		if(counter == 195) {
 			((Megaman*)environment->getHero())->runLeft();
 		}
-		else if(counter == 145) {
-			((Megaman*)environment->getHero())->shot();
-			//environment->getHero()->runRight();
-		}
-		else if(counter == 140) {
-			((Megaman*)environment->getHero())->shot();
-			//environment->getHero()->runRight();
-		}
 		else if(counter == 135) {
 			((Megaman*)environment->getHero())->jump();
-			//environment->getHero()->runRight();
-		}
-		else if(counter == 110) {
-			((Megaman*)environment->getHero())->shot();
 			//environment->getHero()->runRight();
 		}
 		else if(counter == 100) {
@@ -91,6 +81,81 @@ void Engine::start() {
 			((Megaman*)environment->getHero())->jump();
 		}
 		else if(counter == 0) {
+			((Megaman*)environment->getHero())->stopRunning();
+			counter = 200;
+		}
+		*/
+
+		//Routine 2
+		if(counter == 195) {
+			((Megaman*)environment->getHero())->runLeft();
+		}
+		else if(counter == 170) {
+			((Megaman*)environment->getHero())->runRight();
+		}
+		else if(counter == 167) {
+			((Megaman*)environment->getHero())->runLeft();
+		}
+		else if(counter == 165) {
+			((Megaman*)environment->getHero())->jump();
+		}
+		else if(counter == 155) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 145) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 141) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 137) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 130) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 128) {
+			((Megaman*)environment->getHero())->jump();
+		}
+		else if(counter == 110) {
+			((Megaman*)environment->getHero())->slide();
+			//environment->getHero()->runRight();
+		}
+		else if(counter == 105) {
+			((Megaman*)environment->getHero())->slide();
+			//environment->getHero()->runRight();
+		}
+		else if(counter == 81) {
+			((Megaman*)environment->getHero())->runLeft();
+		}
+		else if(counter == 80) {
+			((Megaman*)environment->getHero())->shot();
+		}
+		else if(counter == 79) {
+			((Megaman*)environment->getHero())->stopRunning();
+		}
+		else if(counter == 78) {
+			((Megaman*)environment->getHero())->runRight();
+		}
+		else if(counter == 77) {
+			((Megaman*)environment->getHero())->stopRunning();
+		}
+		else if(counter == 75) {
+			((Megaman*)environment->getHero())->jump();
+		}
+		else if(counter == 55) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 42) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 30) {
+			((Megaman*)environment->getHero())->slide();
+		}
+		else if(counter == 25) {
+			((Megaman*)environment->getHero())->jump();
+		}
+		else if(counter == 15) {
 			((Megaman*)environment->getHero())->stopRunning();
 			counter = 200;
 			cout << "Restarting counter" << endl;

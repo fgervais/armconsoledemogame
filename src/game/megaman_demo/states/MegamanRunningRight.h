@@ -18,6 +18,7 @@ public:
 	virtual void jump(Megaman*);
 	virtual void runLeft(Megaman*);
 	virtual void stopRunning(Megaman*);
+	virtual void slide(Megaman*);
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);
 

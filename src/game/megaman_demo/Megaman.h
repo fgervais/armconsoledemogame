@@ -42,6 +42,7 @@ public:
 	void stopRunning();
 	void stopJumping();
 	void shot();
+	void slide();
 private:
 	// Current state
 	//MegamanState* initialState;
