@@ -43,6 +43,11 @@ public:
 	void stopJumping();
 	void shot();
 	void slide();
+
+	// Counter functions
+	uint32_t getCounter() { return counter; };
+	void setCounter(uint32_t num) { counter = num; };
+	void incCounter() { counter++; };
 private:
 	// Current state
 	//MegamanState* initialState;
@@ -51,6 +56,8 @@ private:
 	// SoundFX
 	static Wave* jumpSoundFX;
 	static Wave* landSoundFX;
+
+	uint32_t counter;
 };
 
 #endif /* MEGAMAN_H_ */

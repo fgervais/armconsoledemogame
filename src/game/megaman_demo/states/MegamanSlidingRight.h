@@ -23,15 +23,10 @@ public:
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);
 
-	uint32_t getCounter() { return counter; };
-	void setCounter(uint32_t num) { counter = num; };
-	void incCounter() { counter++; };
-
 private:
 	MegamanSlidingRight(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks);
 	virtual ~MegamanSlidingRight();
 
-	uint32_t counter;
 	static MegamanState* instance;
 };
 

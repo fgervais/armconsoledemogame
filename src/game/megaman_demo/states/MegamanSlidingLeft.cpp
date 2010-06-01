@@ -67,7 +67,6 @@ void MegamanSlidingLeft::stopSliding(Megaman* sprite) {
 
 void MegamanSlidingLeft::initialize(Megaman* sprite) {
 		sprite->setVelocity(-12, 0);
-		setCounter(0);
 }
 
 void MegamanSlidingLeft::update(Megaman* sprite) {
@@ -77,12 +76,12 @@ void MegamanSlidingLeft::update(Megaman* sprite) {
 	if(!sprite->isOnGround()) {
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
-	else if(getCounter() >= 10) {
+	else if(sprite->getCounter() >= 10) {
 		sprite->setState(MegamanRunningLeft::getInstance());
 		//sprite->setState(MegamanStandingLeft::getInstance());
 	}
 	else {
-		incCounter();
+		sprite->incCounter();
 	}
 
 

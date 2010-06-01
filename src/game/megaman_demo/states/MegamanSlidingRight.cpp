@@ -22,8 +22,6 @@ MegamanState* MegamanSlidingRight::instance = 0;
 MegamanSlidingRight::MegamanSlidingRight(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationanimationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
 : MegamanState(animationWidth, animationHeight, animationanimationFrames, numberOfFrame, animationMasks) {
 
-	this->counter = counter;
-
 }
 
 MegamanSlidingRight::~MegamanSlidingRight() {
@@ -68,7 +66,6 @@ void MegamanSlidingRight::stopSliding(Megaman* sprite) {
 
 void MegamanSlidingRight::initialize(Megaman* sprite) {
 		sprite->setVelocity(12, 0);
-		setCounter(0);
 }
 
 void MegamanSlidingRight::update(Megaman* sprite) {
@@ -78,11 +75,11 @@ void MegamanSlidingRight::update(Megaman* sprite) {
 	if(!sprite->isOnGround()) {
 		sprite->setState(MegamanJumpingRight::getInstance());
 	}
-	else if(getCounter() >= 10) {
+	else if(sprite->getCounter() >= 10) {
 		sprite->setState(MegamanRunningRight::getInstance());
 	}
 	else {
-		incCounter();
+		sprite->incCounter();
 	}
 
 }

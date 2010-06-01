@@ -39,6 +39,7 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 	megamanStandingRight;
 	megamanStandingLeft;*/
 
+	counter = 0;
 
 	// Unsafe?
 	this->currentState->initialize(this);
@@ -49,6 +50,9 @@ Megaman::~Megaman() {
 }
 
 void Megaman::setState(MegamanState* state)  {
+	// Reset the counter
+	setCounter(0);
+
 	this->currentState = state;
 
 	// Do state entry initialization on the sprite
