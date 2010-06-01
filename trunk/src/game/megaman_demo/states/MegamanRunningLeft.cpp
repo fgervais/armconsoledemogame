@@ -82,7 +82,7 @@ void MegamanRunningLeft::shot(Megaman* sprite) {
 }
 
 void MegamanRunningLeft::slide(Megaman* sprite) {
-	sprite->setState(MegamanSlidingLeft::getInstance(0));
+	sprite->setState(MegamanSlidingLeft::getInstance());
 }
 
 void MegamanRunningLeft::initialize(Megaman* sprite) {

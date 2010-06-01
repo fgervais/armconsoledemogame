@@ -99,8 +99,8 @@ void Level1::build() {
 	MegamanRunningRight::getInstance();
 	MegamanJumpingLeft::getInstance();
 	MegamanJumpingRight::getInstance();
-	MegamanSlidingLeft::getInstance(0);
-	MegamanSlidingRight::getInstance(0);
+	MegamanSlidingLeft::getInstance();
+	MegamanSlidingRight::getInstance();
 	MegamanRunningLeftShot::getInstance();
 
 	Megaman* hero = new Megaman(MegamanStandingRight::getInstance(), this);

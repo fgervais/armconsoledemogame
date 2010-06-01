@@ -19,10 +19,8 @@ using namespace std;
 
 MegamanState* MegamanSlidingLeft::instance = 0;
 
-MegamanSlidingLeft::MegamanSlidingLeft(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationanimationFrames, uint32_t numberOfFrame, Bitmap** animationMasks, uint32_t counter)
+MegamanSlidingLeft::MegamanSlidingLeft(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationanimationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
 : MegamanState(animationWidth, animationHeight, animationanimationFrames, numberOfFrame, animationMasks) {
-
-	this->counter = counter;
 
 }
 
@@ -30,7 +28,7 @@ MegamanSlidingLeft::~MegamanSlidingLeft() {
 
 }
 
-MegamanState* MegamanSlidingLeft::getInstance(uint32_t counter) {
+MegamanState* MegamanSlidingLeft::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[1];
 		animationFrames[0] = new Bitmap("src/display/state/MegamanSlidingLeft/1.bmp");
@@ -38,7 +36,7 @@ MegamanState* MegamanSlidingLeft::getInstance(uint32_t counter) {
 		Bitmap** animationMasks = new Bitmap*[1];
 		animationMasks[0] = new Bitmap("src/display/state/MegamanSlidingLeft/mask1.bmp");
 
-		instance = new MegamanSlidingLeft(38, 26, animationFrames, 1, animationMasks, counter);
+		instance = new MegamanSlidingLeft(38, 26, animationFrames, 1, animationMasks);
 	}
 	//instance->reset();
 	return instance;
@@ -47,22 +45,20 @@ MegamanState* MegamanSlidingLeft::getInstance(uint32_t counter) {
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanSlidingLeft::jump(Megaman* sprite) {
 	sprite->setVelocityY(-8);
-	setCounter(0);
 	sprite->setState(MegamanJumpingLeft::getInstance());
 }
 
-void MegamanSlidingLeft::slide(Megaman* sprite) {
-	sprite->setState(MegamanSlidingRight::getInstance(counter));
-}
+//void MegamanSlidingLeft::slide(Megaman* sprite) {
+	//MegamanSlidingRight::getInstance()->setCounter(0);
+	//sprite->setState(MegamanSlidingRight::getInstance());
+//}
 
-void MegamanSlidingLeft::runLeft(Megaman* sprite) {
-	setCounter(0);
-	sprite->setState(MegamanRunningLeft::getInstance());
-}
+//void MegamanSlidingLeft::runLeft(Megaman* sprite) {
+	//sprite->setState(MegamanRunningLeft::getInstance());
+//}
 
 void MegamanSlidingLeft::stopSliding(Megaman* sprite) {
-	setCounter(0);
-	sprite->setState(MegamanRunningLeft::getInstance());
+	sprite->setState(MegamanStandingLeft::getInstance());
 }
 
 /*void MegamanSlidingLeft::shot(Megaman* sprite) {
@@ -71,6 +67,7 @@ void MegamanSlidingLeft::stopSliding(Megaman* sprite) {
 
 void MegamanSlidingLeft::initialize(Megaman* sprite) {
 		sprite->setVelocity(-12, 0);
+		setCounter(0);
 }
 
 void MegamanSlidingLeft::update(Megaman* sprite) {
@@ -78,12 +75,11 @@ void MegamanSlidingLeft::update(Megaman* sprite) {
 	// If we loose contact with the ground, then we are falling
 	// In our case, falling and jumping is handled by the same state
 	if(!sprite->isOnGround()) {
-		setCounter(0);
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
 	else if(getCounter() >= 10) {
-		setCounter(0);
 		sprite->setState(MegamanRunningLeft::getInstance());
+		//sprite->setState(MegamanStandingLeft::getInstance());
 	}
 	else {
 		incCounter();

@@ -74,7 +74,7 @@ void MegamanRunningRight::stopRunning(Megaman* sprite) {
 }
 
 void MegamanRunningRight::slide(Megaman* sprite) {
-	sprite->setState(MegamanSlidingRight::getInstance(0));
+	sprite->setState(MegamanSlidingRight::getInstance());
 }
 
 void MegamanRunningRight::initialize(Megaman* sprite) {

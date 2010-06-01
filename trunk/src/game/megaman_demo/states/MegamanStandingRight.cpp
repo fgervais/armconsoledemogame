@@ -46,7 +46,7 @@ void MegamanStandingRight::jump(Megaman* sprite) {
 }
 
 void MegamanStandingRight::slide(Megaman* sprite) {
-	sprite->setState(MegamanSlidingRight::getInstance(0));
+	sprite->setState(MegamanSlidingRight::getInstance());
 }
 
 void MegamanStandingRight::runLeft(Megaman* sprite) {

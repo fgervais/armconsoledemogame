@@ -12,12 +12,12 @@
 
 class MegamanSlidingLeft: public MegamanState {
 public:
-	static MegamanState* getInstance(uint32_t counter);
+	static MegamanState* getInstance();
 
 	// Base class function override
 	virtual void jump(Megaman*);
-	virtual void slide(Megaman*);
-	virtual void runLeft(Megaman*);
+	//virtual void slide(Megaman*);
+	//virtual void runLeft(Megaman*);
 	virtual void stopSliding(Megaman*);
 	//virtual void shot(Megaman*);
 	virtual void initialize(Megaman*);
@@ -28,7 +28,7 @@ public:
 	void incCounter() { counter++; };
 
 private:
-	MegamanSlidingLeft(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks, uint32_t counter);
+	MegamanSlidingLeft(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks);
 	virtual ~MegamanSlidingLeft();
 
 	uint32_t counter;
