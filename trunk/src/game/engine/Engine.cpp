@@ -29,11 +29,13 @@ Engine::~Engine() {
 void Engine::start() {
 	cout << "Entering Engine start function" << endl;
 
+	// Start SDL - initializes all the SDL subsystems
 	if(SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
 	{
 		cout << "Error while loading the SDL" << endl;
 	}
 
+	// Initialize SDL_mixer
 	if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
 	{
 		cout << "Error while loading the Mixer" << endl;
@@ -41,18 +43,20 @@ void Engine::start() {
 
 	Mix_Music *music = 0;
 	music = Mix_LoadMUS( "src/game/megaman_demo/sound/frostman.mid" );
-	Mix_PlayMusic( music, -1 );
+	Mix_PlayMusic( music, -1 ); // loop music forever
 
 	// Create the instance of a level
+	// TODO (View Issue id 1 on demogame SVN) maybe make a level class that build the level from params and replace the hardcoded level1 class
 	Environment* environment = new Level1();
-	environment->build();
+	environment->build(); // build the level
 	cout << " Environment a builder" << endl;
-	SDL_Surface** videoPage = new SDL_Surface*[2];
 
+	// instanciate the array for the two video page
+	SDL_Surface** videoPage = new SDL_Surface*[2];
 	videoPage[0] = SDL_SetVideoMode( 480, 272, 32, SDL_SWSURFACE );
 	videoPage[1] = SDL_SetVideoMode( 480, 272, 32, SDL_SWSURFACE );
 
-	uint8_t currentPage = 0;
+	uint8_t currentPage = 0; // start with first page
 
 	// Infinite game loop
 	cout << "Starting the update and render loop" << endl;
@@ -161,11 +165,12 @@ void Engine::start() {
 			cout << "Restarting counter" << endl;
 		}
 
-		environment->update();
-		environment->render(videoPage[currentPage]);
-		SDL_Flip( videoPage[currentPage] );
+		environment->update(); // UPDATE game
+		environment->render(videoPage[currentPage]); // RENDER the video page
+		SDL_Flip( videoPage[currentPage] ); // Show the current video page
 
-		SDL_Delay(60);
+		// TODO if possible, at each iteration, timed it and make the SDL_Delay value dynamic: SDL_Delay(60 - timeTakenThatIteration);
+		SDL_Delay(60); // wait x milliseconds
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);
