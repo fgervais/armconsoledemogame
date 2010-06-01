@@ -58,12 +58,70 @@ void Engine::start() {
 
 	uint8_t currentPage = 0; // start with first page
 
+	//The event
+	SDL_Event event;
+
+	//Quit flag
+	uint8_t quit = 0;
+
 	// Infinite game loop
 	cout << "Starting the update and render loop" << endl;
 	uint32_t counter = 200;
-	while(1) {
+
+	//while(1) {
+	while(quit == 0) {
 		// Switch to the other video page
 		currentPage ^= 1;
+
+		//Routine 3
+
+		if( SDL_PollEvent( &event ) )
+		{
+			if( event.type == SDL_QUIT ) {
+				//Quit the program
+				quit = 1;
+			}
+
+			//Get the keystates, used to know if a key is currently pressed
+			Uint8 *keystates = SDL_GetKeyState( NULL );
+
+			//If a key was pressed
+			if( event.type == SDL_KEYDOWN )
+			{
+				//Set the proper message surface
+				switch( event.key.keysym.sym )
+				{
+					case SDLK_z:((Megaman*)environment->getHero())->shot(); break;
+					case SDLK_x: ((Megaman*)environment->getHero())->jump(); break;
+					case SDLK_c:((Megaman*)environment->getHero())->slide(); break;
+					case SDLK_LEFT: ((Megaman*)environment->getHero())->runLeft(); break;
+					case SDLK_RIGHT: ((Megaman*)environment->getHero())->runRight(); break;
+				}
+			}
+
+			if( event.type == SDL_KEYUP )
+			{
+				//Set the proper message surface
+				switch( event.key.keysym.sym )
+				{
+					case SDLK_LEFT: if(!keystates[SDLK_RIGHT])
+										((Megaman*)environment->getHero())->stopRunning();
+									 break;
+					case SDLK_RIGHT: if(!keystates[SDLK_LEFT])
+										((Megaman*)environment->getHero())->stopRunning();
+									 break;
+				}
+			}
+
+			//If the user has Xed out the window
+			else if( event.type == SDL_QUIT )
+			{
+				//Quit the program
+				quit = true;
+			}
+		}
+
+		//End routine 3
 
 		if(counter > 0) {
 			counter--;
@@ -91,6 +149,7 @@ void Engine::start() {
 		*/
 
 		//Routine 2
+		/*
 		if(counter == 195) {
 			((Megaman*)environment->getHero())->runLeft();
 		}
@@ -164,6 +223,7 @@ void Engine::start() {
 			counter = 200;
 			cout << "Restarting counter" << endl;
 		}
+		*/
 
 		environment->update(); // UPDATE game
 		environment->render(videoPage[currentPage]); // RENDER the video page
