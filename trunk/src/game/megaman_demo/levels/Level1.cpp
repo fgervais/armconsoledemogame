@@ -15,18 +15,9 @@
 #include "Sprite.h"
 #include "Metool.h"
 #include "Megaman.h"
-#include "MegamanState.h"
-#include "MegamanStandingRight.h"
-#include "MegamanStandingLeft.h"
-#include "MegamanRunningLeft.h"
-#include "MegamanRunningRight.h"
-#include "MegamanRunningLeftShot.h"
-#include "MegamanJumpingLeft.h"
-#include "MegamanJumpingRight.h"
-#include "MegamanSlidingLeft.h"
-#include "MegamanSlidingRight.h"
-#include "MetoolWalkingLeft.h"
-#include "MetoolWalkingRight.h"
+// the include below includes all the States of megaman
+#include "IncludeStates.h"
+
 using namespace std;
 
 Level1::Level1()
@@ -92,7 +83,8 @@ void Level1::build() {
 	// Hero section
 	std::cout << "Loading hero" << endl;
 
-	// Preload every states. Maybe something better could be used here.
+	// Preload every states.
+	// TODO Maybe something better could be used here.
 	MegamanStandingLeft::getInstance();
 	MegamanStandingRight::getInstance();
 	MegamanRunningLeft::getInstance();
