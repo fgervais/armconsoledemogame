@@ -81,7 +81,7 @@ void MegamanRunningRight::initialize(Megaman* sprite) {
 	if(sprite->getVelocityX() > 0) {
 		// If we are already moving right, skip the first frame
 		sprite->setCurrentFrame(1);
-		sprite->setVelocity(6, 0);
+		//sprite->setVelocity(6, 0);
 	}
 	else {
 		// This is the hard coded running speed

@@ -77,8 +77,8 @@ void MegamanSlidingLeft::update(Megaman* sprite) {
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
 	else if(sprite->getCounter() >= 10) {
-		sprite->setState(MegamanRunningLeft::getInstance());
-		//sprite->setState(MegamanStandingLeft::getInstance());
+		//sprite->setState(MegamanRunningLeft::getInstance());
+		sprite->setState(MegamanStandingLeft::getInstance());
 	}
 	else {
 		sprite->incCounter();

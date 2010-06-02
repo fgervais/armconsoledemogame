@@ -41,9 +41,9 @@ void Engine::start() {
 		cout << "Error while loading the Mixer" << endl;
 	}
 
-	Mix_Music *music = 0;
-	music = Mix_LoadMUS( "src/game/megaman_demo/sound/frostman.mid" );
-	Mix_PlayMusic( music, -1 ); // loop music forever
+	//Mix_Music *music = 0;
+	//music = Mix_LoadMUS( "src/game/megaman_demo/sound/frostman.mid" );
+	//Mix_PlayMusic( music, -1 ); // loop music forever
 
 	// Create the instance of a level
 	// TODO (View Issue id 1 on demogame SVN) maybe make a level class that build the level from params and replace the hardcoded level1 class
@@ -73,8 +73,16 @@ void Engine::start() {
 		// Switch to the other video page
 		currentPage ^= 1;
 
+
+
+
+
 		//Routine 3
 
+		//Get the keystates, used to know if a key is currently pressed
+		Uint8 *keystates = SDL_GetKeyState( NULL );
+
+		// Key event : This if returns true only if a key have been pressed
 		if( SDL_PollEvent( &event ) )
 		{
 			if( event.type == SDL_QUIT ) {
@@ -82,20 +90,19 @@ void Engine::start() {
 				quit = 1;
 			}
 
-			//Get the keystates, used to know if a key is currently pressed
-			Uint8 *keystates = SDL_GetKeyState( NULL );
-
 			//If a key was pressed
 			if( event.type == SDL_KEYDOWN )
 			{
 				//Set the proper message surface
 				switch( event.key.keysym.sym )
 				{
-					case SDLK_z:((Megaman*)environment->getHero())->shot(); break;
-					case SDLK_x: ((Megaman*)environment->getHero())->jump(); break;
-					case SDLK_c:((Megaman*)environment->getHero())->slide(); break;
-					case SDLK_LEFT: ((Megaman*)environment->getHero())->runLeft(); break;
-					case SDLK_RIGHT: ((Megaman*)environment->getHero())->runRight(); break;
+					case SDLK_c:		((Megaman*)environment->getHero())->shot(); break;
+					case SDLK_x: 		((Megaman*)environment->getHero())->jump(); break;
+					case SDLK_z:		((Megaman*)environment->getHero())->slide(); break;
+					case SDLK_LEFT: 	((Megaman*)environment->getHero())->runLeft(); break;
+					case SDLK_RIGHT:	if(!keystates[SDLK_LEFT])
+											((Megaman*)environment->getHero())->runRight();
+										break;
 				}
 			}
 
@@ -110,15 +117,28 @@ void Engine::start() {
 					case SDLK_RIGHT: if(!keystates[SDLK_LEFT])
 										((Megaman*)environment->getHero())->stopRunning();
 									 break;
+					case SDLK_x: 	((Megaman*)environment->getHero())->stopJumping();
+									 break;
 				}
 			}
+		}
 
-			//If the user has Xed out the window
-			else if( event.type == SDL_QUIT )
-			{
-				//Quit the program
-				quit = true;
-			}
+		if(keystates[SDLK_LEFT])
+				((Megaman*)environment->getHero())->runLeft();
+		else if(keystates[SDLK_RIGHT])
+			((Megaman*)environment->getHero())->runRight();
+
+
+		// End of the key handler and routine 3
+
+
+
+
+		//If the user has Xed out the window
+		else if( event.type == SDL_QUIT )
+		{
+			//Quit the program
+			quit = true;
 		}
 
 		//End routine 3
@@ -230,7 +250,7 @@ void Engine::start() {
 		SDL_Flip( videoPage[currentPage] ); // Show the current video page
 
 		// TODO if possible, at each iteration, timed it and make the SDL_Delay value dynamic: SDL_Delay(60 - timeTakenThatIteration);
-		SDL_Delay(60); // wait x milliseconds
+		SDL_Delay(50); // wait x milliseconds
 	}
 
 	/*videoPage[0] = new VideoMemory((uint32_t*)0xA0000000,480,272);
