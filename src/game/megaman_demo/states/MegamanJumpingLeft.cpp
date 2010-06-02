@@ -61,12 +61,21 @@ MegamanState* MegamanJumpingLeft::getInstance() {
 }
 
 void MegamanJumpingLeft::runLeft(Megaman* sprite) {
-	sprite->setVelocityX(-6);
+	if(sprite->getVelocityX() == 0)
+		sprite->setVelocityX(-6);
 }
 
 void MegamanJumpingLeft::runRight(Megaman* sprite) {
-	sprite->setVelocityX(6);
-	sprite->setState(MegamanJumpingRight::getInstance());
+
+	if(sprite->getVelocityX() < 0)
+	{
+		sprite->setVelocityX(-sprite->getVelocityX());
+		sprite->setState(MegamanJumpingRight::getInstance());
+	}
+	else if(sprite->getVelocityX() == 0) {
+		sprite->setVelocityX(6);
+		sprite->setState(MegamanJumpingRight::getInstance());
+	}
 }
 
 void MegamanJumpingLeft::stopRunning(Megaman* sprite) {
@@ -74,7 +83,9 @@ void MegamanJumpingLeft::stopRunning(Megaman* sprite) {
 }
 
 void MegamanJumpingLeft::stopJumping(Megaman* sprite) {
-	sprite->setVelocityY(0);
+	// Check if the sprite is not falling but jumping.
+	if(sprite->getVelocityY() < 0)
+		sprite->setVelocityY(0);
 }
 
 void MegamanJumpingLeft::initialize(Megaman* sprite) {
@@ -97,12 +108,12 @@ void MegamanJumpingLeft::update(Megaman* sprite) {
 			sprite->incCurrentFrame();
 		}
 		else {
-			if(sprite->getVelocityX() < 0) {
-				sprite->setState(MegamanRunningLeft::getInstance());
-			}
-			else {
+			//if(sprite->getVelocityX() < 0) {
+				//sprite->setState(MegamanRunningLeft::getInstance());
+			//}
+			//else {
 				sprite->setState(MegamanStandingLeft::getInstance());
-			}
+			//}
 
 			if(Mix_PlayChannel( -1, sprite->getLandSoundFX()->getData(), 0 ) == -1)
 				cout << "Error playing sound" << endl;
