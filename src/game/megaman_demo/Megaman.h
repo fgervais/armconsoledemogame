@@ -41,6 +41,7 @@ public:
 	void runRight();
 	void stopRunning();
 	void stopJumping();
+	void stopSliding();
 	void shot();
 	void slide();
 

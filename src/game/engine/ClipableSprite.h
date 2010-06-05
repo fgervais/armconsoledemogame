@@ -23,6 +23,9 @@ public:
 	void clipTo(Sprite* clipSprite, uint32_t offsetX, uint32_t offsetY);
 	uint32_t isClipped() {	return clipped;	};
 
+	uint32_t getOffsetX() { return offsetX; };
+	uint32_t getOffsetY() { return offsetY; };
+
 private:
 	Sprite* clipSprite;
 	uint32_t offsetX;

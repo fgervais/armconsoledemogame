@@ -34,6 +34,10 @@
 #include "MetoolWalkingLeft.h"
 #include "MetoolWalkingRight.h"
 
+// Interface states
+#include "LifeGaugeState.h"
+#include "LifeGaugeNormal.h"
+
 // Other states
 #include "BusterShotLeft.h"
 #include "BusterState.h"

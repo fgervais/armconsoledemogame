@@ -13,8 +13,10 @@
 #include "Background.h"
 #include "Physics.h"
 #include "Sprite.h"
+#include "ClipableSprite.h"
 #include "Metool.h"
 #include "Megaman.h"
+#include "LifeGauge.h"
 // the include below includes all the States of megaman
 #include "IncludeStates.h"
 
@@ -120,4 +122,10 @@ void Level1::build() {
 	Metool* lonely_metool = new Metool(MetoolWalkingRight::getInstance(), this);
 	lonely_metool->setPosition(600, 50);
 	activate(lonely_metool);
+
+	// Load interface
+	LifeGauge* lifeGauge = new LifeGauge(LifeGaugeNormal::getInstance(), this);
+	lifeGauge->setPosition(600, 50);
+	lifeGauge->clipTo(hero, 15, 5);
+	activate(lifeGauge);
 }
