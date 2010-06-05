@@ -119,6 +119,7 @@ void Engine::start() {
 									 break;
 					case SDLK_x: 	((Megaman*)environment->getHero())->stopJumping();
 									 break;
+					case SDLK_z:	((Megaman*)environment->getHero())->stopSliding();
 				}
 			}
 		}
@@ -129,9 +130,7 @@ void Engine::start() {
 			((Megaman*)environment->getHero())->runRight();
 
 
-		// End of the key handler and routine 3
-
-
+		// End of the key handler
 
 
 		//If the user has Xed out the window

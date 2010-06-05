@@ -132,6 +132,10 @@ void Megaman::stopJumping() {
 	currentState->stopJumping(this);
 }
 
+void Megaman::stopSliding() {
+	currentState->stopSliding(this);
+}
+
 /**
  * This function delegates the action to the current state.
  */
