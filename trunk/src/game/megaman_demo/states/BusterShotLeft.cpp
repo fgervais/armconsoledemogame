@@ -48,7 +48,7 @@ void BusterShotLeft::initialize(Buster* sprite) {
 	}
 	else {
 		// This is the hard coded Shot speed
-		// could be (should be?) somewhere defined else?
+		// TODO could be (should be?) somewhere defined else?
 		sprite->setVelocity(-18, 0);
 	}
 }

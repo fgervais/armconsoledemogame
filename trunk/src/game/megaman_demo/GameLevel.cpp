@@ -29,9 +29,10 @@ GameLevel::~GameLevel() {
 void GameLevel::build() {
 	std::cout << "Entering GameLevel build function" << endl;
 
-	Bitmap** black_square = new Bitmap*[2];
-	black_square[0] = new Bitmap("src/display/black.bmp");
-	black_square[1] = new Bitmap("src/display/gray.bmp");
+	// FIXME that does nothing and i don't know why it was there
+//	Bitmap** black_square = new Bitmap*[2];
+//	black_square[0] = new Bitmap("src/display/black.bmp");
+//	black_square[1] = new Bitmap("src/display/gray.bmp");
 
 	Bitmap** snow = new Bitmap*[1];
 	snow[0] = new Bitmap("src/display/snow1.bmp");
