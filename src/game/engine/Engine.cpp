@@ -9,7 +9,7 @@
 #include "Environment.h"
 #include "SDL.h"
 #include "SDL_mixer.h"
-#include "Level1.h"
+#include "GameLevel.h"
 #include <iostream>
 //#include "LPC2478.h"
 //#include "LCDControllerDriver.h"
@@ -47,7 +47,7 @@ void Engine::start() {
 
 	// Create the instance of a level
 	// TODO (View Issue id 1 on demogame SVN) maybe make a level class that build the level from params and replace the hardcoded level1 class
-	Environment* environment = new Level1();
+	Environment* environment = new GameLevel();
 	environment->build(); // build the level
 	cout << " Environment a builder" << endl;
 

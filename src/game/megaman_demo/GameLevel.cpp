@@ -15,8 +15,8 @@
 #include "Sprite.h"
 #include "Metool.h"
 #include "Megaman.h"
+#include "LifeGauge.h"
 #include "IncludeStates.h" // the include below includes all the States of megaman
-
 using namespace std;
 
 GameLevel::GameLevel() :
@@ -27,9 +27,8 @@ GameLevel::~GameLevel() {
 }
 
 void GameLevel::build() {
-	cout << "Entering GameLevel build function" << endl;
+	std::cout << "Entering GameLevel build function" << endl;
 
-	// background
 	Bitmap** black_square = new Bitmap*[2];
 	black_square[0] = new Bitmap("src/display/black.bmp");
 	black_square[1] = new Bitmap("src/display/gray.bmp");
@@ -37,7 +36,7 @@ void GameLevel::build() {
 	Bitmap** snow = new Bitmap*[1];
 	snow[0] = new Bitmap("src/display/snow1.bmp");
 
-	Tile* tile1 = new Tile(64, 32, snow, 1, this);
+	Tile* tile1 = new Tile(56, 32, snow, 1, this);
 
 	Bitmap** brick = new Bitmap*[1];
 	brick[0] = new Bitmap("src/display/brick.bmp");
@@ -79,7 +78,7 @@ void GameLevel::build() {
 	set(physics);
 
 	// Hero section
-	cout << "Loading hero" << endl;
+	std::cout << "Loading hero" << endl;
 
 	// Preload every states.
 	// TODO Maybe something better could be used here.
@@ -117,4 +116,11 @@ void GameLevel::build() {
 	Metool* lonely_metool = new Metool(MetoolWalkingRight::getInstance(), this);
 	lonely_metool->setPosition(600, 50);
 	activate(lonely_metool);
+
+	// Load interface
+	LifeGauge* lifeGauge = new LifeGauge(LifeGaugeNormal::getInstance(), this);
+	lifeGauge->setPosition(600, 50);
+	lifeGauge->clipTo(hero, 15, 5);
+	activate(lifeGauge);
+
 }

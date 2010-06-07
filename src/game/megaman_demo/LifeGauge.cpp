@@ -18,7 +18,7 @@ LifeGauge::LifeGauge(LifeGaugeState* initialState, Environment* environment) : C
 	//this->initialState = initialState;
 	this->currentState = initialState;
 
-	// Unsafe?
+	// FIXME Unsafe?
 	this->currentState->initialize(this);
 }
 
@@ -41,7 +41,7 @@ void LifeGauge::update() {
 	VisibleArea* visibleArea = environment->getVisibleArea();
 	environment->move(this, visibleArea->x+getOffsetX(), visibleArea->y+getOffsetY());
 
-	cout << this->getPositionX() << " " << this->getPositionY() << endl;
+	//cout << this->getPositionX() << " " << this->getPositionY() << endl;
 
 	// Update the currently displayed frame
 	// And possibly some state specific things
