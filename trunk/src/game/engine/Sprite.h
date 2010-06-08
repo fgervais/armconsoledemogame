@@ -46,6 +46,7 @@ public:
 	State* getState() { return state; };
 
 	void addChild(Sprite* sprite);
+	void removeChild(Sprite* sprite);
 
 	virtual void update() =0;
 	virtual void render(SDL_Surface*);

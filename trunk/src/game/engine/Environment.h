@@ -75,6 +75,7 @@ private:
 	uint32_t heightInTile;
 	uint32_t widthInTile;
 
+	// TODO add an array that could handle the interfaces (menu, life gauge, etc)
 	Tile*** tileMap;
 	SpriteContainer*** spriteSpawnMap;
 	SpriteContainer** activeSprite;

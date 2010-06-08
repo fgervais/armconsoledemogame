@@ -104,6 +104,18 @@ void Sprite::addChild(Sprite* sprite) {
 
 }
 
+void Sprite::removeChild(Sprite* sprite) {
+
+	for(uint32_t i=0; i<childLimit; i++) {
+		if(children[i] != 0 && children[i] == sprite)
+		{
+			children[i] = 0;
+			cout << "Child removed" << endl;
+		}
+	}
+
+}
+
 void Sprite::update() {
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 

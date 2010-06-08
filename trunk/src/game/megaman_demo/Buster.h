@@ -46,6 +46,7 @@ private:
 	// SoundFX
 	static Wave* ShotSoundFX;
 	static Wave* collideSoundFX;
+
 };
 
 #endif /* MEGAMAN_H_ */

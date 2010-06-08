@@ -8,13 +8,16 @@
 #include "Buster.h"
 #include "BusterState.h"
 #include "Environment.h"
+#include "Megaman.h"
 #include "BusterShotLeft.h"
+#include "VisibleArea.h"
 //#include "BusterShotRight.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
 
 Buster::Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Sprite(initialState, environment) {
+
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
@@ -46,6 +49,8 @@ void Buster::setState(BusterState* state)  {
 void Buster::update() {
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
+	VisibleArea* visibleArea = environment->getVisibleArea();
+
 	collisionCheckEnabled = true;
 
 	if(collisionCheckEnabled) {
@@ -55,6 +60,15 @@ void Buster::update() {
 	// Update the currently displayed frame
 	// And possibly some state specific things
 	currentState->update(this);
+
+	// if the shot is outside the screen
+	if(positionX <= visibleArea->x || positionX >= visibleArea->x + visibleArea->width ||
+				positionY <= visibleArea->y || positionY >= visibleArea->y + visibleArea->height)
+	{
+		environment->deactivate(this);
+		environment->getHero()->removeChild(this);
+		((Megaman*)environment->getHero())->decCurrentBusterNum();
+	}
 }
 
 void Buster::collideWith(Collider* collider) {
