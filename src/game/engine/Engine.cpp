@@ -95,7 +95,10 @@ void Engine::start() {
 				//Set the proper message surface
 				switch( event.key.keysym.sym )
 				{
-					case SDLK_c:		((Megaman*)environment->getHero())->shot(); break;
+					case SDLK_c:		if(((Megaman*)environment->getHero())->getCurrentBusterNum() <
+											((Megaman*)environment->getHero())->getMaxBusterNum())
+										((Megaman*)environment->getHero())->shot();
+										break;
 					case SDLK_x: 		((Megaman*)environment->getHero())->jump(); break;
 					case SDLK_z:		((Megaman*)environment->getHero())->slide(); break;
 					case SDLK_LEFT: 	((Megaman*)environment->getHero())->runLeft(); break;

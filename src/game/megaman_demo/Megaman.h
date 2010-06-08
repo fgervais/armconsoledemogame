@@ -35,6 +35,13 @@ public:
 	Wave* getJumpSoundFX() { return jumpSoundFX; }
 	Wave* getLandSoundFX() { return landSoundFX; }
 
+	// Buster related variables get, decrement and increment
+	uint32_t getMaxBusterNum() { return maxBusterNum; };
+	uint32_t getCurrentBusterNum() { return currentBusterNum; };
+	void decCurrentBusterNum() { currentBusterNum--; };
+	void incCurrentBusterNum() { currentBusterNum++; };
+
+
 	// Action functions
 	void jump();
 	void runLeft();
@@ -59,6 +66,10 @@ private:
 	static Wave* landSoundFX;
 
 	uint32_t counter;
+
+	// Buster max and current amount on the screen
+	static const uint32_t maxBusterNum = 3;
+	uint32_t currentBusterNum;
 };
 
 #endif /* MEGAMAN_H_ */

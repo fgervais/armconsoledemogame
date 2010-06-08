@@ -101,6 +101,7 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 	Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 	cout << "Buster created" << endl;
 	sprite->addChild(buster);
+	sprite->incCurrentBusterNum();
 }
 
 void MegamanRunningLeftShot::update(Megaman* sprite) {

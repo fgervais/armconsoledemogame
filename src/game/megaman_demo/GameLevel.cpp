@@ -121,7 +121,8 @@ void GameLevel::build() {
 	// Load interface
 	LifeGauge* lifeGauge = new LifeGauge(LifeGaugeNormal::getInstance(), this);
 	lifeGauge->setPosition(600, 50);
-	lifeGauge->clipTo(hero, 15, 5);
+	lifeGauge->linkTo(hero);
+	lifeGauge->setOffset(15, 5);
 	activate(lifeGauge);
 
 }

@@ -39,6 +39,9 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 	megamanStandingRight;
 	megamanStandingLeft;*/
 
+	//Initalize the buster number
+	currentBusterNum = 0;
+
 	counter = 0;
 
 	// Unsafe?
