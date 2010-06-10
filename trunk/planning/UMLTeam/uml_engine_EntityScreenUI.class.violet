@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_14" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.ClassDiagramGraph"> 
+  <void method="addNode"> 
+   <object id="ClassNode0" class="com.horstmann.violet.ClassNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>420.0</double> 
+       <double>30.0</double> 
+       <double>240.0</double> 
+       <double>300.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- currentState : State *
+# child : Sprite*[ ]
+# positionX : uint32_t
+# positionY : uint32_t
+# environment : Environment*
+# clippedTo : Sprite*</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ Sprite(Environment*, State* initialState)
++ setState(State*)
++ addChild(Sprite*)
++ removeChild(Sprite*)
++ update()
++ render(SDL_Surface*)
++ getPositionX() : uint32_t
++ getPositionY() : uint32_t
++ getEnvironment() : Environment*
++ clipTo(Sprite*)
++ unclip()
+</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Sprite</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>420.0</double> 
+     <double>30.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode1" class="com.horstmann.violet.ClassNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>100.0</double> 
+       <double>190.0</double> 
+       <double>220.0</double> 
+       <double>620.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- currentState : State*
+- subState : State*[ ]
+- collisionCheckEnabled : uint8_t
+# stateCounter : uint32_t[ ]
+# velocityX : uint32_t
+# velocityY : uint32_t
+# maxHP : uint32_t
+# currentHP : uint32_t
+# baseSpeed : uint32_t
+# currentSpeed : uint32_t
+# baseDamage : uint32_t
+# currentDamage : uint32_t
+# baseArmorValue : uint32_t
+# currentArmorValue : uint32_t
+# walkable : uint8_t
+</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>Entity(Environment*, State* initialState)
++ setState(State*)
++ addSubState(State*)
++ removeSubState(State*)
++ getCounter(State*) : uint32_t
++ incCounter(State*)
++ decCounter(State*)
++ getVelocityX() : uint32_t
++ getVelocityY() : uint32_t
++ getMaxHp() : uint32_t
++ getCurrentHp() : uint32_t
++ modifyMaxHp(uint32_t)
++ modifyCurrentHp(uint32_t)
++ getBaseSpeed() : uint32_t
++ getCurrentSpeed() : uint32_t
++ modifyBaseSpeed(uint32_t)
++ modifyCurrentSpeed(uint32_t)
+...
++ enableCollisionCheck()
++ disableCollisionCheck()
++ isWalkable() : uint8_t
++ isCollisionEnabled() : uint8_t</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Entity</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>100.0</double> 
+     <double>190.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode2" class="com.horstmann.violet.ClassNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>90.0</double> 
+       <double>30.0</double> 
+       <double>220.0</double> 
+       <double>100.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ collideWith(MegamanCollider*) = 0
++ collideWith(Megaman*)
++ collideWith(Metool)</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>&quot;Abstract&quot; MegamanGameCollider</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>90.0</double> 
+     <double>30.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode3" class="com.horstmann.violet.ClassNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>740.0</double> 
+       <double>90.0</double> 
+       <double>180.0</double> 
+       <double>180.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- currentState : State*
+- isShowed : uint8_t
+# offsetX : uint32_t
+# offsetY : uint32_t</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ setOffset(uint32_t, uint32_t)
++ getOffsetX : uint32_t
++ getOffsetY : uint32_t
++ show()
++ hide()
++ isShowed() : uint8_t</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ScreenUI</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>740.0</double> 
+     <double>90.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode4" class="com.horstmann.violet.ClassNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>430.0</double> 
+       <double>400.0</double> 
+       <double>180.0</double> 
+       <double>380.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- currentState* : State*
+- subState : State*[ ]
+- baseJumpPower : uint32_t
+- currentJumpPower : uint32_t
+- maxBusterShot : uint32_t
+- activeBusterShot : uint32_t</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ get***() : uint32_t
++ modify***(uint32_t)
++ incActiveBusterShot()
++ decActiveBusterShot()
++ jump()
++ runLeft()
++ runRight()
++ hit()
++ shot()
++ busterCharge()
++ slide()
++ climb()
++ spawn()
++ stopRunning()
++ stopJumping()
++ stopSliding()
+
+</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Megaman</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>430.0</double> 
+     <double>400.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.NoteNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>660.0</double> 
+       <double>360.0</double> 
+       <double>720.0</double> 
+       <double>540.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>660.0</double> 
+      <double>360.0</double> 
+      <double>720.0</double> 
+      <double>540.0</double> 
+     </void> 
+    </void> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>Bon, je sais que il y a pas mal d&apos;affaires mais je vais tenter d&apos;explique ce que je veux faire.
+Sprite
+- N&apos;importe quel sprite peut-etre clipper à un autre (donc on peut faire des &quot;grab&quot; attack, mettons)
+- Ils peuvent tous avoir des enfants qu&apos;ils update et render. (pour un UI ce serait les unités de vie par exemple)
+Entity
+- Ce sont les tiles et les units.
+- Ils ont 4 attributs généraux : HP, damage, speed et armor
+- Ils ont des sous-états (exemple : frozen, stunned) et un état de mouvement/d&apos;animation du sprite
+- Ils peuvent être Collider ou non et peuvent être walkable ou non (Un monstre dont on peut marcher sur le dos)
+- Ils ont un counter pour chaque état, la position 0 est l&apos;état de mouvement
+- Dans le constructeur, tous les attributs sont setter à 0.
+- Malgré que certaines tiles ou units n&apos;attaqueront pas et ne se feront pas attaquer, je trouver bien de laisser ces 4 attributs car 
+ils sont les plus fréquents. Avec le damage, on peut faire des tiles de feu ou des pics, etc.
+Tile
+- Les tiles serait quasiment des units. Donc leur render sera gèré par leur état comme un unit, c&apos;est le gros problème je crois.
+- Mais...Au moins on pourra faire des tiles qui bougent, spin, explose, etc. etc.
+ScreenUI
+- C&apos;est les menus, les gauges, etc.
+- Ils ont un offset dans l&apos;écran ou à partir du sprite auquel ils sont clippés, si applicable
+- Ils peuvent ainsi se clipper à d&apos;autre UI (un menu avec des sous menu, un frame avec une gauge de vie et de mana)
+- Ils sont soit caché ou visible.
+Choses que je suis pas trop sur
+- Les attributs hp, speed, armor et damage dans Entity
+- Ajouter un uint8_t &quot;selectable&quot; dans ScreenUI pour les menus à sélection (un frame de menu avec des enfants sélectionnable)
+- Dans ce cas, les projectiles sont seulement des Sprite. Peut-etre que les projectiles pourraient être des Entity...
+Si ils seraient des Entity, il gèrerait leur dégat, pourrait être destructible, pourrait changer de vitesse en plein vol, changer d&apos;état, etc
+- Le Méga problème de tout ça (je crois) : Plus difficile à programmer et lourd sur la gestion de fichier. Je propose qu&apos;on fasse un
+dossier pour chaque Entity et chaque UI où l&apos;on pourrait mettre leur état.
+Current et Base ***
+- Le Base attribut, c&apos;est la valeur qui faut remettre quand l&apos;Entity n&apos;est pas affecté par un effet spécial.
+- Le Current, c&apos;est la valeur qu&apos;on modifie en cas d&apos;effet spécial (un slow par exemple).
+- Donc, si megaman a 1 d&apos;Armor, et qu&apos;il &quot;equipe&quot; une armure de +2, le Base passe a 3.
+- Si megaman se fait lancer un sort qui diminue l&apos;armure, le currentArmor descend et remonte à la fin du sort.</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>660.0</double> 
+     <double>360.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode3"/> 
+   <object idref="ClassNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode4"/> 
+   <object idref="ClassNode1"/> 
+  </void> 
+ </object> 
+</java> 
