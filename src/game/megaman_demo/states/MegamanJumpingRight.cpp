@@ -9,6 +9,7 @@
 #include "MegamanStandingRight.h"
 #include "MegamanJumpingLeft.h"
 #include "MegamanRunningRight.h"
+#include "MegamanHitRight.h"
 #include "Bitmap.h"
 #include "Sprite.h"
 #include "Megaman.h"

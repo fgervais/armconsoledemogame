@@ -10,6 +10,7 @@
 #include "MegamanSlidingRight.h"
 #include "MegamanSlidingLeft.h"
 #include "MegamanStandingRight.h"
+#include "MegamanHitRight.h"
 #include "Bitmap.h"
 #include "Megaman.h"
 #include "Physics.h"

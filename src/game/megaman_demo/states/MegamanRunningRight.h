@@ -20,6 +20,7 @@ public:
 	virtual void stopRunning(Megaman*);
 	virtual void shot(Megaman*);
 	virtual void slide(Megaman*);
+	virtual void hit(Megaman*);
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);
 
