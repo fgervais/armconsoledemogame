@@ -51,6 +51,7 @@ public:
 	void stopSliding();
 	void shot();
 	void slide();
+	void hit();
 
 	// Counter functions
 	uint32_t getCounter() { return counter; };

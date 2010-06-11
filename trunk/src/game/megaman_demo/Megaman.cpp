@@ -98,6 +98,7 @@ void Megaman::collideWith(Megaman*) {
 void Megaman::collideWith(Metool*) {
 	//Debug::writeLine("Megaman collided with Metool");
 	//LPC2478::delay(1000000);
+	this->hit();
 }
 
 /**
@@ -151,4 +152,8 @@ void Megaman::shot() {
  */
 void Megaman::slide() {
 	currentState->slide(this);
+}
+
+void Megaman::hit() {
+	currentState->hit(this);
 }
