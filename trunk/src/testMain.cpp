@@ -7,12 +7,9 @@
 
 #include "Engine.h"
 #include <iostream>
-using namespace std;
-
-//#include "megaman.h"
-//#include "megaman_running.h"
-
 #include <stdint.h>
+
+using namespace std;
 
 int main() {
 	//------ Engine Test
