@@ -8,6 +8,7 @@
 #include "LifeGauge.h"
 #include "Environment.h"
 #include "LifeGaugeState.h"
+#include "LifeUnity.h"
 #include "VisibleArea.h"
 #include <iostream>
 using namespace std;
@@ -18,9 +19,13 @@ LifeGauge::LifeGauge(LifeGaugeState* initialState, Environment* environment) : S
 	//this->initialState = initialState;
 	this->currentState = initialState;
 
+	this->unity = new LifeUnity*[30];
+
 	// FIXME Unsafe?
-	unity = new Bitmap("src/display/interface/LifeGauge/unity.bmp");
-	this->currentState->initialize(this);
+
+	for(uint32_t i=0; i < 30; i++) {
+		this->unity[i] = (new LifeUnity(3,1,new Bitmap("src/display/interface/LifeGauge/unity.bmp"),environment));
+	}
 }
 
 LifeGauge::~LifeGauge() {
@@ -53,18 +58,16 @@ void LifeGauge::update() {
 void LifeGauge::render(SDL_Surface* sdl_Surface) {
 	Sprite::render(sdl_Surface);
 
-	//Make a temporary rectangle to hold the offsets
-	SDL_Rect offset;
-
-	//Give the offsets to the rectangle
-	offset.x = 605;
-	offset.y = 50;
-
-	//Blit the surface
-	SDL_BlitSurface( unity->getData(), NULL, sdl_Surface, &offset );
+	for(uint32_t i=0; i < this->getLinkedSprite()->getCurrentHP(); i++) {
+		this->getUnity(i)->render(sdl_Surface, offsetX+4, offsetY+((this->getLinkedSprite()->getMaxHP()-1-i)*2+2));
+	}
 }
 
-void LifeGauge::linkTo(Sprite* sprite) {
+LifeUnity * LifeGauge::getUnity(uint32_t num) {
+	return unity[num];
+}
+
+void LifeGauge::linkTo(Megaman* sprite) {
 	this->hero = sprite;
 }
 

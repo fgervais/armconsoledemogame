@@ -6,6 +6,7 @@
  */
 
 #include "MegamanJumpingRight.h"
+#include "MegamanJumpingRightShot.h"
 #include "MegamanStandingRight.h"
 #include "MegamanJumpingLeft.h"
 #include "MegamanRunningRight.h"
@@ -78,6 +79,10 @@ void MegamanJumpingRight::runRight(Megaman* sprite) {
 		sprite->setVelocityX(6);
 }
 
+void MegamanJumpingRight::shot(Megaman* sprite) {
+	sprite->setState(MegamanJumpingRightShot::getInstance());
+}
+
 void MegamanJumpingRight::stopRunning(Megaman* sprite) {
 	sprite->setVelocityX(0);
 }
@@ -88,12 +93,16 @@ void MegamanJumpingRight::stopJumping(Megaman* sprite) {
 		sprite->setVelocityY(0);
 }
 
+void MegamanJumpingRight::hit(Megaman* sprite) {
+	sprite->setState(MegamanHitRight::getInstance());
+}
+
 void MegamanJumpingRight::initialize(Megaman* sprite) {
 	if(sprite->getVelocityY() >= 0) {
 		// If we are falling, we should start rendering at frame 3
 		sprite->setCurrentFrame(3);
 	}
-	else {
+	else if(sprite->isOnGround()) {
 		Mix_PlayChannel( -1, sprite->getJumpSoundFX()->getData(), 0 );
 		//Audio::playAsync(sprite->getJumpSoundFX());
 	}

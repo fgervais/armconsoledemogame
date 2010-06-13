@@ -10,6 +10,7 @@
 #include "MegamanRunningLeft.h"
 #include "MegamanJumpingRight.h"
 #include "MegamanSlidingRight.h"
+#include "MegamanHitRight.h"
 #include "Sprite.h"
 #include "Megaman.h"
 #include "Bitmap.h"
@@ -47,6 +48,10 @@ void MegamanStandingRight::jump(Megaman* sprite) {
 
 void MegamanStandingRight::slide(Megaman* sprite) {
 	sprite->setState(MegamanSlidingRight::getInstance());
+}
+
+void MegamanStandingRight::hit(Megaman* sprite) {
+	sprite->setState(MegamanHitRight::getInstance());
 }
 
 void MegamanStandingRight::runLeft(Megaman* sprite) {

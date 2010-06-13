@@ -9,6 +9,7 @@
 #include "MegamanStandingLeft.h"
 #include "MegamanJumpingRight.h"
 #include "MegamanRunningLeft.h"
+#include "MegamanHitLeft.h"
 #include "Bitmap.h"
 #include "Megaman.h"
 #include "Physics.h"
@@ -86,6 +87,10 @@ void MegamanJumpingLeft::stopJumping(Megaman* sprite) {
 	// Check if the sprite is not falling but jumping.
 	if(sprite->getVelocityY() < 0)
 		sprite->setVelocityY(0);
+}
+
+void MegamanJumpingLeft::hit(Megaman* sprite) {
+	sprite->setState(MegamanHitLeft::getInstance());
 }
 
 void MegamanJumpingLeft::initialize(Megaman* sprite) {

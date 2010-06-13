@@ -31,8 +31,6 @@ LifeGaugeState* LifeGaugeNormal::getInstance() {
 		Bitmap** animationMasks = new Bitmap*[1];
 		animationMasks[0] = new Bitmap("src/display/interface/LifeGauge/mask1.bmp");
 
-		Bitmap* unity = new Bitmap("src/display/interface/LifeGauge/unity.bmp");
-
 		instance = new LifeGaugeNormal(14, 64, animationFrames, 1, animationMasks);
 	}
 	//instance->reset();
