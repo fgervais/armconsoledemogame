@@ -63,14 +63,17 @@ void Engine::start() {
 
 	// Infinite game loop
 	cout << "Starting the update and render loop" << endl;
-	uint32_t counter = 200;
+	// UNCOMMENT FOR ROUTINE
+	// uint32_t counter = 200;
 
 	//while(1) {
 	while (quit == 0) {
 		// Switch to the other video page
 		currentPage ^= 1;
 
-		// counter for routine, keep it only if you have a routine that use it.
+		/* counter for routine, keep it only if you have a routine that use it.
+		 * UNCOMMENT FOR ROUTINE
+		 */
 //		if (counter > 0) {
 //			counter--;
 //		}
