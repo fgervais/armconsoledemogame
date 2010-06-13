@@ -57,6 +57,12 @@ public:
 	uint32_t getCounter() { return counter; };
 	void setCounter(uint32_t num) { counter = num; };
 	void incCounter() { counter++; };
+
+	// HP functions
+	uint32_t getCurrentHP()	{ return currentHP; };
+	uint32_t getMaxHP()	{ return maxHP; };
+	void setCurrentHP(uint32_t num) { currentHP = num; };
+
 private:
 	// Current state
 	//MegamanState* initialState;
@@ -71,6 +77,8 @@ private:
 	// Buster max and current amount on the screen
 	static const uint32_t maxBusterNum = 3;
 	uint32_t currentBusterNum;
+	uint32_t currentHP;
+	uint32_t maxHP;
 };
 
 #endif /* MEGAMAN_H_ */

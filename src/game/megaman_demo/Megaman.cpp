@@ -20,6 +20,8 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
+	this->currentHP = 30;
+	this->maxHP = 30;
 
 	// Initialize and load sound effects
 	if(jumpSoundFX == 0) {
@@ -99,6 +101,7 @@ void Megaman::collideWith(Metool*) {
 	//Debug::writeLine("Megaman collided with Metool");
 	//LPC2478::delay(1000000);
 	this->hit();
+	this->setCurrentHP(this->getCurrentHP()-3);
 }
 
 /**

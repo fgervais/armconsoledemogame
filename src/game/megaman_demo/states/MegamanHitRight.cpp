@@ -27,18 +27,32 @@ MegamanHitRight::~MegamanHitRight() {
 
 MegamanState* MegamanHitRight::getInstance() {
 	if(instance == 0) {
-		Bitmap** animationFrames = new Bitmap*[4];
+		Bitmap** animationFrames = new Bitmap*[11];
 		animationFrames[0] = new Bitmap("src/display/state/MegamanHitRight/1.bmp");
 		animationFrames[1] = new Bitmap("src/display/state/MegamanHitRight/2.bmp");
 		animationFrames[2] = new Bitmap("src/display/state/MegamanHitRight/3.bmp");
 		animationFrames[3] = new Bitmap("src/display/state/MegamanHitRight/4.bmp");
+		animationFrames[4] = new Bitmap("src/display/state/MegamanHitRight/5.bmp");
+		animationFrames[5] = new Bitmap("src/display/state/MegamanHitRight/6.bmp");
+		animationFrames[6] = new Bitmap("src/display/state/MegamanHitRight/7.bmp");
+		animationFrames[7] = new Bitmap("src/display/state/MegamanHitRight/8.bmp");
+		animationFrames[8] = new Bitmap("src/display/state/MegamanHitRight/9.bmp");
+		animationFrames[9] = new Bitmap("src/display/state/MegamanHitRight/10.bmp");
+		animationFrames[10] = new Bitmap("src/display/state/MegamanHitRight/11.bmp");
 
-		Bitmap** animationMasks = new Bitmap*[4];
+		Bitmap** animationMasks = new Bitmap*[11];
 		animationMasks[0] = new Bitmap("src/display/state/MegamanHitRight/mask1.bmp");
 		animationMasks[1] = new Bitmap("src/display/state/MegamanHitRight/mask2.bmp");
 		animationMasks[2] = new Bitmap("src/display/state/MegamanHitRight/mask3.bmp");
 		animationMasks[3] = new Bitmap("src/display/state/MegamanHitRight/mask4.bmp");
-		instance = new MegamanHitRight(32, 48, animationFrames, 4, animationMasks);
+		animationMasks[4] = new Bitmap("src/display/state/MegamanHitRight/mask5.bmp");
+		animationMasks[5] = new Bitmap("src/display/state/MegamanHitRight/mask6.bmp");
+		animationMasks[6] = new Bitmap("src/display/state/MegamanHitRight/mask7.bmp");
+		animationMasks[7] = new Bitmap("src/display/state/MegamanHitRight/mask8.bmp");
+		animationMasks[8] = new Bitmap("src/display/state/MegamanHitRight/mask9.bmp");
+		animationMasks[9] = new Bitmap("src/display/state/MegamanHitRight/mask10.bmp");
+		animationMasks[10] = new Bitmap("src/display/state/MegamanHitRight/mask11.bmp");
+		instance = new MegamanHitRight(32, 48, animationFrames, 11, animationMasks);
 	}
 	//instance->reset();
 	return instance;

@@ -11,6 +11,7 @@
 #include "MegamanRunningRight.h"
 #include "MegamanStandingLeft.h"
 #include "MegamanSlidingLeft.h"
+#include "MegamanHitLeft.h"
 #include "Bitmap.h"
 #include "Megaman.h"
 #include "Physics.h"
@@ -83,6 +84,10 @@ void MegamanRunningLeft::shot(Megaman* sprite) {
 
 void MegamanRunningLeft::slide(Megaman* sprite) {
 	sprite->setState(MegamanSlidingLeft::getInstance());
+}
+
+void MegamanRunningLeft::hit(Megaman* sprite) {
+	sprite->setState(MegamanHitLeft::getInstance());
 }
 
 void MegamanRunningLeft::initialize(Megaman* sprite) {

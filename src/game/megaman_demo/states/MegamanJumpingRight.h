@@ -17,6 +17,8 @@ public:
 	static MegamanState* getInstance();
 
 	// Base class function override
+	virtual void hit(Megaman*);
+	virtual void shot(Megaman*);
 	virtual void runLeft(Megaman*);
 	virtual void runRight(Megaman*);
 	virtual void stopRunning(Megaman*);
