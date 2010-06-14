@@ -27,6 +27,7 @@ GameLevel::~GameLevel() {
 }
 
 void GameLevel::build() {
+	// TODO change the code of that function to load level from a file
 	std::cout << "Entering GameLevel build function" << endl;
 
 	// FIXME that does nothing and i don't know why it was there
