@@ -1,5 +1,5 @@
 #summary This page will contains all the documentation needed to successfully develop a game on Francois Gervais's SNES like console (AKA the GreenBox).
-#labels Phase-Requirements
+#labels Phase-Requirements,Phase-Implementation
 
 = Introduction =
 
@@ -10,6 +10,12 @@ Update, the docs for the windows Setup is now available as a wiki and as files o
 *IMPORTANT*
 <br />
 There are some constraint to follow for the project to be portable to the console.
-  * No _int_, Use *uint32`_`t*
-  * No _String_ (not even functions in the string library), Use *char`*`*
-  * No _boolean_! use *uint8`_`t (0,1)*
+  * Data types
+    * No _int_, Use *uintX`_`t* (where X can be 32, 16 or 8)
+      * For _signed integer_, use *intX`_`t* (where X can be 32, 16 or 8)
+    * No _String_ (not even functions in the string library), Use *char`*`*
+    * No _boolean_, use *uint8`_`t (0,1)*
+  * Prohibited librairies
+    * String
+    * libstd++
+      * No _ifstream/ofstream_
