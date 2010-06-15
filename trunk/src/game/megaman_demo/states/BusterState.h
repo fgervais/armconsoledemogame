@@ -21,6 +21,7 @@ public:
 
 	virtual void update(Buster*) {}
 	virtual void initialize(Buster*) {}
+
 };
 
 #endif /* BUSTERSTATE_H_ */

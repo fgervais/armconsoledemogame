@@ -140,7 +140,7 @@ void Sprite::render(SDL_Surface* sdl_Surface) {
 	//Render all the children
 	if(this->children != 0) {
 		for(uint32_t i=0; i<childLimit; i++) {
-			if(children[i] != 0)
+			if(children[i] != 0 && !children[i]->IsOffScreen())
 				children[i]->getState()->render(children[i], sdl_Surface);
 		}
 	}

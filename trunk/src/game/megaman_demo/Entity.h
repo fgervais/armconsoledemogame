@@ -34,6 +34,8 @@ public:
 	void incCounter(State*);
 	void decCounter(State*);
 
+
+
 	// Attributes handling
 	uint32_t getMaxHP() { return maxHP; };
 	void setMaxHP(uint32_t maxHP) { this->maxHP = maxHP; };
@@ -57,6 +59,7 @@ public:
 
 	uint8_t isWalkable() { return walkable; };
 
+
 	// Base class override
 	virtual void update();
 
@@ -77,6 +80,7 @@ protected:
 	uint32_t currentArmorValue;
 	uint32_t baseArmorValue;
 	uint8_t walkable;
+
 
 };
 

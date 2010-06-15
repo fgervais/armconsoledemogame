@@ -12,6 +12,8 @@
 
 #include <stdint.h>
 
+using namespace std;
+
 class Environment;
 class MegamanState;
 class VideoMemory;
@@ -35,6 +37,9 @@ public:
 	Wave* getJumpSoundFX() { return jumpSoundFX; }
 	Wave* getLandSoundFX() { return landSoundFX; }
 
+
+	uint32_t getCurrentWeapon() {return currentWeapon;}
+
 	// Buster related variables get, decrement and increment
 	uint32_t getMaxBusterNum() { return maxBusterNum; };
 	uint32_t getCurrentBusterNum() { return currentBusterNum; };
@@ -57,6 +62,7 @@ public:
 	void shot();
 	void slide();
 	void hit();
+	void changeWeapon();
 
 
 
@@ -76,6 +82,9 @@ private:
 
 	uint32_t baseJumpPower;
 	uint32_t currentJumpPower;
+
+	uint32_t currentWeapon;
+
 };
 
 #endif /* MEGAMAN_H_ */

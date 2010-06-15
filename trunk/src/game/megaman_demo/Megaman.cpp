@@ -43,6 +43,9 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(
 
 	// Unsafe?
 	this->currentState->initialize(this);
+
+	//set Weapons in the vector
+
 }
 
 Megaman::~Megaman() {
@@ -100,6 +103,11 @@ void Megaman::collideWith(Metool* metool) {
 		this->setCurrentHP(this->getCurrentHP()-metool->getCurrentDamage());
 	else
 		this->setCurrentHP(0);
+}
+
+void Megaman::changeWeapon()	{
+	//2 is the current number of weapon, might want to change the way this is handled some day.
+	currentWeapon = (currentWeapon+1)%2;
 }
 
 /**

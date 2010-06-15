@@ -51,6 +51,8 @@ public:
 	virtual void update() =0;
 	virtual void render(SDL_Surface*);
 
+	uint8_t IsOffScreen() {return offScreen;}
+
 	uint8_t isOnGround();
 
 	// Collision functions
@@ -65,6 +67,8 @@ protected:
 	uint32_t positionY;
 
 	uint32_t childLimit;
+
+	uint8_t offScreen;
 
 	Environment* environment;
 

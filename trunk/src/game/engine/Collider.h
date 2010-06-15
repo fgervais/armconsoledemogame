@@ -10,7 +10,7 @@
 
 class Megaman;
 class Metool;
-class Buster;
+class Entity;
 
 /**
  * Something that can collide with something else.
@@ -34,7 +34,7 @@ public:
 	virtual void collideWith(Collider*) = 0;
 	virtual void collideWith(Megaman*) {}
 	virtual void collideWith(Metool*) {}
-	virtual void collideWith(Buster*) {}
+	virtual void collideWith(Entity*) {}
 };
 
 #endif /* COLLIDER_H_ */

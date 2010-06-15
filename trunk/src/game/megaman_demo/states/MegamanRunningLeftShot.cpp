@@ -14,6 +14,8 @@
 #include "Megaman.h"
 #include "Buster.h"
 #include "BusterShotLeft.h"
+#include "ThrowingAxe.h"
+#include "ThrowingAxeShotLeft.h"
 #include "Physics.h"
 #include "Environment.h"
 #include <iostream>
@@ -97,12 +99,29 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 		sprite->setVelocity(-sprite->getCurrentSpeed(), 0);
 	}
 
+	uint32_t currentWeapon = sprite->getCurrentWeapon();
 	//Create a new buster, gives him his spawning position and add it to the parent sprite
-	Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
-	cout << "Buster created" << endl;
-	buster->enableCollisionCheck();
+	switch(currentWeapon) {
 
-	sprite->addChild(buster);
+		case 1 :
+		{
+			ThrowingAxe* buster = new ThrowingAxe(ThrowingAxeShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			buster->enableCollisionCheck();
+			sprite->addChild(buster);
+			break;
+		}
+		case 0 :
+		{
+			Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			buster->enableCollisionCheck();
+			sprite->addChild(buster);
+			break;
+		}
+		}
+	cout << "Buster created" << endl;
+
+
+
 	sprite->incCurrentBusterNum();
 }
 

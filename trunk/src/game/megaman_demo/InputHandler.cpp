@@ -40,6 +40,13 @@ uint8_t InputHandler::handleInput(Environment* environment) {
 				case SDLK_x:
 					((Megaman*) environment->getHero())->jump();
 					break;
+				case SDLK_a :
+					{
+					((Megaman*) environment->getHero())->changeWeapon();
+					cout << "current weapon :"<< ((Megaman*) environment->getHero())->getCurrentWeapon()<< endl;
+
+					break;
+					}
 				case SDLK_z:
 					((Megaman*) environment->getHero())->slide();
 					break;
