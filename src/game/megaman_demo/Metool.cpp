@@ -13,6 +13,7 @@
 #include "MetoolWalkingRight.h"
 #include <iostream>
 //#include "LPC2478.h"
+using namespace std;
 
 Metool::Metool(MetoolState* initialState, Environment* environment) : Entity(initialState, environment) {
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
@@ -71,8 +72,8 @@ void Metool::collideWith(Metool*) {
 	//LPC2478::delay(1000000);
 }
 
-void Metool::collideWith(Buster* buster) {
-	//cout << "Metool collided with Buster";
+void Metool::collideWith(Entity* buster) {
+	cout << "Metool collided with Buster";
 	//LPC2478::delay(1000000);
 	if(this->getCurrentHP() > buster->getCurrentDamage())
 		this->setCurrentHP(this->getCurrentHP()-buster->getCurrentDamage());
@@ -82,3 +83,5 @@ void Metool::collideWith(Buster* buster) {
 		environment->deactivate(this);
 	}
 }
+
+

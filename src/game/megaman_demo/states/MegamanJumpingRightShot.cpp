@@ -13,6 +13,8 @@
 #include "MegamanHitRight.h"
 #include "Bitmap.h"
 #include "Megaman.h"
+#include "ThrowingAxe.h"
+#include "ThrowingAxeShotRight.h"
 #include "Buster.h"
 #include "BusterShotRight.h"
 #include "Physics.h"
@@ -100,10 +102,27 @@ void MegamanJumpingRightShot::initialize(Megaman* sprite) {
 		//Audio::playAsync(sprite->getJumpSoundFX());
 	}
 
-	//Create a new buster, gives him his spawning position and add it to the parent sprite
-	Buster* buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+	uint32_t currentWeapon = sprite->getCurrentWeapon();
+	//Create a new bullet, depending on the equipped weapon, gives it it's spawning position and add it to the parent sprite
+	switch(currentWeapon) {
+
+		case 1 :
+		{
+			ThrowingAxe* buster = new ThrowingAxe(ThrowingAxeShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			buster->enableCollisionCheck();
+			sprite->addChild(buster);
+			break;
+		}
+		case 0 :
+		{
+			Buster* buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			buster->enableCollisionCheck();
+			sprite->addChild(buster);
+			break;
+		}
+		}
 	cout << "Buster created" << endl;
-	sprite->addChild(buster);
+
 	sprite->incCurrentBusterNum();
 }
 
