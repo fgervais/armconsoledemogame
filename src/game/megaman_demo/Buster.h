@@ -8,7 +8,7 @@
 #ifndef BUSTER_H_
 #define BUSTER_H_
 
-#include "Sprite.h"
+#include "Entity.h"
 
 #include <stdint.h>
 
@@ -18,7 +18,7 @@ class VideoMemory;
 class Collider;
 class Wave;
 
-class Buster : public Sprite {
+class Buster : public Entity {
 public:
 	Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY);
 	virtual ~Buster();

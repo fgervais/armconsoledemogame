@@ -6,6 +6,7 @@
  */
 
 #include "Metool.h"
+#include "Buster.h"
 #include "MetoolState.h"
 #include "Environment.h"
 #include "MetoolWalkingLeft.h"
@@ -13,10 +14,17 @@
 #include <iostream>
 //#include "LPC2478.h"
 
-Metool::Metool(MetoolState* initialState, Environment* environment) : Sprite(initialState, environment) {
+Metool::Metool(MetoolState* initialState, Environment* environment) : Entity(initialState, environment) {
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
+
+	setMaxHP(2);
+	setCurrentHP(2);
+	setBaseSpeed(4);
+	setCurrentSpeed(4);
+	setBaseDamage(3);
+	setCurrentDamage(3);
 
 	// Unsafe?
 	this->currentState->initialize(this);
@@ -63,8 +71,14 @@ void Metool::collideWith(Metool*) {
 	//LPC2478::delay(1000000);
 }
 
-void Metool::collideWith(Buster*) {
+void Metool::collideWith(Buster* buster) {
 	//cout << "Metool collided with Buster";
 	//LPC2478::delay(1000000);
-	environment->deactivate(this);
+	if(this->getCurrentHP() > buster->getCurrentDamage())
+		this->setCurrentHP(this->getCurrentHP()-buster->getCurrentDamage());
+	else
+	{
+		this->setCurrentHP(0);
+		environment->deactivate(this);
+	}
 }
