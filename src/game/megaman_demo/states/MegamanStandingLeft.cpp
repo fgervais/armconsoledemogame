@@ -41,7 +41,7 @@ MegamanState* MegamanStandingLeft::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanStandingLeft::jump(Megaman* sprite) {
-	sprite->setVelocityY(-8);
+	sprite->setVelocityY(-sprite->getCurrentJumpPower());
 	sprite->setState(MegamanJumpingLeft::getInstance());
 }
 

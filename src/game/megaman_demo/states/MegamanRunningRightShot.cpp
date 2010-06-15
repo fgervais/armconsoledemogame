@@ -66,7 +66,7 @@ MegamanState* MegamanRunningRightShot::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanRunningRightShot::jump(Megaman* sprite) {
-	sprite->setVelocityY(-8);
+	sprite->setVelocityY(-sprite->getCurrentJumpPower());
 	sprite->setState(MegamanJumpingRight::getInstance());
 }
 
@@ -94,7 +94,7 @@ void MegamanRunningRightShot::initialize(Megaman* sprite) {
 	else {
 		// This is the hard coded running speed
 		// could be (should be?) somewhere defined else?
-		sprite->setVelocity(6, 0);
+		sprite->setVelocity(sprite->getCurrentSpeed(), 0);
 	}
 
 	//Create a new buster, gives him his spawning position and add it to the parent sprite

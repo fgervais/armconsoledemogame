@@ -45,7 +45,7 @@ MegamanState* MegamanSlidingRight::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanSlidingRight::jump(Megaman* sprite) {
-	sprite->setVelocityY(-8);
+	sprite->setVelocityY(-sprite->getCurrentJumpPower());
 	sprite->setState(MegamanJumpingRight::getInstance());
 }
 
@@ -70,7 +70,7 @@ void MegamanSlidingRight::hit(Megaman* sprite) {
 }*/
 
 void MegamanSlidingRight::initialize(Megaman* sprite) {
-		sprite->setVelocity(12, 0);
+		sprite->setVelocity(sprite->getCurrentSpeed()*2, 0);
 }
 
 void MegamanSlidingRight::update(Megaman* sprite) {
@@ -80,12 +80,12 @@ void MegamanSlidingRight::update(Megaman* sprite) {
 	if(!sprite->isOnGround()) {
 		sprite->setState(MegamanJumpingRight::getInstance());
 	}
-	else if(sprite->getCounter() >= 10) {
+	else if(sprite->getCounter(this) >= 10) {
 		//sprite->setState(MegamanRunningRight::getInstance());
 		sprite->setState(MegamanStandingRight::getInstance());
 	}
 	else {
-		sprite->incCounter();
+		sprite->incCounter(this);
 	}
 
 }

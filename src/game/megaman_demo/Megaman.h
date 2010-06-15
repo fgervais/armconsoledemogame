@@ -8,7 +8,7 @@
 #ifndef MEGAMAN_H_
 #define MEGAMAN_H_
 
-#include "Sprite.h"
+#include "Entity.h"
 
 #include <stdint.h>
 
@@ -18,7 +18,7 @@ class VideoMemory;
 class Collider;
 class Wave;
 
-class Megaman : public Sprite {
+class Megaman : public Entity {
 public:
 	Megaman(MegamanState* initialState, Environment* environment);
 	virtual ~Megaman();
@@ -41,6 +41,11 @@ public:
 	void decCurrentBusterNum() { currentBusterNum--; };
 	void incCurrentBusterNum() { currentBusterNum++; };
 
+	uint32_t getBaseJumpPower() { return baseJumpPower; };
+	uint32_t getCurrentJumpPower() { return currentJumpPower; };
+	void setBaseJumpPower(uint32_t baseJumpPower) { this->baseJumpPower = baseJumpPower; };
+	void setCurrentJumpPower(uint32_t currentJumpPower) { this->currentJumpPower = currentJumpPower; };
+
 
 	// Action functions
 	void jump();
@@ -53,15 +58,7 @@ public:
 	void slide();
 	void hit();
 
-	// Counter functions
-	uint32_t getCounter() { return counter; };
-	void setCounter(uint32_t num) { counter = num; };
-	void incCounter() { counter++; };
 
-	// HP functions
-	uint32_t getCurrentHP()	{ return currentHP; };
-	uint32_t getMaxHP()	{ return maxHP; };
-	void setCurrentHP(uint32_t num) { currentHP = num; };
 
 private:
 	// Current state
@@ -72,13 +69,13 @@ private:
 	static Wave* jumpSoundFX;
 	static Wave* landSoundFX;
 
-	uint32_t counter;
 
 	// Buster max and current amount on the screen
 	static const uint32_t maxBusterNum = 3;
 	uint32_t currentBusterNum;
-	uint32_t currentHP;
-	uint32_t maxHP;
+
+	uint32_t baseJumpPower;
+	uint32_t currentJumpPower;
 };
 
 #endif /* MEGAMAN_H_ */

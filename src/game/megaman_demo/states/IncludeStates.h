@@ -25,6 +25,7 @@
 #include "MegamanRunningRightShot.h"
 
 #include "MegamanHitRight.h"
+#include "MegamanHitLeft.h"
 
 #include "MegamanJumpingLeft.h"
 #include "MegamanJumpingRight.h"
