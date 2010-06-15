@@ -8,7 +8,7 @@
 #ifndef METOOL_H_
 #define METOOL_H_
 
-#include "Sprite.h"
+#include "Entity.h"
 
 #include <stdint.h>
 
@@ -17,7 +17,7 @@ class MetoolState;
 class Environment;
 class State;
 
-class Metool: public Sprite {
+class Metool: public Entity {
 public:
 	Metool(MetoolState* initialState, Environment* environment);
 	virtual ~Metool();

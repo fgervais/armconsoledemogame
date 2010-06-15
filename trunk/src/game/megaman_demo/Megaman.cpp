@@ -8,6 +8,7 @@
 #include "Megaman.h"
 #include "Environment.h"
 #include "MegamanState.h"
+#include "Metool.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
@@ -90,11 +91,15 @@ void Megaman::collideWith(Megaman*) {
 	//LPC2478::delay(1000000);
 }
 
-void Megaman::collideWith(Metool*) {
+void Megaman::collideWith(Metool* metool) {
 	//Debug::writeLine("Megaman collided with Metool");
 	//LPC2478::delay(1000000);
 	this->hit();
-	this->setCurrentHP(this->getCurrentHP()-3);
+
+	if(this->getCurrentHP() > metool->getCurrentDamage())
+		this->setCurrentHP(this->getCurrentHP()-metool->getCurrentDamage());
+	else
+		this->setCurrentHP(0);
 }
 
 /**

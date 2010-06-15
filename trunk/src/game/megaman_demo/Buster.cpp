@@ -6,6 +6,7 @@
  */
 
 #include "Buster.h"
+#include "Metool.h"
 #include "BusterState.h"
 #include "Environment.h"
 #include "Megaman.h"
@@ -16,13 +17,19 @@
 using namespace std;
 //#include "LPC2478.h"
 
-Buster::Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Sprite(initialState, environment) {
+Buster::Buster(BusterState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Entity(initialState, environment) {
 
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
 	this->setPositionX(positionX);
 	this->setPositionY(positionY+15);
+
+	setBaseDamage(1);
+	setCurrentDamage(1);
+	setBaseSpeed(18);
+	setCurrentSpeed(18);
+
 
 	// Unsafe?
 	this->currentState->initialize(this);
@@ -80,9 +87,12 @@ void Buster::collideWith(Megaman*) {
 	//LPC2478::delay(1000000);
 }
 
-void Buster::collideWith(Metool*) {
+void Buster::collideWith(Metool* metool) {
 	//cout << "Buster collided with Metool";
 	//LPC2478::delay(1000000);
+	environment->deactivate(this);
+	environment->getHero()->removeChild(this);
+	((Megaman*)environment->getHero())->decCurrentBusterNum();
 }
 
 

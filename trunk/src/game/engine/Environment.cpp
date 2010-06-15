@@ -271,6 +271,7 @@ void Environment::checkCollision(Sprite* sprite) {
 			// Do not check a sprite with itself
 			if(sprite != possibleCollider) {
 
+				//TODO add collision width and height in entity
 				// This algorithme is comming from gamedev.net
 				left1 = sprite->getPositionX();
 				left2 = possibleCollider->getPositionX();

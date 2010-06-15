@@ -54,7 +54,7 @@ MetoolState* MetoolWalkingLeft::getInstance() {
 void MetoolWalkingLeft::initialize(Metool* sprite) {
 	// This is the hard coded running speed
 	// could be (should be?) somewhere defined else?
-	sprite->setVelocity(-4, 0);
+	sprite->setVelocity(-sprite->getCurrentSpeed(), 0);
 }
 
 void MetoolWalkingLeft::update(Metool* sprite) {
