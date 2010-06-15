@@ -16,12 +16,16 @@ using namespace std;
 Wave* Megaman::jumpSoundFX = 0;
 Wave* Megaman::landSoundFX = 0;
 
-Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(initialState, environment) {
+Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(initialState, environment) {
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
 	this->currentState = initialState;
-	this->currentHP = 30;
-	this->maxHP = 30;
+	setCurrentHP(30);
+	setMaxHP(30);
+	setBaseSpeed(6);
+	setCurrentSpeed(6);
+	setBaseJumpPower(8);
+	setCurrentJumpPower(8);
 
 	// Initialize and load sound effects
 	if(jumpSoundFX == 0) {
@@ -33,18 +37,8 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Sprite(
 		landSoundFX->load();
 	}
 
-	//Initialize every possible Megaman states
-	/*megamanJumpingLeft;
-	megamanJumpingRight;
-	megamanRunningRight;
-	megamanRunningLeft;
-	megamanStandingRight;
-	megamanStandingLeft;*/
-
 	//Initalize the buster number
 	currentBusterNum = 0;
-
-	counter = 0;
 
 	// Unsafe?
 	this->currentState->initialize(this);
@@ -55,19 +49,18 @@ Megaman::~Megaman() {
 }
 
 void Megaman::setState(MegamanState* state)  {
-	// Reset the counter
-	setCounter(0);
-
 	this->currentState = state;
 
 	// Do state entry initialization on the sprite
 	state->initialize(this);
 
 	// Send state to the superclass
-	Sprite::setState(state);
+	Entity::setState(state);
+
 }
 
 void Megaman::update() {
+
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
 	if(collisionCheckEnabled) {

@@ -66,7 +66,7 @@ MegamanState* MegamanRunningLeft::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanRunningLeft::jump(Megaman* sprite) {
-	sprite->setVelocityY(-8);
+	sprite->setVelocityY(-sprite->getCurrentJumpPower());
 	sprite->setState(MegamanJumpingLeft::getInstance());
 }
 
@@ -99,7 +99,7 @@ void MegamanRunningLeft::initialize(Megaman* sprite) {
 	else {
 		// This is the hard coded running speed
 		// could be (should be?) somewhere defined else?
-		sprite->setVelocity(-6, 0);
+		sprite->setVelocity(-sprite->getCurrentSpeed(), 0);
 	}
 }
 

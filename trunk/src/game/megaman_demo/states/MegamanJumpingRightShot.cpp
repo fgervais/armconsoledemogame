@@ -67,14 +67,14 @@ void MegamanJumpingRightShot::runLeft(Megaman* sprite) {
 	}
 	else if(sprite->getVelocityX() == 0)
 	{
-		sprite->setVelocityX(-6);
+		sprite->setVelocityX(-sprite->getCurrentSpeed());
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
 }
 
 void MegamanJumpingRightShot::runRight(Megaman* sprite) {
 	if(sprite->getVelocityX() == 0)
-		sprite->setVelocityX(6);
+		sprite->setVelocityX(sprite->getCurrentSpeed());
 }
 
 void MegamanJumpingRightShot::stopRunning(Megaman* sprite) {

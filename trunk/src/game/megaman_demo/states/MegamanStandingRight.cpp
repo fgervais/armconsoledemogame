@@ -14,6 +14,7 @@
 #include "Sprite.h"
 #include "Megaman.h"
 #include "Bitmap.h"
+#include <iostream>
 
 MegamanState* MegamanStandingRight::instance = 0;
 
@@ -42,7 +43,7 @@ MegamanState* MegamanStandingRight::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void MegamanStandingRight::jump(Megaman* sprite) {
-	sprite->setVelocityY(-8);
+	sprite->setVelocityY(-sprite->getCurrentJumpPower());
 	sprite->setState(MegamanJumpingRight::getInstance());
 }
 

@@ -95,6 +95,7 @@ void GameLevel::build() {
 	MegamanRunningLeftShot::getInstance();
 	MegamanRunningRightShot::getInstance();
 	MegamanHitRight::getInstance();
+	MegamanHitLeft::getInstance();
 
 	Megaman* hero = new Megaman(MegamanStandingRight::getInstance(), this);
 	hero->enableCollisionCheck();
