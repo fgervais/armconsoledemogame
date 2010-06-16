@@ -27,13 +27,29 @@ ThrowingAxeShotLeft::~ThrowingAxeShotLeft() {
 
 ThrowingAxeState* ThrowingAxeShotLeft::getInstance() {
 	if(instance == 0) {
-		Bitmap** animationFrames = new Bitmap*[1];
+		Bitmap** animationFrames = new Bitmap*[8];
 		animationFrames[0] = new Bitmap("src/display/state/ThrowingAxeShotLeft/1.bmp");
+		animationFrames[1] = new Bitmap("src/display/state/ThrowingAxeShotLeft/2.bmp");
+		animationFrames[2] = new Bitmap("src/display/state/ThrowingAxeShotLeft/3.bmp");
+		animationFrames[3] = new Bitmap("src/display/state/ThrowingAxeShotLeft/4.bmp");
+		animationFrames[4] = new Bitmap("src/display/state/ThrowingAxeShotLeft/5.bmp");
+		animationFrames[5] = new Bitmap("src/display/state/ThrowingAxeShotLeft/6.bmp");
+		animationFrames[6] = new Bitmap("src/display/state/ThrowingAxeShotLeft/7.bmp");
+		animationFrames[7] = new Bitmap("src/display/state/ThrowingAxeShotLeft/8.bmp");
 
-		Bitmap** animationMasks = new Bitmap*[1];
+
+		Bitmap** animationMasks = new Bitmap*[8];
 		animationMasks[0] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask1.bmp");
+		animationMasks[1] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask2.bmp");
+		animationMasks[2] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask3.bmp");
+		animationMasks[3] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask4.bmp");
+		animationMasks[4] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask5.bmp");
+		animationMasks[5] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask6.bmp");
+		animationMasks[6] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask7.bmp");
+		animationMasks[7] = new Bitmap("src/display/state/ThrowingAxeShotLeft/mask8.bmp");
 
-		instance = new ThrowingAxeShotLeft(17, 16, animationFrames, 1, animationMasks);
+
+		instance = new ThrowingAxeShotLeft(17, 16, animationFrames, 8, animationMasks);
 	}
 	//instance->reset();
 	return instance;
