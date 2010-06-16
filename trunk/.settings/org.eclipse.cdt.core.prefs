@@ -1,0 +1,5 @@
+#Sun May 30 16:48:24 EDT 2010
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1050670770=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<environment append\="true" appendContributed\="true">\r\n<variable delimiter\=";" name\="Path" operation\="replace" value\=";E\:\\cygwin\\bin;"/>\r\n</environment>\r\n
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.1171666611=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<environment append\="true" appendContributed\="true">\r\n<variable delimiter\=";" name\="Path" operation\="append" value\=";E\\cygwin\\bin;"/>\r\n</environment>\r\n
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.1424132855=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<environment append\="true" appendContributed\="true">\r\n<variable delimiter\=";" name\="Path" operation\="append" value\=";E\:\\cigwin\\bin;"/>\r\n</environment>\r\n

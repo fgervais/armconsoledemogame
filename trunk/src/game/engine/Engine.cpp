@@ -74,7 +74,7 @@ void Engine::start() {
 		// Switch to the other video page
 		currentPage ^= 1;
 
-		/* counter for routine, keep it only if you have a routine that use it.
+		/* counter for routine, keep it only if you have a routine that uses it.
 		 * UNCOMMENT FOR ROUTINE
 		 */
 //		if (counter > 0) {

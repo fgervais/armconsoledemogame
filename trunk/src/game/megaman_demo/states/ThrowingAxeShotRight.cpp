@@ -1,8 +1,8 @@
 /*
  * ThrowingAxeShotRight.cpp
  *
- *  Created on: 2010-06-07
- *      Author: Emile
+ *  Created on: 2010-06-14
+ *      Author: DUPA
  */
 
 #include "ThrowingAxeShotRight.h"

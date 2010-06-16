@@ -47,6 +47,9 @@ public:
 	void setBaseJumpPower(uint32_t baseJumpPower) { this->baseJumpPower = baseJumpPower; };
 	void setCurrentJumpPower(uint32_t currentJumpPower) { this->currentJumpPower = currentJumpPower; };
 
+	uint32_t getCount() {return count; }
+	uint32_t getPelletNum() {return pelletNum; }
+
 
 	// Action functions
 	void jump();
@@ -69,13 +72,19 @@ private:
 
 
 	// Buster max and current amount on the screen
-	static const uint32_t maxBusterNum = 3;
+	static const uint32_t maxBusterNum = 5;
 	uint32_t currentBusterNum;
+
+	//number of pellet each shot of the shotgun will generate
+	static const uint32_t pelletNum = 5;
 
 	uint32_t baseJumpPower;
 	uint32_t currentJumpPower;
 
 	uint32_t currentWeapon;
+
+	//this is a counter used for the pseudo-random, there might be a better way to do this
+	uint32_t count;
 
 };
 
