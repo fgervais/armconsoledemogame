@@ -44,7 +44,7 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(
 	// Unsafe?
 	this->currentState->initialize(this);
 
-	//set Weapons in the vector
+
 
 }
 
