@@ -17,10 +17,11 @@ class ShotgunState;
 class VideoMemory;
 class Collider;
 class Wave;
+class Random;
 
 class ShotgunPellet : public Entity {
 public:
-	ShotgunPellet(ShotgunState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY);
+	ShotgunPellet(ShotgunState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY, uint32_t initializer, uint32_t ini2);
 	virtual ~ShotgunPellet();
 
 	void setState(ShotgunState* state);
@@ -46,6 +47,8 @@ private:
 	// SoundFX
 	static Wave* ShotSoundFX;
 	static Wave* collideSoundFX;
+
+	Random* randomGen;
 
 };
 

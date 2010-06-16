@@ -76,7 +76,7 @@ private:
 	uint32_t currentBusterNum;
 
 	//number of pellet each shot of the shotgun will generate
-	static const uint32_t pelletNum = 5;
+	static const uint32_t pelletNum = 3;
 
 	uint32_t baseJumpPower;
 	uint32_t currentJumpPower;

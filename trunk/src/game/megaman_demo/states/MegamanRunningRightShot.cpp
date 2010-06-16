@@ -13,6 +13,8 @@
 #include "Bitmap.h"
 #include "Megaman.h"
 #include "Buster.h"
+#include "ShotgunPellet.h"
+#include "shotgunShotRight.h"
 #include "BusterShotRight.h"
 #include "ThrowingAxe.h"
 #include "ThrowingAxeShotRight.h"
@@ -101,6 +103,7 @@ void MegamanRunningRightShot::initialize(Megaman* sprite) {
 
 	uint32_t currentWeapon = sprite->getCurrentWeapon();
 	//Create a new buster, gives him his spawning position and add it to the parent sprite
+
 	switch(currentWeapon) {
 
 		case 1 :
@@ -108,6 +111,7 @@ void MegamanRunningRightShot::initialize(Megaman* sprite) {
 			ThrowingAxe* buster = new ThrowingAxe(ThrowingAxeShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
+			sprite->incCurrentBusterNum();
 			break;
 		}
 		case 0 :
@@ -115,12 +119,25 @@ void MegamanRunningRightShot::initialize(Megaman* sprite) {
 			Buster* buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
+			sprite->incCurrentBusterNum();
 			break;
+		}
+		case 2 :
+		{
+			for(uint32_t i=0; i<sprite->getPelletNum(); i++){
+
+
+				ShotgunPellet* buster = new ShotgunPellet(ShotgunShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY(), sprite->getCount(), (i+1)*1234);
+				buster->enableCollisionCheck();
+				sprite->addChild(buster);
+				sprite->incCurrentBusterNum();
+
+			}
 		}
 	}
 	cout << "Buster created" << endl;
 
-	sprite->incCurrentBusterNum();
+
 }
 
 void MegamanRunningRightShot::update(Megaman* sprite) {

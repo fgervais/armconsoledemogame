@@ -12,12 +12,13 @@
 #include "Megaman.h"
 #include "ShotgunShotLeft.h"
 #include "VisibleArea.h"
+#include "Random.h"
 //#include "ShotgunPelletShotRight.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
 
-ShotgunPellet::ShotgunPellet(ShotgunState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY) : Entity(initialState, environment) {
+ShotgunPellet::ShotgunPellet(ShotgunState* initialState, Environment* environment, uint32_t positionX, uint32_t positionY, uint32_t initializer, uint32_t ini2) : Entity(initialState, environment) {
 
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;
@@ -29,6 +30,22 @@ ShotgunPellet::ShotgunPellet(ShotgunState* initialState, Environment* environmen
 	setCurrentDamage(1);
 	setBaseSpeed(18);
 	setCurrentSpeed(18);
+
+	randomGen=new Random();
+
+	//the following lines are used to generate a direction to the pellet
+	uint32_t directionx = (randomGen->getRandom(ini2, initializer+ini2)%25)+10;
+	cout <<randomGen->getRandom(ini2, initializer+ini2)<< endl;
+	uint32_t directiony = randomGen->getRandom(directionx, ini2)%2;
+
+	//cout <<directionx<<"   "<<directiony<<endl;
+
+	if(directiony==0)
+		directiony=-1;
+
+	velocityX=directionx;
+	//each pellet has the same force
+	velocityY=(25-directionx)*directiony;
 
 
 	// Unsafe?
@@ -54,6 +71,7 @@ void ShotgunPellet::setState(ShotgunState* state)  {
 }
 
 void ShotgunPellet::update() {
+	//cout <<velocityX<<"   "<<velocityY<<endl;
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
 	VisibleArea* visibleArea = environment->getVisibleArea();
@@ -70,11 +88,12 @@ void ShotgunPellet::update() {
 
 	// if the shot is outside the screen
 	if(positionX <= visibleArea->x || positionX >= visibleArea->x + visibleArea->width ||
-				positionY <= visibleArea->y || positionY >= visibleArea->y + visibleArea->height)
+				positionY <= visibleArea->y || positionY >= visibleArea->y + visibleArea->height || this->isOnGround())
 	{
 		environment->deactivate(this);
 		environment->getHero()->removeChild(this);
 		((Megaman*)environment->getHero())->decCurrentBusterNum();
+		cout << "sur le sol"<<endl;
 	}
 }
 
@@ -88,7 +107,7 @@ void ShotgunPellet::collideWith(Megaman*) {
 }
 
 void ShotgunPellet::collideWith(Metool* metool) {
-	//cout << "ShotgunPellet collided with Metool";
+	cout << "ShotgunPellet collided with Metool"<<endl;
 	//LPC2478::delay(1000000);
 	environment->deactivate(this);
 	environment->getHero()->removeChild(this);

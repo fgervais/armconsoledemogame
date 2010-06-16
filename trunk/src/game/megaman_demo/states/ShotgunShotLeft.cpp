@@ -33,7 +33,7 @@ ShotgunState* ShotgunShotLeft::getInstance() {
 		Bitmap** animationMasks = new Bitmap*[1];
 		animationMasks[0] = new Bitmap("src/display/state/ShotgunShotLeft/mask1.bmp");
 
-		instance = new ShotgunShotLeft(17, 16, animationFrames, 1, animationMasks);
+		instance = new ShotgunShotLeft(4, 4, animationFrames, 1, animationMasks);
 	}
 	//instance->reset();
 	return instance;
@@ -47,9 +47,8 @@ void ShotgunShotLeft::initialize(ShotgunPellet* sprite) {
 		sprite->getCurrentFrame();
 	}
 	else {
-		// This is the hard coded Shot speed
-		// TODO could be (should be?) somewhere defined else?
-		sprite->setVelocity(-sprite->getCurrentSpeed(), -18);
+		// This is to get the sprite to actually shoot in front of him
+		sprite->setVelocity(-sprite->getVelocityX(), sprite->getVelocityY());
 	}
 }
 
@@ -63,8 +62,6 @@ void ShotgunShotLeft::update(ShotgunPellet* sprite) {
 		// a standing position
 		sprite->setCurrentFrame(0);
 	}
-	//gets the axe to fall
-	int32_t velocityY = sprite->getVelocityY() + sprite->getEnvironment()->getPhysics()->getGravitation();
-			sprite->setVelocityY(velocityY);
+
 
 }
