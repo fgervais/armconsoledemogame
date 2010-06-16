@@ -38,6 +38,9 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(
 	//Initalize the buster number
 	currentBusterNum = 0;
 
+
+	count=1;
+
 	// Unsafe?
 	this->currentState->initialize(this);
 
@@ -61,6 +64,8 @@ void Megaman::setState(MegamanState* state)  {
 }
 
 void Megaman::update() {
+
+	count++;
 
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
@@ -104,7 +109,7 @@ void Megaman::collideWith(Metool* metool) {
 
 void Megaman::changeWeapon()	{
 	//2 is the current number of weapon, might want to change the way this is handled some day.
-	currentWeapon = (currentWeapon+1)%2;
+	currentWeapon = (currentWeapon+1)%3;
 }
 
 /**

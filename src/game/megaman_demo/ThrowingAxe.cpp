@@ -1,8 +1,8 @@
 /*
  * ThrowingAxe.cpp
  *
- *  Created on: 2010-05-29
- *      Author: Basse
+ *  Created on: 2010-06-14
+ *      Author: DUPA
  */
 
 #include "ThrowingAxe.h"
@@ -11,6 +11,7 @@
 #include "Megaman.h"
 #include "ThrowingAxeShotLeft.h"
 #include "VisibleArea.h"
+#include "Random.h"
 //#include "BusterShotRight.h"
 #include <iostream>
 using namespace std;
@@ -25,6 +26,10 @@ ThrowingAxe::ThrowingAxe(ThrowingAxeState* initialState, Environment* environmen
 	this->setPositionX(positionX);
 	this->setPositionY(positionY+15);
 	//this->setVelocityY(-2);
+
+	//Random* randomGen = new Random();
+
+	//uint32_t test=0;
 
 	setBaseDamage(3);
 	setCurrentDamage(3);
@@ -55,6 +60,9 @@ void ThrowingAxe::setState(ThrowingAxeState* state)  {
 }
 
 void ThrowingAxe::update() {
+	//test++;
+	//uint32_t randomed = randomGen->getRandom(1, test);
+	//cout << randomed << endl ;
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
 	VisibleArea* visibleArea = environment->getVisibleArea();

@@ -17,6 +17,7 @@ class ThrowingAxeState;
 class VideoMemory;
 class Collider;
 class Wave;
+class Random;
 
 class ThrowingAxe : public Entity {
 public:
@@ -51,7 +52,9 @@ private:
 	// SoundFX
 	static Wave* ShotSoundFX;
 	static Wave* collideSoundFX;
+	Random* randomGen;
 
+	//uint32_t test;
 
 };
 
