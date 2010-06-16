@@ -14,9 +14,6 @@ using namespace std;
 //#include "LPC2478.h"
 #include "Wave.h"
 
-Wave* Megaman::jumpSoundFX = 0;
-Wave* Megaman::landSoundFX = 0;
-
 Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(initialState, environment) {
 	// Keep a pointer to the initial state in case we need to re-spawn the sprite
 	//this->initialState = initialState;

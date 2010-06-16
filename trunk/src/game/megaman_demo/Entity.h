@@ -34,7 +34,9 @@ public:
 	void incCounter(State*);
 	void decCounter(State*);
 
-
+	// SoundFX Accessors
+	Wave* getJumpSoundFX() { return jumpSoundFX; }
+	Wave* getLandSoundFX() { return landSoundFX; }
 
 	// Attributes handling
 	uint32_t getMaxHP() { return maxHP; };
@@ -80,6 +82,9 @@ protected:
 	uint32_t currentArmorValue;
 	uint32_t baseArmorValue;
 	uint8_t walkable;
+	// SoundFX
+	static Wave* jumpSoundFX;
+	static Wave* landSoundFX;
 
 
 };

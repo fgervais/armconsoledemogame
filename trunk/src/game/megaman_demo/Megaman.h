@@ -33,10 +33,6 @@ public:
 	virtual void collideWith(Megaman*);
 	virtual void collideWith(Metool*);
 
-	// SoundFX Accessors
-	Wave* getJumpSoundFX() { return jumpSoundFX; }
-	Wave* getLandSoundFX() { return landSoundFX; }
-
 
 	uint32_t getCurrentWeapon() {return currentWeapon;}
 
@@ -70,10 +66,6 @@ private:
 	// Current state
 	//MegamanState* initialState;
 	MegamanState* currentState;
-
-	// SoundFX
-	static Wave* jumpSoundFX;
-	static Wave* landSoundFX;
 
 
 	// Buster max and current amount on the screen
