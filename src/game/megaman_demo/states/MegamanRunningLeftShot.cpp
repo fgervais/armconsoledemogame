@@ -14,6 +14,8 @@
 #include "Megaman.h"
 #include "Buster.h"
 #include "BusterShotLeft.h"
+#include "ShotgunPellet.h"
+#include "shotgunShotLeft.h"
 #include "ThrowingAxe.h"
 #include "ThrowingAxeShotLeft.h"
 #include "Physics.h"
@@ -108,6 +110,7 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 			ThrowingAxe* buster = new ThrowingAxe(ThrowingAxeShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
+			sprite->incCurrentBusterNum();
 			break;
 		}
 		case 0 :
@@ -115,14 +118,26 @@ void MegamanRunningLeftShot::initialize(Megaman* sprite) {
 			Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
+			sprite->incCurrentBusterNum();
 			break;
+		}
+		case 2 :
+		{
+			for(uint32_t i=0; i<sprite->getPelletNum(); i++){
+
+				ShotgunPellet* buster = new ShotgunPellet(ShotgunShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY(), sprite->getCount(), (i+1)*1234);
+				buster->enableCollisionCheck();
+				sprite->addChild(buster);
+				sprite->incCurrentBusterNum();
+
+			}
 		}
 		}
 	cout << "Buster created" << endl;
 
 
 
-	sprite->incCurrentBusterNum();
+
 }
 
 void MegamanRunningLeftShot::update(Megaman* sprite) {

@@ -66,6 +66,7 @@ void Megaman::setState(MegamanState* state)  {
 void Megaman::update() {
 
 	count++;
+	cout << currentBusterNum<<endl;
 
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 

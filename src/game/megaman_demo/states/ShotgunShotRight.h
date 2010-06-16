@@ -15,8 +15,8 @@ public:
 	static ShotgunState* getInstance();
 
 	// Base class function override
-	virtual void initialize(Shotgun*);
-	virtual void update(Shotgun*);
+	virtual void initialize(ShotgunPellet*);
+	virtual void update(ShotgunPellet*);
 
 private:
 	ShotgunShotRight(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks);
