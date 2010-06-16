@@ -12,6 +12,8 @@
 using namespace std;
 //#include "LPC2478.h"
 
+Wave* Entity::jumpSoundFX = 0;
+Wave* Entity::landSoundFX = 0;
 
 Entity::Entity(State* initialState, Environment* environment) : Sprite(initialState, environment) {
 
