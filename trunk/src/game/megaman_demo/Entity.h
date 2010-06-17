@@ -82,6 +82,7 @@ protected:
 	uint32_t currentArmorValue;
 	uint32_t baseArmorValue;
 	uint8_t walkable;
+	// FIXME change those sounds to a better place or create a SoundFactory class to handle them.
 	// SoundFX
 	static Wave* jumpSoundFX;
 	static Wave* landSoundFX;
