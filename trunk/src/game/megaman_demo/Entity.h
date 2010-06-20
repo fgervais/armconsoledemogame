@@ -68,10 +68,10 @@ public:
 private:
 	// Current state
 	State* currentState;
-	State** subState;
 
 protected:
 	uint32_t* stateCounter;
+	State** subState;
 
 	uint32_t currentHP;
 	uint32_t maxHP;
