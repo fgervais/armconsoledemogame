@@ -9,6 +9,7 @@
 #define STATE_H_
 
 #include <stdint.h>
+#include <iostream>
 
 class Bitmap;
 class Sprite;
@@ -25,7 +26,7 @@ public:
 
 	//virtual void reset();
 
-	virtual void update(Sprite*) {}
+	virtual void update(Sprite*) { std::cout << "criss" << std::endl;}
 	virtual void render(Sprite*, SDL_Surface*);
 	virtual void initialize(Sprite*) {}
 

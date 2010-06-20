@@ -9,6 +9,7 @@
 #include "Environment.h"
 #include "MegamanState.h"
 #include "Metool.h"
+#include "IncludeSubStates.h"
 #include <iostream>
 using namespace std;
 //#include "LPC2478.h"
@@ -74,6 +75,17 @@ void Megaman::update() {
 		environment->checkCollision(this);
 	}
 
+	if(this->subState != 0)
+	{
+		for(uint32_t i=0; i<5; i++)
+		{
+			if(subState[i] != 0)
+			{
+				subState[i]->update(this);
+			}
+		}
+	}
+
 	// Update the currently displayed frame
 	// And possibly some state specific things
 	currentState->update(this);
@@ -100,6 +112,7 @@ void Megaman::collideWith(Megaman*) {
 void Megaman::collideWith(Metool* metool) {
 	//Debug::writeLine("Megaman collided with Metool");
 	//LPC2478::delay(1000000);
+	this->addSubState(Weakened::getInstance());
 	this->hit();
 
 	if(this->getCurrentHP() > metool->getCurrentDamage())
