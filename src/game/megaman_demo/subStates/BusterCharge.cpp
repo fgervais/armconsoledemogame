@@ -5,7 +5,7 @@
  *      Author: fgervais
  */
 
-#include "Weakened.h"
+#include "BusterCharge.h"
 #include "Bitmap.h"
 #include "Entity.h"
 #include "Environment.h"
@@ -13,20 +13,20 @@
 #include <iostream>
 using namespace std;
 
-State* Weakened::instance = 0;
-//Bitmap** Weakened::sharedFrames = 0;
-//Bitmap** Weakened::sharedMasks = 0;
+State* BusterCharge::instance = 0;
+//Bitmap** BusterCharge::sharedFrames = 0;
+//Bitmap** BusterCharge::sharedMasks = 0;
 
-Weakened::Weakened(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
+BusterCharge::BusterCharge(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks)
 : State(animationWidth, animationHeight, animationFrames, numberOfFrame, animationMasks) {
 
 }
 
-Weakened::~Weakened() {
+BusterCharge::~BusterCharge() {
 
 }
 
-State* Weakened::getInstance() {
+State* BusterCharge::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[1];
 		animationFrames[0] = 0;
@@ -34,24 +34,23 @@ State* Weakened::getInstance() {
 		Bitmap** animationMasks = new Bitmap*[1];
 		animationMasks[0] = 0;
 
-		instance = new Weakened(0,0, animationFrames, 0, animationMasks);
+		instance = new BusterCharge(0,0, animationFrames, 0, animationMasks);
 	}
 	//instance->reset();
 	return instance;
 }
 
 /* BASE CLASS FUNCTION OVERRIDE */
-void Weakened::initialize(Sprite* sprite) {
+void BusterCharge::initialize(Sprite* sprite) {
 	// This is the hard coded running speed
 	// could be (should be?) somewhere defined else?
 }
 
-void Weakened::update(Sprite* sprite) {
+void BusterCharge::update(Sprite* sprite) {
 	// Update the current state
 
-	if(((Entity*)sprite)->getCounter(this) >= 24) {
-		((Entity*)sprite)->removeSubState(this);
-		sprite->enableCollisionCheck();
+	if(((Entity*)sprite)->getCounter(this) == 24) {
+
 	}
 	else
 	{
