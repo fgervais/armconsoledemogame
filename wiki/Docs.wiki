@@ -9,7 +9,7 @@ Update, the docs for the windows Setup is now available as a wiki and as files o
 
 *IMPORTANT*
 <br />
-There are some constraint to follow for the project to be portable to the console.
+There are some constraints to follow for the project to be portable to the console.
   * Data types
     * No _int_, Use *uintX`_`t* (where X can be 32, 16 or 8)
       * For _signed integer_, use *intX`_`t* (where X can be 32, 16 or 8)
@@ -19,3 +19,5 @@ There are some constraint to follow for the project to be portable to the consol
     * String
     * libstd++
       * No _ifstream/ofstream_
+
+It is important that you follow those constraints for the code to be optimized and the binary to be light-weighted.
