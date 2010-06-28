@@ -17,6 +17,8 @@
 #include "Megaman.h"
 #include "LifeGauge.h"
 #include "IncludeStates.h" // the include below includes all the States of megaman
+#include <stdio.h>
+#include "System.h"
 using namespace std;
 
 GameLevel::GameLevel() :
@@ -31,9 +33,9 @@ void GameLevel::build() {
 	std::cout << "Entering GameLevel build function" << endl;
 
 	// FIXME that does nothing and i don't know why it was there
-//	Bitmap** black_square = new Bitmap*[2];
-//	black_square[0] = new Bitmap("src/display/black.bmp");
-//	black_square[1] = new Bitmap("src/display/gray.bmp");
+	//	Bitmap** black_square = new Bitmap*[2];
+	//	black_square[0] = new Bitmap("src/display/black.bmp");
+	//	black_square[1] = new Bitmap("src/display/gray.bmp");
 
 	Bitmap** snow = new Bitmap*[1];
 	snow[0] = new Bitmap("src/display/snow1.bmp");
@@ -129,4 +131,17 @@ void GameLevel::build() {
 	lifeGauge->setOffset(15, 5);
 	activate(lifeGauge);
 
+	/*
+	 * TEST SECTION
+	 *
+	 */
+	cout << "début" << endl;
+	char** content;
+	uint32_t len = 0;
+	if (System::getFileContent("src/game/megaman_demo/levels/myfile.txt", content, len) != 0) {
+		for (uint32_t i = 0; i < len; i++)
+			cout << content[i];
+	}
+
+	cout << "end" << endl;
 }
