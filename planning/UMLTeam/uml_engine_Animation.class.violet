@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_20" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.ClassDiagramGraph"> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- currentState : State *
+# child : Sprite*[ ]
+# facingDir : uint32_t
+# positionX : uint32_t
+# positionY : uint32_t
+# environment : Environment*
+# clippedTo : Sprite*
+# idleAnim : Animation*</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ Sprite(Environment*, State* initialState)
++ setState(State*)
++ addChild(Sprite*)
++ removeChild(Sprite*)
++ update()
++ render(SDL_Surface*)
++ getPositionX() : uint32_t
++ getPositionY() : uint32_t
++ getEnvironment() : Environment*
++ getIdleAnim()
++ getFacingDir()
++ clipTo(Sprite*)
++ unclip()
+</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Sprite</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>213.0</double> 
+     <double>21.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>animationFrames[] : Bitmap**
+animationMasks[] : Bitmap**
+numberOfFrames : uint32_t
+animationWidth : uint32_t
+animatonHeight : uint32_t</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ Animation(const char* path)
++ load()
++ get***()
++ set***()
+</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Animation</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>20.0</double> 
+     <double>24.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.NoteNode"> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>Ajout de facingDir, idleAnim, getIdleAnim, getFacingDir
+ 
+En gros, le sprite par défaut a l&apos;animation idle qui est l&apos;image à affiché par défaut.
+il a aussi une direction (utiliser dans les getAnimation pour déterminer quel animation on prend)
+ 
+disons 0=haut, 1=droite, 2=bas, 3=gauche
+ 
+
+getIdleAnim() {
+     return idleAnim[getFacingDir()]
+}
+ 
+Si le sprite regarde a droite, ben ça va prendre l&apos;animation idleAnim[1]
+On pourrait donner comme convention que droite est la direction par défaut?
+Donc dans le render d&apos;un state disons Shoot, le render ressemblerais à ça
+ 
+render(Sprite* sprite) {
+    State::render(((Entity*)sprite)-&gt;getShootAnim())  (Entity car sprite n&apos;a pas shootAnim, mais Entity l&apos;aurait)
+}
+ 
+Le State parent, lui, va obtenir les attribut nécéssaire de l&apos;animation et va l&apos;afficher.
+Mon dilemne c&apos;est que...de cette façon ben il faut toujours que le state aille chercher l&apos;animation, vu qu&apos;il est unique.
+ 
+Si on le met pu unique (donc pu de getInstance je crois) ben on pourrait juste obtenir les attributs au début mais
+on risque de rendre le code moins optimisé, tk je sais pas si j&apos;ai bien expliqué sa vous m&apos;en reparlerez
+ 
+A mesure d&apos;y réfléchir je suis en train de me rendre compte que Animation est en faite State...
+ 
+Finalement, Je crois qu&apos;il faudrait juste gérer les directions et garder tous les state uniques. Donc on aurait MegamanStanding et MetoolStanding mettons.
+Pas besoin d&apos;une classe Animation non plus, State à déjà tous ce qu&apos;il faut. Vous en pensez quoi de tous ça ? </string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>37.0</double> 
+     <double>387.0</double> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 
