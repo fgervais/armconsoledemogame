@@ -8,6 +8,7 @@
 #include "BusterCharge.h"
 #include "Bitmap.h"
 #include "Entity.h"
+#include "Megaman.h"
 #include "Environment.h"
 #include "Physics.h"
 #include <iostream>
@@ -42,20 +43,25 @@ State* BusterCharge::getInstance() {
 
 /* BASE CLASS FUNCTION OVERRIDE */
 void BusterCharge::initialize(Sprite* sprite) {
-	// This is the hard coded running speed
-	// could be (should be?) somewhere defined else?
+	((Megaman*)sprite)->setCharge(1);
 }
 
 void BusterCharge::update(Sprite* sprite) {
 	// Update the current state
 
-	if(((Entity*)sprite)->getCounter(this) == 24) {
-
-	}
-	else
+	if(((Megaman*)sprite)->getCharge() == 0)
 	{
-		((Entity*)sprite)->incCounter(this);
-		sprite->disableCollisionCheck();
+		((Entity*)sprite)->removeSubState(this);
 	}
+	else if(((Entity*)sprite)->getCounter(this) == 24)
+	{
+		((Megaman*)sprite)->setCharge(2);
+	}
+	else if(((Entity*)sprite)->getCounter(this) == 48)
+	{
+		((Megaman*)sprite)->setCharge(3);
+	}
+
+	((Entity*)sprite)->incCounter(this);
 
 }

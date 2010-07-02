@@ -12,6 +12,7 @@
 #include "Background.h"
 #include "Physics.h"
 #include "VisibleArea.h"
+#include "System.h"
 #include <iostream>
 #include "SDL.h"
 using namespace std;
@@ -25,6 +26,8 @@ Environment::Environment(uint32_t width, uint32_t height, uint32_t tileWidth, ui
 	this->width = width;
 	this->tileHeight = tileHeight;
 	this->tileWidth = tileWidth;
+
+	this->system = new System();
 
 	float heightInTile_t = (float)height/tileHeight;
 	heightInTile = CEILING(heightInTile_t);

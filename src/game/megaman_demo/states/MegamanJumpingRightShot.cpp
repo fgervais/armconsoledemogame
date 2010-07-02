@@ -19,6 +19,7 @@
 #include "shotgunShotRight.h"
 #include "Buster.h"
 #include "BusterShotRight.h"
+#include "BusterC2ShotRight.h"
 #include "Physics.h"
 #include "Environment.h"
 #include <iostream>
@@ -118,7 +119,15 @@ void MegamanJumpingRightShot::initialize(Megaman* sprite) {
 		}
 		case 0 :
 		{
-			Buster* buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			Buster* buster = 0;
+
+			if(sprite->getCharge() == 3)
+				buster = new Buster(BusterC2ShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			else if(sprite->getCharge() == 2)
+				buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			else
+				buster = new Buster(BusterShotRight::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
 			sprite->incCurrentBusterNum();

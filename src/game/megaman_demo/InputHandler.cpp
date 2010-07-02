@@ -35,7 +35,7 @@ uint8_t InputHandler::handleInput(Environment* environment) {
 				//Set the proper message surface
 				switch (eventKey) {
 				case SDLK_c:
-					((Megaman*) environment->getHero())->shot();
+					((Megaman*) environment->getHero())->charge();
 					break;
 				case SDLK_x:
 					((Megaman*) environment->getHero())->jump();
@@ -76,6 +76,10 @@ uint8_t InputHandler::handleInput(Environment* environment) {
 					break;
 				case SDLK_z:
 					((Megaman*) environment->getHero())->stopSliding();
+					break;
+				case SDLK_c:
+					((Megaman*) environment->getHero())->shot();
+					break;
 				}
 			}
 		}// end here if event.key.keysym.sym == SDLK_LAST that is not handle in switch
