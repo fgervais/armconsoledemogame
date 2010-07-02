@@ -9,6 +9,7 @@
 #include "Environment.h"
 #include "VideoMemory.h"
 #include "VisibleArea.h"
+#include "System.h"
 #include "Bitmap.h"
 //#include "LPC2478.h"
 //#include "DMAChannel.h"
@@ -63,131 +64,7 @@ Background::~Background() {
  * @param videoMemory
  */
 void Background::render(SDL_Surface* sdl_Surface) {
-	VisibleArea* visibleArea = environment->getVisibleArea();
-
-	/*
-	 * Calculate the visible area of the background according to the speed multiplier.
-	 *
-	 * We do this because the background normally scroll slower than the layer
-	 * where the hero is.
-	 */
-	uint32_t renderX1 = visibleArea->x >> 1;
-	//uint32_t renderY1 = visibleArea->y >> 1;
-
-	uint32_t renderWidth = visibleArea->width;
-	uint32_t renderHeight = visibleArea->height;
-
-	// These are safe initial guess
-	uint32_t renderMaskX1 = renderX1 % width;
-	//uint32_t renderMaskY1 = renderY1 % height;
-	//uint32_t renderMaskX1 = renderX1 & 255;
-
-
-	// Draw the image on the screen
-	uint32_t sdl_SurfaceWidth = sdl_Surface->w;
-	uint32_t* sdl_SurfacePointer = (uint32_t *)sdl_Surface->pixels;
-
-	uint8_t* backgroundPixels = (uint8_t*) bitmap->getData()->pixels;
-		for (uint32_t i=0; i<renderHeight; i++) {
-			for (uint32_t j=0; j<renderWidth; j++) {
-				//sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
-				//				   = image[i*width + ((j+renderMaskX1) & (width-1))];
-
-				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + j * 3);
-				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) & (width-1)) * 3);
-				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) % bitmap->getData()->pitch) * 3);
-				//uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) & (256-1)) * 3);
-				uint8_t* backgroundPixel = backgroundPixels + (i * bitmap->getData()->pitch + ((j+renderMaskX1) % width) * 3);
-
-				sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
-				                   = backgroundPixel[0] | backgroundPixel[1] << 8 | backgroundPixel[2] << 16;
-			}
-		}
-
-	/* Generic version */
-	/*for (uint32_t i=0; i<renderHeight; i++) {
-		for (uint32_t j=0; j<renderWidth; j++) {
-			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
-			                   = bitmap->getData()[((i+renderMaskY1) % height)*width + ((j+renderMaskX1) % width)];
-		}
-	}*/
-
-
-
-	// Optimized version
-	/*uint32_t* image = bitmap->getData();
-	for (uint32_t i=0; i<renderHeight; i++) {
-		for (uint32_t j=0; j<renderWidth; j++) {
-			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
-							   = image[i*width + ((j+renderMaskX1) & (width-1))];
-		}
-	}*/
-
-	/* Optimized version 2 */
-	/*uint32_t* image = bitmap->getData();
-	uint32_t widthm1 = width-1;
-	for (uint32_t i=0; i<height; i++) {
-		for (uint32_t j=0; j<renderWidth; j++) {
-			sdl_SurfacePointer[i*sdl_SurfaceWidth + j]
-							   = image[i*width + ((j+renderMaskX1) & widthm1)];
-		}
-	}*/
-
-	/* DMA version 1 */
-	/*DMAChannel* dma = LPC2478::getDMA1();
-
-	DMAConfiguration dmaConfig;
-
-	uint32_t* image = bitmap->getData();
-
-	lli[0]->DMACCxSrcAddr = (uint32_t)&(image[renderMaskX1]);
-	lli[0]->DMACCxDestAddr = (uint32_t)&(sdl_SurfacePointer[0]);
-
-	for(uint32_t i=1; i<height; i++) {
-		lli[i]->DMACCxSrcAddr = (uint32_t)&(image[i*width + renderMaskX1]);
-		lli[i]->DMACCxDestAddr = (uint32_t)&(sdl_SurfacePointer[i*sdl_SurfaceWidth]);
-		lli[i-1]->DMACCxLLI = (uint32_t)lli[i];
-	}
-	lli[height-1]->DMACCxLLI = 0;*/
-
-	/* DMA version 2 */
-
-	//DMAChannel* dma = LPC2478::getDMA1();
-	//DMAConfiguration dmaConfig;
-
-	//uint32_t casted_image = (uint32_t)bitmap->getData();
-	//uint32_t casted_sdl_SurfacePointer = (uint32_t)sdl_SurfacePointer;
-	//uint32_t* struct_pointer;
-	//uint32_t* previous_lli;
-
-	/*
-	casted_image += renderMaskX1<<2;
-
-	struct_pointer = (uint32_t*)lli[0];
-	*struct_pointer = casted_image;
-	*(struct_pointer+1) = casted_sdl_SurfacePointer;
-
-	for(uint32_t i=1; i<height; i++) {
-		previous_lli = struct_pointer+2;
-		struct_pointer = (uint32_t*)lli[i];
-
-		*previous_lli = (uint32_t)struct_pointer;
-
-		casted_image += width<<2;
-		*struct_pointer = casted_image;
-
-		casted_sdl_SurfacePointer += sdl_SurfaceWidth<<2;
-		*(struct_pointer+1) = casted_sdl_SurfacePointer;
-	}
-	*(struct_pointer+2) = 0;
-
-	dmaConfig.lli = lli[0];
-
-	dma->configure(dmaConfig);
-	dma->enable();
-
-	while(dma->isEnabled());
-	*/
+	environment->getSystem()->render(this, sdl_Surface);
 }
 
 void Background::set(Environment* environment) {

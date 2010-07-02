@@ -53,6 +53,7 @@ public:
 
 	// Action functions
 	void jump();
+	void charge();
 	void runLeft();
 	void runRight();
 	void stopRunning();
@@ -63,6 +64,9 @@ public:
 	void hit();
 	void changeWeapon();
 
+	void setCharge(uint32_t);
+	uint32_t getCharge() { return chargeNum; };
+
 
 
 private:
@@ -72,7 +76,7 @@ private:
 
 
 	// Buster max and current amount on the screen
-	static const uint32_t maxBusterNum = 5;
+	static const uint32_t maxBusterNum = 3;
 	uint32_t currentBusterNum;
 
 	//number of pellet each shot of the shotgun will generate
@@ -85,6 +89,9 @@ private:
 
 	//this is a counter used for the pseudo-random, there might be a better way to do this
 	uint32_t count;
+
+	//Charge number on the buster
+	uint32_t chargeNum;
 
 };
 

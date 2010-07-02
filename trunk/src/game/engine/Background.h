@@ -22,6 +22,7 @@ public:
 	Background(Bitmap* handle, uint32_t width, uint32_t height, Environment* environment);
 	virtual ~Background();
 
+	Environment* getEnvironment() { return environment; };
 	Bitmap* getHandle() { return bitmap; }
 	uint32_t getHeight() { return height; }
 	uint32_t getWidth() { return width; }

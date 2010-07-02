@@ -25,6 +25,7 @@ Megaman::Megaman(MegamanState* initialState, Environment* environment) : Entity(
 	setCurrentSpeed(6);
 	setBaseJumpPower(8);
 	setCurrentJumpPower(8);
+	setCharge(0);
 
 	// Initialize and load sound effects
 	if(jumpSoundFX == 0) {
@@ -126,6 +127,11 @@ void Megaman::changeWeapon()	{
 	currentWeapon = (currentWeapon+1)%3;
 }
 
+void Megaman::charge()	{
+	//2 is the current number of weapon, might want to change the way this is handled some day.
+	this->addSubState(BusterCharge::getInstance());
+}
+
 /**
  * This function delegates the action to the current state.
  */
@@ -171,6 +177,10 @@ void Megaman::stopSliding() {
 void Megaman::shot() {
 	if (getCurrentBusterNum() < getMaxBusterNum())
 		currentState->shot(this);
+
+	cout << "Charge number : " << getCharge() << endl;
+	setCharge(0);
+
 }
 
 /**
@@ -182,4 +192,9 @@ void Megaman::slide() {
 
 void Megaman::hit() {
 	currentState->hit(this);
+}
+
+void Megaman::setCharge(uint32_t chargeNum)
+{
+	this->chargeNum = chargeNum;
 }

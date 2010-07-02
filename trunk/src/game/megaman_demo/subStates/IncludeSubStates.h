@@ -15,5 +15,6 @@
 #define INCLUDESUBSTATES_H_
 
 #include "Weakened.h"
+#include "BusterCharge.h"
 
 #endif /* INCLUDESUBSTATES_H_ */

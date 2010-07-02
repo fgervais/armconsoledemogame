@@ -22,6 +22,7 @@ class Background;
 class Physics;
 class VisibleArea;
 class Request;
+class System;
 
 struct SpriteContainer {
 	Sprite* sprite;
@@ -56,6 +57,8 @@ public:
 	VisibleArea* getVisibleArea() { return visibleArea; };
 	Sprite* getHero() { return hero; }
 	Physics* getPhysics() { return physics; }
+
+	System* getSystem() { return system; };
 
 protected:
 	uint8_t activate(Sprite*);
@@ -96,6 +99,9 @@ private:
 
 	void activateSprites();
 	uint8_t activate(SpriteContainer*);
+
+	System* system;
+
 };
 
 #endif /* ENVIRONMENT_H_ */

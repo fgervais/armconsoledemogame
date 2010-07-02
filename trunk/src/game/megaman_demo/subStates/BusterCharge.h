@@ -30,6 +30,7 @@ private:
 
 	static State* instance;
 
+
 };
 
 #endif /* BUSTERCHARGE_H_ */
