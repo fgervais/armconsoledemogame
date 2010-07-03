@@ -27,8 +27,6 @@ Environment::Environment(uint32_t width, uint32_t height, uint32_t tileWidth, ui
 	this->tileHeight = tileHeight;
 	this->tileWidth = tileWidth;
 
-	this->system = new System();
-
 	float heightInTile_t = (float)height/tileHeight;
 	heightInTile = CEILING(heightInTile_t);
 	// This is needed because we need upper integer round-up

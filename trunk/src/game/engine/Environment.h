@@ -58,7 +58,6 @@ public:
 	Sprite* getHero() { return hero; }
 	Physics* getPhysics() { return physics; }
 
-	System* getSystem() { return system; };
 
 protected:
 	uint8_t activate(Sprite*);
@@ -99,8 +98,6 @@ private:
 
 	void activateSprites();
 	uint8_t activate(SpriteContainer*);
-
-	System* system;
 
 };
 

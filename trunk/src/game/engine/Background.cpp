@@ -64,7 +64,7 @@ Background::~Background() {
  * @param videoMemory
  */
 void Background::render(SDL_Surface* sdl_Surface) {
-	environment->getSystem()->render(this, sdl_Surface);
+	System::render(this, sdl_Surface);
 }
 
 void Background::set(Environment* environment) {
