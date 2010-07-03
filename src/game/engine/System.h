@@ -28,7 +28,7 @@ public:
 	void playMusic(Wave *);
 
 	// Rendering functions
-	void render(Background *, SDL_Surface *);
+	static void render(Background *, SDL_Surface *);
 
 private:
 	static uint32_t getLineCount(const char*);
