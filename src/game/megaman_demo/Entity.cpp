@@ -89,7 +89,7 @@ void Entity::addSubState(State* state) {
 }
 
 void Entity::removeSubState(State* state) {
-	cout << "Out" << endl;
+	// cout << "Out" << endl;
 	for(uint32_t i=0; i<5; i++)
 	{
 		if(subState[i] == state)
@@ -133,7 +133,7 @@ uint32_t Entity::getCounter(State* state) {
 		{
 			if(subState[i] == state)
 			{
-				cout << stateCounter[i+1] << endl;
+				// cout << stateCounter[i+1] << endl;
 				returnValue = stateCounter[i+1];
 			}
 		}
