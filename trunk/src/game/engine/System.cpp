@@ -70,7 +70,7 @@ uint8_t System::getFileContent(const char* path, char ** &content, uint32_t& len
 
 		fclose(file); // close the file
 	}
-	return 1; // return true on succes
+	return 1; // return true on success
 } // EndOF Function getFileContent
 
 
@@ -113,7 +113,9 @@ uint8_t System::getFileContent(const char* path, char ** &content, uint32_t& len
 	Environment* environment = background->getEnvironment();
 	Bitmap* bitmap = background->getHandle();
 	uint32_t width = background->getWidth();
-	uint32_t height = background->getHeight();
+
+	// this is unused
+	//uint32_t height = background->getHeight();
 
  	VisibleArea* visibleArea = environment->getVisibleArea();
 
