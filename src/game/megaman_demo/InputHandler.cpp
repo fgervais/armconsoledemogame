@@ -79,10 +79,10 @@ uint8_t InputHandler::handleInput(Environment* environment) {
 				case SDLK_z:
 					((Megaman*) environment->getHero())->stopSliding();
 					break;
-		/*		case SDLK_c:
-					((Megaman*) environment->getHero())->shot();
+				case SDLK_c:
+					((Megaman*) environment->getHero())->stopShooting();
 					break;
-		*/
+
 				}
 			}
 		}// end here if event.key.keysym.sym == SDLK_LAST that is not handle in switch

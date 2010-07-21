@@ -23,7 +23,7 @@
 using namespace std;
 
 GameLevel::GameLevel() :
-	Environment(1100, 272, 64, 32) {
+	Environment(1500, 272, 64, 32) {
 }
 
 GameLevel::~GameLevel() {
@@ -78,7 +78,7 @@ void GameLevel::build() {
 
 	//Add Canister
 	CanisterHP* canisse = new CanisterHP(CanisterHPIddleState::getInstance(), this);
-	startSpawning(canisse, 500,200);
+	startSpawning(canisse, 200,200);
 
 
 	/*
@@ -118,18 +118,26 @@ void GameLevel::loadHero(const State * initialState) {
 	MegamanJumpingRightShot::getInstance();
 	MegamanStandingLeftShoot::getInstance();
 	MegamanStandingRightShoot::getInstance();
+	MegamanSpawning::getInstance();
+
+	//Pre load Weapons
+	BusterShotLeft::getInstance();
+	BusterShotRight::getInstance();
 
 	Megaman* hero = new Megaman((MegamanState*) initialState, this);
 	hero->enableCollisionCheck();
-	hero->setPosition(720, 50);
+	hero->setPosition(20, 40);
 	//set(hero, 240, 189);
 	//set(hero, 240, 50);
 	set(hero);
+
+	//Spawning animation
+	hero->setState(MegamanSpawning::getInstance());
 	cout << "Done Loading hero" << endl;
 
 	// Load interface
 	LifeGauge* lifeGauge = new LifeGauge(LifeGaugeNormal::getInstance(), this);
-	lifeGauge->setPosition(600, 50);
+	lifeGauge->setPosition(15, 50);
 	lifeGauge->linkTo(hero);
 	lifeGauge->setOffset(15, 5);
 	activate(lifeGauge);
@@ -148,12 +156,12 @@ void GameLevel::buildLevelPattern(const char * levelFilePath) {
 
 	// Send the tiles to the environment (Base class)
 	//for(uint8_t i=0; i<18; i++) {
-	for (uint8_t i = 0; i < 15; i++) {
+	for (uint8_t i = 0; i < 20; i++) {
 		add(tile1, i, 7);
 	}
 
 	//for(uint8_t i=0; i<18; i++) {
-	for (uint8_t i = 0; i < 15; i++) {
+	for (uint8_t i = 0; i < 20; i++) {
 		add(tile2, i, 8);
 	}
 

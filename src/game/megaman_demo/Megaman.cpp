@@ -121,6 +121,7 @@ void Megaman::collideWith(Metool* metool) {
 		this->setCurrentHP(this->getCurrentHP()-metool->getCurrentDamage());
 	else
 		this->setCurrentHP(0);
+
 }
 
 void Megaman::collideWith(CanisterHP* canisse){
@@ -185,6 +186,10 @@ void Megaman::stopJumping() {
 
 void Megaman::stopSliding() {
 	currentState->stopSliding(this);
+}
+
+void Megaman::stopShooting() {
+	currentState->stopShooting(this);
 }
 
 /**
