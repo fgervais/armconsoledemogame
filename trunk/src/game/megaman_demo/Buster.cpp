@@ -56,6 +56,8 @@ void Buster::setState(BusterState* state)  {
 void Buster::update() {
 	environment->move(this, positionX+velocityX, positionY+velocityY);
 
+
+
 	VisibleArea* visibleArea = environment->getVisibleArea();
 
 	collisionCheckEnabled = true;
@@ -94,5 +96,7 @@ void Buster::collideWith(Metool* metool) {
 	environment->getHero()->removeChild(this);
 	((Megaman*)environment->getHero())->decCurrentBusterNum();
 }
+
+
 
 

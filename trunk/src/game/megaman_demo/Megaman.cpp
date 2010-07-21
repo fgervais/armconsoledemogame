@@ -11,6 +11,7 @@
 #include "Metool.h"
 #include "IncludeSubStates.h"
 #include <iostream>
+#include "CanisterHP.h"
 using namespace std;
 //#include "LPC2478.h"
 #include "Wave.h"
@@ -122,6 +123,19 @@ void Megaman::collideWith(Metool* metool) {
 		this->setCurrentHP(0);
 }
 
+void Megaman::collideWith(CanisterHP* canisse){
+
+	cout << "Current HP :" << this->getCurrentHP() << endl;
+	//Vérifie si le gain dépasse la limite
+	if((this->getCurrentHP() + canisse->getHPgain()) > this->getMaxHP())
+		this->setCurrentHP(this->getMaxHP());
+	//Sinon affecte le gain
+	else
+		this->setCurrentHP(this->getCurrentHP() + canisse->getHPgain());
+
+	cout << "Final HP" << this->getCurrentHP() << endl;
+}
+
 void Megaman::changeWeapon()	{
 	//2 is the current number of weapon, might want to change the way this is handled some day.
 	currentWeapon = (currentWeapon+1)%3;
@@ -131,6 +145,8 @@ void Megaman::charge()	{
 	//2 is the current number of weapon, might want to change the way this is handled some day.
 	this->addSubState(BusterCharge::getInstance());
 }
+
+
 
 /**
  * This function delegates the action to the current state.

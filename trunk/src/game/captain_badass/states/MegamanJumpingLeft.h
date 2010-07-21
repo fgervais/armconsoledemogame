@@ -19,6 +19,7 @@ public:
 	// Base class function override
 	virtual void runLeft(Megaman*);
 	virtual void runRight(Megaman*);
+	virtual void shot(Megaman*);
 	virtual void stopRunning(Megaman*);
 	virtual void stopJumping(Megaman*);
 	virtual void hit(Megaman*);

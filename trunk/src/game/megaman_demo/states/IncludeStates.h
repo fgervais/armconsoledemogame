@@ -19,6 +19,9 @@
 #include "MegamanStandingRight.h"
 #include "MegamanStandingLeft.h"
 
+#include "MegamanStandingLeftShoot.h"
+#include "MegamanStandingRightShoot.h"
+
 #include "MegamanRunningLeft.h"
 #include "MegamanRunningRight.h"
 #include "MegamanRunningLeftShot.h"
@@ -29,9 +32,17 @@
 
 #include "MegamanJumpingLeft.h"
 #include "MegamanJumpingRight.h"
+#include "MegamanJumpingLeftShot.h"
+#include "MegamanJumpingRightShot.h"
 
 #include "MegamanSlidingLeft.h"
 #include "MegamanSlidingRight.h"
+
+
+
+//Canister States
+#include "CanisterHPIddleState.h"
+
 
 // Metool states
 #include "MetoolState.h"

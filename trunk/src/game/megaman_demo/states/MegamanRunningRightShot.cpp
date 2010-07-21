@@ -38,30 +38,31 @@ MegamanRunningRightShot::~MegamanRunningRightShot() {
 MegamanState* MegamanRunningRightShot::getInstance() {
 	if(instance == 0) {
 		Bitmap** animationFrames = new Bitmap*[11];
-		animationFrames[0] = new Bitmap("src/display/state/MegamanRunningRight/1.bmp");
-		animationFrames[1] = new Bitmap("src/display/state/MegamanRunningRight/2.bmp");
-		animationFrames[2] = new Bitmap("src/display/state/MegamanRunningRight/3.bmp");
-		animationFrames[3] = new Bitmap("src/display/state/MegamanRunningRight/4.bmp");
-		animationFrames[4] = new Bitmap("src/display/state/MegamanRunningRight/5.bmp");
-		animationFrames[5] = new Bitmap("src/display/state/MegamanRunningRight/6.bmp");
-		animationFrames[6] = new Bitmap("src/display/state/MegamanRunningRight/7.bmp");
-		animationFrames[7] = new Bitmap("src/display/state/MegamanRunningRight/8.bmp");
-		animationFrames[8] = new Bitmap("src/display/state/MegamanRunningRight/9.bmp");
-		animationFrames[9] = new Bitmap("src/display/state/MegamanRunningRight/10.bmp");
-		animationFrames[10] = new Bitmap("src/display/state/MegamanRunningRight/11.bmp");
+		animationFrames[0] = new Bitmap("src/display/state/MegamanRunningRightShoot/0.bmp");
+		animationFrames[1] = new Bitmap("src/display/state/MegamanRunningRightShoot/1.bmp");
+		animationFrames[2] = new Bitmap("src/display/state/MegamanRunningRightShoot/2.bmp");
+		animationFrames[3] = new Bitmap("src/display/state/MegamanRunningRightShoot/3.bmp");
+		animationFrames[4] = new Bitmap("src/display/state/MegamanRunningRightShoot/4.bmp");
+		animationFrames[5] = new Bitmap("src/display/state/MegamanRunningRightShoot/5.bmp");
+		animationFrames[6] = new Bitmap("src/display/state/MegamanRunningRightShoot/6.bmp");
+		animationFrames[7] = new Bitmap("src/display/state/MegamanRunningRightShoot/7.bmp");
+		animationFrames[8] = new Bitmap("src/display/state/MegamanRunningRightShoot/8.bmp");
+		animationFrames[9] = new Bitmap("src/display/state/MegamanRunningRightShoot/9.bmp");
+		animationFrames[10] = new Bitmap("src/display/state/MegamanRunningRightShoot/10.bmp");
+
 
 		Bitmap** animationMasks = new Bitmap*[11];
-		animationMasks[0] = new Bitmap("src/display/state/MegamanRunningRight/mask1.bmp");
-		animationMasks[1] = new Bitmap("src/display/state/MegamanRunningRight/mask2.bmp");
-		animationMasks[2] = new Bitmap("src/display/state/MegamanRunningRight/mask3.bmp");
-		animationMasks[3] = new Bitmap("src/display/state/MegamanRunningRight/mask4.bmp");
-		animationMasks[4] = new Bitmap("src/display/state/MegamanRunningRight/mask5.bmp");
-		animationMasks[5] = new Bitmap("src/display/state/MegamanRunningRight/mask6.bmp");
-		animationMasks[6] = new Bitmap("src/display/state/MegamanRunningRight/mask7.bmp");
-		animationMasks[7] = new Bitmap("src/display/state/MegamanRunningRight/mask8.bmp");
-		animationMasks[8] = new Bitmap("src/display/state/MegamanRunningRight/mask9.bmp");
-		animationMasks[9] = new Bitmap("src/display/state/MegamanRunningRight/mask10.bmp");
-		animationMasks[10] = new Bitmap("src/display/state/MegamanRunningRight/mask11.bmp");
+		animationMasks[0] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask0.bmp");
+		animationMasks[1] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask1.bmp");
+		animationMasks[2] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask2.bmp");
+		animationMasks[3] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask3.bmp");
+		animationMasks[4] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask4.bmp");
+		animationMasks[5] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask5.bmp");
+		animationMasks[6] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask6.bmp");
+		animationMasks[7] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask7.bmp");
+		animationMasks[8] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask8.bmp");
+		animationMasks[9] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask9.bmp");
+		animationMasks[10] = new Bitmap("src/display/state/MegamanRunningRightShoot/mask10.bmp");
 		instance = new MegamanRunningRightShot(35, 35, animationFrames, 11, animationMasks);
 	}
 	//instance->reset();
@@ -141,6 +142,7 @@ void MegamanRunningRightShot::initialize(Megaman* sprite) {
 }
 
 void MegamanRunningRightShot::update(Megaman* sprite) {
+
 	// Update current frame
 	if(sprite->getCurrentFrame() < (numberOfFrame-1)) {
 		sprite->incCurrentFrame();
