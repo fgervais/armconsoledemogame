@@ -32,6 +32,7 @@ public:
 	virtual void collideWith(Collider*);
 	virtual void collideWith(Megaman*);
 	virtual void collideWith(Metool*);
+	virtual void collideWith(CanisterHP*);
 
 
 	uint32_t getCurrentWeapon() {return currentWeapon;}

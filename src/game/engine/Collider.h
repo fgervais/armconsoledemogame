@@ -10,6 +10,7 @@
 
 class Megaman;
 class Metool;
+class CanisterHP;
 class Entity;
 
 /**
@@ -34,6 +35,7 @@ public:
 	virtual void collideWith(Collider*) = 0;
 	virtual void collideWith(Megaman*) {}
 	virtual void collideWith(Metool*) {}
+	virtual void collideWith(CanisterHP*){}
 	virtual void collideWith(Entity*) {}
 };
 

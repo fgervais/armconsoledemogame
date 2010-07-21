@@ -14,6 +14,7 @@
 #include "Physics.h"
 #include "Sprite.h"
 #include "Metool.h"
+#include "CanisterHP.h"
 #include "Megaman.h"
 #include "LifeGauge.h"
 #include "IncludeStates.h" // the include below includes all the States of megaman
@@ -75,6 +76,11 @@ void GameLevel::build() {
 	lonely_metool->setPosition(600, 50);
 	activate(lonely_metool);
 
+	//Add Canister
+	CanisterHP* canisse = new CanisterHP(CanisterHPIddleState::getInstance(), this);
+	startSpawning(canisse, 500,200);
+
+
 	/*
 	 * TEST SECTION
 	 *
@@ -108,6 +114,10 @@ void GameLevel::loadHero(const State * initialState) {
 	MegamanRunningRightShot::getInstance();
 	MegamanHitRight::getInstance();
 	MegamanHitLeft::getInstance();
+	MegamanJumpingLeftShot::getInstance();
+	MegamanJumpingRightShot::getInstance();
+	MegamanStandingLeftShoot::getInstance();
+	MegamanStandingRightShoot::getInstance();
 
 	Megaman* hero = new Megaman((MegamanState*) initialState, this);
 	hero->enableCollisionCheck();

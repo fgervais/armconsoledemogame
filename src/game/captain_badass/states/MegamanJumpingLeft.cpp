@@ -6,6 +6,7 @@
  */
 
 #include "MegamanJumpingLeft.h"
+#include "MegamanJumpingLeftShot.h"
 #include "MegamanStandingLeft.h"
 #include "MegamanJumpingRight.h"
 #include "MegamanRunningLeft.h"
@@ -88,6 +89,11 @@ void MegamanJumpingLeft::stopJumping(Megaman* sprite) {
 	if(sprite->getVelocityY() < 0)
 		sprite->setVelocityY(0);
 }
+
+void MegamanJumpingLeft::shot(Megaman* sprite) {
+	sprite->setState(MegamanJumpingLeftShot::getInstance());
+}
+
 
 void MegamanJumpingLeft::hit(Megaman* sprite) {
 	sprite->setState(MegamanHitLeft::getInstance());
