@@ -38,7 +38,7 @@
 #include "MegamanSlidingLeft.h"
 #include "MegamanSlidingRight.h"
 
-
+#include "MegamanSpawning.h"
 
 //Canister States
 #include "CanisterHPIddleState.h"
@@ -55,6 +55,7 @@
 
 // Other states
 #include "BusterShotLeft.h"
+#include "BusterShotRight.h"
 #include "BusterState.h"
 
 #endif /* INCLUDESTATES_H_ */

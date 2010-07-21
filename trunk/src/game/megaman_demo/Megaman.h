@@ -60,6 +60,7 @@ public:
 	void stopRunning();
 	void stopJumping();
 	void stopSliding();
+	void stopShooting();
 	void shot();
 	void slide();
 	void hit();

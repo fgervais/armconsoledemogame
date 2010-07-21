@@ -46,7 +46,7 @@ MegamanState* MegamanStandingLeftShoot::getInstance() {
 		Bitmap** animationMasks = new Bitmap*[2];
 		animationMasks[0] = new Bitmap("src/display/state/MegamanShootLeft/mask0.bmp");
 		animationMasks[1] = new Bitmap("src/display/state/MegamanShootLeft/mask1.bmp");
-		instance = new MegamanStandingLeftShoot(28, 34, animationFrames, 2, animationMasks);
+		instance = new MegamanStandingLeftShoot(35, 35, animationFrames, 2, animationMasks);
 	}
 	//instance->reset();
 	return instance;
@@ -70,6 +70,10 @@ void MegamanStandingLeftShoot::runLeft(Megaman* sprite) {
 	sprite->setState(MegamanRunningLeft::getInstance());
 }
 
+void MegamanStandingLeftShoot::stopShooting(Megaman* sprite){
+	//sprite->setState(MegamanStandingLeft::getInstance());
+}
+
 void MegamanStandingLeftShoot::initialize(Megaman* sprite) {
 
 	uint32_t currentWeapon = sprite->getCurrentWeapon();
@@ -87,7 +91,7 @@ void MegamanStandingLeftShoot::initialize(Megaman* sprite) {
 		}
 		case 0 :
 		{
-			Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX(), sprite->getPositionY());
+			Buster* buster = new Buster(BusterShotLeft::getInstance(), sprite->getEnvironment(), sprite->getPositionX()+10, sprite->getPositionY());
 			buster->enableCollisionCheck();
 			sprite->addChild(buster);
 			sprite->incCurrentBusterNum();
@@ -130,5 +134,13 @@ void MegamanStandingLeftShoot::update(Megaman* sprite) {
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
 
+	//Linger Effect
+	if(sprite->getCounter(this) >= 5) {
+		sprite->setState(MegamanStandingLeft::getInstance());
+	}
+
+	else {
+		sprite->incCounter(this);
+		}
 
 }

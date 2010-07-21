@@ -156,4 +156,13 @@ void MegamanRunningLeftShot::update(Megaman* sprite) {
 	if(!sprite->isOnGround()) {
 		sprite->setState(MegamanJumpingLeft::getInstance());
 	}
+
+	//Linger effect
+	if(sprite->getCounter(this) >= 5) {
+		sprite->setState(MegamanRunningLeft::getInstance());
+		}
+	else {
+		sprite->incCounter(this);
+		}
+
 }

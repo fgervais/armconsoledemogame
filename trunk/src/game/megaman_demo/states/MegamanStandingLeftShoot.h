@@ -22,6 +22,7 @@ public:
 	virtual void shot(Megaman*);
 	virtual void initialize(Megaman*);
 	virtual void update(Megaman*);
+	virtual void stopShooting(Megaman*);
 
 private:
 	MegamanStandingLeftShoot(uint32_t animationWidth, uint32_t animationHeight, Bitmap** animationFrames, uint32_t numberOfFrame, Bitmap** animationMasks);

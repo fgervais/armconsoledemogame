@@ -41,6 +41,7 @@ public:
 	virtual void stopRunning(Megaman*) {}
 	virtual void stopJumping(Megaman*) {}
 	virtual void stopSliding(Megaman*) {}
+	virtual void stopShooting(Megaman*){}
 };
 
 #endif /* MEGAMANSTATE_H_ */
