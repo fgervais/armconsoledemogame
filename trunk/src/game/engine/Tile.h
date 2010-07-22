@@ -28,6 +28,17 @@ public:
 
 	void setPosition(uint32_t x, uint32_t y);
 	void set(Environment* environment);
+
+	uint32_t getHeight() { return height; };
+	uint32_t getWidth() { return width; };
+
+	uint32_t getPositionX() { return positionX; };
+	uint32_t getPositionY() { return positionY; };
+
+	Bitmap** getFrames() { return frames; };
+	uint32_t getCurrentFrame() { return currentFrame; };
+
+	Environment* getEnvironment() { return environment; };
 private:
 	uint32_t height;
 	uint32_t width;

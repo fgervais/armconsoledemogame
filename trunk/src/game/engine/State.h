@@ -24,6 +24,9 @@ public:
 	uint32_t getAnimationWidth();
 	uint32_t getAnimationHeight();
 
+	Bitmap** getAnimationFrames() { return animationFrames; };
+	Bitmap** getAnimationMasks() { return animationMasks; };
+
 	//virtual void reset();
 
 	virtual void update(Sprite*) { std::cout << "criss" << std::endl;}
