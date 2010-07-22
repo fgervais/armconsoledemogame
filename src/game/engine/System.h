@@ -14,6 +14,9 @@ class Background;
 class Bitmap;
 class Environment;
 class Wave;
+class Tile;
+class State;
+class Sprite;
 class VisibleArea;
 class SDL_Surface;
 class System {
@@ -29,6 +32,8 @@ public:
 
 	// Rendering functions
 	static void render(Background *, SDL_Surface *);
+	static void render(Tile *, SDL_Surface *);
+	static void render(State *, Sprite *, SDL_Surface *);
 
 private:
 	static uint32_t getLineCount(const char*);

@@ -197,7 +197,9 @@ void Megaman::stopShooting() {
  */
 void Megaman::shot() {
 	if (getCurrentBusterNum() < getMaxBusterNum())
+	{
 		currentState->shot(this);
+	}
 
 	cout << "Charge number : " << getCharge() << endl;
 	setCharge(0);
