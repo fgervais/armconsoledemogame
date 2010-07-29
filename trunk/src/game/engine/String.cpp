@@ -35,21 +35,21 @@ void String::append(const char * str) {
 	this->lengthvalue += lengthSecond;
 }
 
-void String::append(String str) {
+void String::append(String * str) {
 	uint32_t cpt = 0;
 	// Declare a new char array of the total length
-	char * result = new char[this->lengthvalue + str.lenght()];
+	char * result = new char[this->lengthvalue + str->length()];
 
 	// copy all the char pointers in the new longer char array
 	for (uint32_t i = 0; i < this->lengthvalue; i++) {
 		result[cpt++] = this->content[i];
 	}
-	for (uint32_t i = 0; i < str.lenght(); i++) {
-		result[cpt++] = str.value()[i];
+	for (uint32_t i = 0; i < str->length(); i++) {
+		result[cpt++] = str->value()[i];
 	}
 
 	this->content = result;
-	this->lengthvalue += str.lenght();
+	this->lengthvalue += str->length();
 }
 
 /************************************************

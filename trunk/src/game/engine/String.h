@@ -16,9 +16,9 @@ public:
 	String(char *);									// new string with new value
 	virtual ~String();
 	char * value(){return this->content;}			// get String value
-	uint32_t lenght(){return this->lengthvalue;}	// get String length
+	uint32_t length(){return this->lengthvalue;}	// get String length
 	void append(const char *);						// append a char array to the current String
-	void append(String);							// append another string to the current one
+	void append(String*);							// append another string to the current one
 
 
 	static uint32_t getLength(const char*);
